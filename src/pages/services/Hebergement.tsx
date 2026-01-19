@@ -34,7 +34,7 @@ const properties = [
     type: "Villa",
     location: "Marrakech",
     price: 120,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/356268973_278973291461376_3880455757680870852_n-2-636x426.jpg",
+    image: "/src/assets/images/hebergement/villa-orientalys.webp",
     features: ["Piscine privée", "Chef privé", "Jardin luxuriant"],
     beds: 5,
     baths: 4,
