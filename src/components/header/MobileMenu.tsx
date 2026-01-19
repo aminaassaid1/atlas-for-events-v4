@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Globe, Facebook, Instagram } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
-import logo from "@/assets/logo.png";
+import logoDark from "@/assets/logo-dark.png";
 import type { NavItem } from "@/types";
 import DesktopNav from "./DesktopNav";
 import { socialLinks } from "@/config/contact";
@@ -65,7 +65,7 @@ const MobileMenu = ({
         {/* Mobile Logo */}
         <div className="flex items-center relative z-9 py-6.25 lg:hidden">
           <Link to="/" className="table-cell align-middle" onClick={onClose}>
-            <img src={logo} alt="Atlas For Events" className="object-contain duration-500 h-12" />
+            <img src={logoDark} alt="Atlas For Events" className="object-contain duration-500 h-12" />
           </Link>
         </div>
 
