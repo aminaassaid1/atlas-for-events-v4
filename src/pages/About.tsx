@@ -3,7 +3,7 @@ import { Compass, Target, ArrowRight, MapPin, Users, Award, Heart } from "lucide
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { PageLayout } from "@/components/layout";
-import { SEO } from "@/components/common";
+import { SEO, OptimizedImage } from "@/components/common";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -387,10 +387,11 @@ const About = () => {
                 className="group relative"
               >
                 <div className="rounded-3xl overflow-hidden aspect-[3/5] relative shadow-[0px_20px_40px_rgba(41,137,145,0.15)]">
-                  <img
+                  <OptimizedImage
                     src={dest.image}
-                    alt={dest.name}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    alt={`Destination ${dest.name} - Atlas For Events`}
+                    className="transition-transform duration-500 group-hover:scale-110"
+                    containerClassName="w-full h-full"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                   <div className="absolute bottom-4 left-0 right-0 text-center">
@@ -436,11 +437,12 @@ const About = () => {
                     transition={{ delay: index * 0.05 }}
                     className="group bg-white rounded-3xl p-[15px] text-center shadow-sm transition-all duration-500 hover:shadow-md hover:-translate-y-1 cursor-pointer"
                   >
-                    <div className="rounded-2xl overflow-hidden mb-4 aspect-square">
-                      <img
+                    <div className="rounded-2xl overflow-hidden mb-4">
+                      <OptimizedImage
                         src={service.image}
-                        alt={service.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        alt={`${service.title} - Service Atlas For Events`}
+                        aspectRatio="square"
+                        className="transition-transform duration-500 group-hover:scale-105"
                       />
                     </div>
                     <h4 className="text-base md:text-lg font-semibold text-foreground/80 pb-2">
