@@ -399,7 +399,27 @@ const Activites = () => {
                   </div>
                 </div>
                 <Button size="sm" className="rounded-full" asChild>
-                  <Link to={`/activites/${activity.id === 1 ? 'quad-aventure' : activity.id === 2 ? 'montgolfiere' : activity.id === 3 ? 'chameau-palmeraie' : activity.id === 6 ? 'cours-cuisine' : activity.id === 7 ? 'diner-spectacle-chez-ali' : activity.id === 9 ? 'cascades-ouzoud' : 'quad-aventure'}`}>
+                  <Link to={`/activites/${
+                    activity.id === 1 ? 'quad-palmeraie' : 
+                    activity.id === 2 ? 'montgolfiere' : 
+                    activity.id === 3 ? 'chameau-palmeraie' : 
+                    activity.id === 4 ? 'chameau-agafay' :
+                    activity.id === 5 ? 'quad-agafay' :
+                    activity.id === 6 ? 'cours-cuisine' : 
+                    activity.id === 7 ? 'diner-spectacle' : 
+                    activity.id === 8 ? 'coucher-soleil-agafay' :
+                    activity.id === 9 ? 'cascades-ouzoud' : 
+                    activity.id === 10 ? 'visite-marrakech' :
+                    activity.id === 11 ? 'merzouga' :
+                    activity.id === 12 ? 'ouarzazate' :
+                    activity.id === 13 ? 'ourika' :
+                    activity.id === 14 ? 'essaouira' :
+                    activity.id === 15 ? 'asilah' :
+                    activity.id === 16 ? 'chefchaouen' :
+                    activity.id === 17 ? 'imlil' :
+                    activity.id === 18 ? 'cooperative-argan' :
+                    'quad-palmeraie'
+                  }`}>
                     {t('activitiesPage.viewDetails')}
                   </Link>
                 </Button>
