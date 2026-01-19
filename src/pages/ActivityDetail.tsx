@@ -85,8 +85,8 @@ const ActivityDetail = () => {
       <Header />
 
       {/* Hero Section with Gallery */}
-      <section className="relative pt-32 md:pt-36">
-        <div className="container mx-auto px-4 py-6">
+      <section className="relative pt-20">
+        <div className="container mx-auto px-4 py-6 mt-[65px]">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-6 font-base overflow-x-auto">
             <Link to="/" className="text-muted-foreground hover:text-primary transition-colors whitespace-nowrap">

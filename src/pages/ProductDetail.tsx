@@ -180,7 +180,7 @@ const ProductDetail = () => {
     <PageLayout>
 
       <main className="pt-28 pb-20">
-        <div className="container mx-auto px-4 max-w-6xl mt-[50px]">
+        <div className="container mx-auto px-4 max-w-6xl mt-[65px]">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm mb-8 font-base overflow-x-auto">
             <Link to="/" className="text-muted-foreground hover:text-primary transition-colors whitespace-nowrap">
