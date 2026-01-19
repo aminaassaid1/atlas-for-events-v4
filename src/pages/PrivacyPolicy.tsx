@@ -3,6 +3,7 @@ import { ArrowLeft, Shield, Database, Share2, Cookie, UserCheck, Mail } from "lu
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { PageLayout } from "@/components/layout";
+import { SEO } from "@/components/common";
 
 const PrivacyPolicy = () => {
   const { t, i18n } = useTranslation();
@@ -10,6 +11,16 @@ const PrivacyPolicy = () => {
 
   return (
     <PageLayout>
+      <SEO 
+        title={isEnglish ? "Privacy Policy" : "Politique de Confidentialité"}
+        description={isEnglish 
+          ? "Privacy policy of Atlas For Events. Learn how we collect, use and protect your personal data."
+          : "Politique de confidentialité d'Atlas For Events. Découvrez comment nous collectons, utilisons et protégeons vos données personnelles."
+        }
+        url="https://atlasforevents.com/confidentialite"
+        noIndex={false}
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-primary/5 to-background">
         <div className="container mx-auto px-4">

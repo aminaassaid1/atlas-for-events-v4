@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -21,7 +22,8 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 const EventDetail = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const { id } = useParams<{ id: string }>();
   const [activeImage, setActiveImage] = useState(0);
   const [activeTab, setActiveTab] = useState<"services" | "packages" | "testimonials">("services");
@@ -69,6 +71,14 @@ const EventDetail = () => {
   
   const relatedEvents = allEventTypes.filter(e => e.id !== eventType.id).slice(0, 3);
   return <div className="min-h-screen bg-background">
+      <SEO 
+        title={`${eventType.title} - ${isEnglish ? "Events in Marrakech" : "Événements à Marrakech"}`}
+        description={eventType.description}
+        keywords={`${eventType.title}, événement, ${isEnglish ? "event planning" : "organisation"}, Marrakech, Morocco`}
+        url={`https://atlasforevents.com/evenements/${id}`}
+        image={typeof eventType.image === 'string' ? eventType.image : undefined}
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       <Header />
 
       {/* Hero Section with Gallery */}

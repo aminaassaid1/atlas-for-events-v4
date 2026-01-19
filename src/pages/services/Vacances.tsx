@@ -8,6 +8,7 @@ import { ChevronRight, Car, Plane, UserCheck, ArrowRight, Phone, MessageCircle, 
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/layout/PageLayout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -144,7 +145,8 @@ const destinations = [
 ];
 
 const Vacances = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
   const [formData, setFormData] = useState({
@@ -190,7 +192,19 @@ const Vacances = () => {
 
   return (
     <PageLayout>
-      
+      <SEO 
+        title={isEnglish ? "Excursions & Day Trips from Marrakech" : "Excursions & Voyages au départ de Marrakech"}
+        description={isEnglish 
+          ? "Explore Morocco with our guided excursions: desert Agafay, Essaouira, Ouzoud waterfalls, Atlas mountains, Ouarzazate. Book your adventure today."
+          : "Explorez le Maroc avec nos excursions guidées : désert Agafay, Essaouira, cascades Ouzoud, montagnes Atlas, Ouarzazate. Réservez votre aventure."
+        }
+        keywords={isEnglish 
+          ? "excursions Marrakech, day trips Morocco, desert tour, Essaouira trip, Ouzoud waterfalls, Atlas mountains"
+          : "excursions Marrakech, voyages Maroc, tour désert, voyage Essaouira, cascades Ouzoud, montagnes Atlas"
+        }
+        url="https://atlasforevents.com/services/vacances"
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
