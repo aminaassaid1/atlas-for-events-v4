@@ -679,12 +679,15 @@ export const activities: Activity[] = [
     price: 25,
     originalPrice: 35,
     duration: "3h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Jardin-Majorelle-Marrakech.jpg",
+    image: "/src/assets/images/activities/majorelle-villa.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Jardin-Majorelle-Marrakech.jpg",
-      "https://images.unsplash.com/photo-1553913861-c372b5c93b02?w=800",
-      "https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=800",
-      "https://images.unsplash.com/photo-1580746738099-62dbda180c32?w=800"
+      "/src/assets/images/activities/majorelle-villa.webp",
+      "/src/assets/images/activities/majorelle-vase.webp",
+      "/src/assets/images/activities/majorelle-pond.webp",
+      "/src/assets/images/activities/majorelle-fountain.webp",
+      "/src/assets/images/activities/ysl-museum.webp",
+      "/src/assets/images/activities/ysl-sculpture.webp",
+      "/src/assets/images/activities/musee-berbere.webp"
     ],
     description: "Découvrez le célèbre Jardin Majorelle et le Musée Yves Saint Laurent",
     longDescription: "Visitez le légendaire Jardin Majorelle, créé par le peintre Jacques Majorelle et restauré par Yves Saint Laurent et Pierre Bergé. Admirez les cactus géants, les bambous et le fameux bleu Majorelle, puis explorez le Musée Yves Saint Laurent adjacent, dédié au célèbre couturier français.",
