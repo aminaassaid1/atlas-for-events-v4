@@ -4,13 +4,17 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
+// Import images as ES6 modules
+import buggyPalmeraie from "@/assets/images/activities/buggy-palmeraie.webp";
+import montgolfiereSunrise from "@/assets/images/activities/montgolfiere-sunrise.webp";
+
 const ToursSection = () => {
   const { t } = useTranslation();
   const [startIndex, setStartIndex] = useState(0);
 
   const tours = [
     {
-      image: "/src/assets/images/activities/buggy-palmeraie.webp",
+      image: buggyPalmeraie,
       location: t('tours.tour1Location'),
       duration: t('tours.tour1Duration'),
       title: t('tours.tour1Title'),
@@ -18,7 +22,7 @@ const ToursSection = () => {
       rating: 4.9,
     },
     {
-      image: "/src/assets/images/activities/montgolfiere-sunrise.webp",
+      image: montgolfiereSunrise,
       location: t('tours.tour2Location'),
       duration: t('tours.tour2Duration'),
       title: t('tours.tour2Title'),
