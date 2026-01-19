@@ -5,6 +5,7 @@
  */
 import { useState, useEffect, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 const WISHLIST_STORAGE_KEY = "wishlist_items";
 
@@ -16,6 +17,7 @@ export const useWishlist = () => {
   const [wishlistIds, setWishlistIds] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   useEffect(() => {
     // Load wishlist from localStorage
@@ -43,18 +45,18 @@ export const useWishlist = () => {
     if (isInWishlist) {
       setWishlistIds((prev) => prev.filter((id) => id !== productId));
       toast({
-        title: "Retiré des favoris",
-        description: "Le produit a été retiré de vos favoris.",
+        title: t('toasts.removedFromFavorites'),
+        description: t('toasts.removedFromFavoritesDesc'),
       });
     } else {
       setWishlistIds((prev) => [...prev, productId]);
       toast({
-        title: "Ajouté aux favoris",
-        description: "Le produit a été ajouté à vos favoris.",
+        title: t('toasts.addedToFavorites'),
+        description: t('toasts.addedToFavoritesDesc'),
       });
     }
     return true;
-  }, [wishlistIds, toast]);
+  }, [wishlistIds, toast, t]);
 
   const isInWishlist = useCallback((productId: string) => {
     return wishlistIds.includes(productId);

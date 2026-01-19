@@ -8,51 +8,64 @@ import { ChevronRight, Package, Shield, Globe, Truck, FileCheck, Clock, Check, P
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { useState, useRef } from "react";
-
-const advantages = [
-  {
-    icon: Shield,
-    title: "Protection et Sécurité",
-    description: "Emballage soigné et protection maximale pour vos articles fragiles et précieux."
-  },
-  {
-    icon: Globe,
-    title: "Livraison Internationale",
-    description: "Expédition vers le monde entier, où que vous soyez."
-  },
-  {
-    icon: Truck,
-    title: "Suivi de Commande",
-    description: "Suivez votre colis en temps réel jusqu'à sa livraison."
-  },
-  {
-    icon: FileCheck,
-    title: "Assurance",
-    description: "Option d'assurance supplémentaire pour une tranquillité totale."
-  },
-  {
-    icon: Clock,
-    title: "Facilité",
-    description: "Nous nous occupons de tout, vous n'avez qu'à profiter."
-  }
-];
-
-const productCategories = [
-  {
-    title: "Œuvres d'art",
-    description: "Créations artistiques uniques fabriquées à partir de pièces automobiles.",
-    image: "https://atlasforevents.com/wp-content/uploads/elementor/thumbs/charmingart0505_350865698_1384757428757447_8328670991529485398_n-r6f1ddxrmg7ynf2k2ynlqjn6okgqbku81zdiflw1ds.jpg",
-    link: "/boutique"
-  },
-  {
-    title: "Artisanat marocain",
-    description: "Produits artisanaux marocains traditionnels, fabriqués avec passion.",
-    image: "https://atlasforevents.com/wp-content/uploads/elementor/thumbs/7xm368440-r6f1dnc5isktviowk2pvfh9smf6egjvjf9wd8di3nk.jpg",
-    link: "/boutique"
-  }
-];
+import { useTranslation } from "react-i18next";
 
 const Livraison = () => {
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
+  const getLocalizedPath = (path: string) => isEnglish ? `/en${path}` : path;
+
+  const advantages = [
+    {
+      icon: Shield,
+      title: t('livraisonPage.advantage1Title'),
+      description: t('livraisonPage.advantage1Desc')
+    },
+    {
+      icon: Globe,
+      title: t('livraisonPage.advantage2Title'),
+      description: t('livraisonPage.advantage2Desc')
+    },
+    {
+      icon: Truck,
+      title: t('livraisonPage.advantage3Title'),
+      description: t('livraisonPage.advantage3Desc')
+    },
+    {
+      icon: FileCheck,
+      title: t('livraisonPage.advantage4Title'),
+      description: t('livraisonPage.advantage4Desc')
+    },
+    {
+      icon: Clock,
+      title: t('livraisonPage.advantage5Title'),
+      description: t('livraisonPage.advantage5Desc')
+    }
+  ];
+
+  const productCategories = [
+    {
+      title: t('livraisonPage.artworksTitle'),
+      description: t('livraisonPage.artworksDesc'),
+      image: "https://atlasforevents.com/wp-content/uploads/elementor/thumbs/charmingart0505_350865698_1384757428757447_8328670991529485398_n-r6f1ddxrmg7ynf2k2ynlqjn6okgqbku81zdiflw1ds.jpg",
+      link: getLocalizedPath("/boutique")
+    },
+    {
+      title: t('livraisonPage.craftsTitle'),
+      description: t('livraisonPage.craftsDesc'),
+      image: "https://atlasforevents.com/wp-content/uploads/elementor/thumbs/7xm368440-r6f1dnc5isktviowk2pvfh9smf6egjvjf9wd8di3nk.jpg",
+      link: getLocalizedPath("/boutique")
+    }
+  ];
+
+  const commitments = [
+    t('livraisonPage.commitment1'),
+    t('livraisonPage.commitment2'),
+    t('livraisonPage.commitment3'),
+    t('livraisonPage.commitment4'),
+    t('livraisonPage.commitment5')
+  ];
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -82,8 +95,11 @@ const Livraison = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const fileInfo = selectedFile ? `\nFichier joint: ${selectedFile.name}` : "";
-    const whatsappMessage = `Bonjour, je souhaite réserver une livraison internationale.\n\nNom: ${formData.name}\nEmail: ${formData.email}\nTéléphone: ${formData.phone}\nAdresse de livraison: ${formData.address}\nNuméro de commande: ${formData.orderNumber}\nDescription des articles: ${formData.itemsDescription}\nType de livraison: ${formData.deliveryType === 'express' ? 'Express' : 'Standard'}\nAssurance supplémentaire: ${formData.insurance === 'yes' ? 'Oui' : 'Non'}${fileInfo}\nMessage: ${formData.message}`;
+    const fileInfo = selectedFile ? `\n${t('livraisonPage.whatsappAttachment')}: ${selectedFile.name}` : "";
+    const deliveryTypeText = formData.deliveryType === 'express' ? t('livraisonPage.whatsappDeliveryExpress') : t('livraisonPage.whatsappDeliveryStandard');
+    const insuranceText = formData.insurance === 'yes' ? t('livraisonPage.whatsappInsuranceYes') : t('livraisonPage.whatsappInsuranceNo');
+    
+    const whatsappMessage = `${t('livraisonPage.whatsappMessage')}\n\n${t('livraisonPage.formName')}: ${formData.name}\n${t('livraisonPage.formEmail')}: ${formData.email}\n${t('livraisonPage.formPhone')}: ${formData.phone}\n${t('livraisonPage.formAddress')}: ${formData.address}\n${t('livraisonPage.formOrderNumber')}: ${formData.orderNumber}\n${t('livraisonPage.formItems')}: ${formData.itemsDescription}\n${t('livraisonPage.formDeliveryPrefs')} ${deliveryTypeText}\n${t('livraisonPage.formInsurance')} ${insuranceText}${fileInfo}\n${t('livraisonPage.formMessage')}: ${formData.message}`;
     window.open(`https://wa.me/33698272483?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
   };
 
@@ -94,7 +110,7 @@ const Livraison = () => {
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80"
-            alt="Livraison internationale"
+            alt={t('livraisonPage.heroTitle')}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
@@ -106,11 +122,11 @@ const Livraison = () => {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center justify-center gap-2 text-sm mb-6"
           >
-            <Link to="/" className="hover:text-secondary transition-colors">Accueil</Link>
+            <Link to={getLocalizedPath("/")} className="hover:text-secondary transition-colors">{t('livraisonPage.breadcrumbHome')}</Link>
             <ChevronRight className="w-4 h-4" />
-            <Link to="/boutique" className="hover:text-secondary transition-colors">Boutique</Link>
+            <Link to={getLocalizedPath("/boutique")} className="hover:text-secondary transition-colors">{t('livraisonPage.breadcrumbShop')}</Link>
             <ChevronRight className="w-4 h-4" />
-            <span className="text-secondary">Livraison Internationale</span>
+            <span className="text-secondary">{t('livraisonPage.breadcrumbDelivery')}</span>
           </motion.nav>
 
           <motion.h1
@@ -119,7 +135,7 @@ const Livraison = () => {
             transition={{ delay: 0.2 }}
             className="text-4xl md:text-6xl font-bold mb-4"
           >
-            Livraison de Produits Artisanaux
+            {t('livraisonPage.heroTitle')}
           </motion.h1>
 
           <motion.p
@@ -128,7 +144,7 @@ const Livraison = () => {
             transition={{ delay: 0.4 }}
             className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90"
           >
-            Service de livraison internationale
+            {t('livraisonPage.heroSubtitle')}
           </motion.p>
 
           <motion.p
@@ -137,7 +153,7 @@ const Livraison = () => {
             transition={{ delay: 0.5 }}
             className="text-lg max-w-2xl mx-auto mt-4 text-white/80"
           >
-            Vous êtes tombé amoureux de nos produits artisanaux marocains, mais vous vous demandez comment les ramener chez vous en toute sécurité ? Ne vous inquiétez pas, nous avons la solution parfaite !
+            {t('livraisonPage.heroDescription')}
           </motion.p>
         </div>
       </section>
@@ -152,13 +168,13 @@ const Livraison = () => {
             className="max-w-4xl mx-auto text-center"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-              Service de Livraison de Produits Artisanaux
+              {t('livraisonPage.introTitle')}
             </h2>
             <p className="text-lg text-muted-foreground mb-4">
-              Notre service de livraison internationale garantit que vos précieux achats arrivent à votre porte en parfait état, où que vous soyez dans le monde.
+              {t('livraisonPage.introP1')}
             </p>
             <p className="text-lg text-muted-foreground">
-              Que vous ayez choisi de grandes pièces, des articles fragiles ou que vous ne puissiez tout simplement pas emporter vos achats avec vous, notre service de livraison s'occupe de tout. Profitez de l'artisanat marocain sans tracas !
+              {t('livraisonPage.introP2')}
             </p>
           </motion.div>
         </div>
@@ -174,10 +190,10 @@ const Livraison = () => {
             className="text-center mb-16"
           >
             <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-3">
-              Pourquoi nous choisir
+              {t('livraisonPage.whyChooseUs')}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-primary">
-              Les avantages de notre service de livraison
+              {t('livraisonPage.advantagesTitle')}
             </h2>
           </motion.div>
 
@@ -212,13 +228,13 @@ const Livraison = () => {
             className="text-center mb-12"
           >
             <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-3">
-              Nos produits
+              {t('livraisonPage.ourProducts')}
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              Avez-vous déjà fait vos achats chez nous ?
+              {t('livraisonPage.alreadyShopped')}
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Avant de réserver votre livraison, nous vous invitons à découvrir nos deux catégories de produits uniques :
+              {t('livraisonPage.discoverProducts')}
             </p>
           </motion.div>
 
@@ -245,7 +261,7 @@ const Livraison = () => {
                   <p className="text-muted-foreground mb-4 italic">{category.description}</p>
                   <Button asChild variant="outline" className="w-full">
                     <Link to={category.link}>
-                      Découvrir nos {category.title.toLowerCase()}
+                      {t('livraisonPage.discoverOur')} {category.title.toLowerCase()}
                     </Link>
                   </Button>
                 </div>
@@ -266,12 +282,12 @@ const Livraison = () => {
               viewport={{ once: true }}
               className="bg-lightturquoise rounded-2xl p-8"
             >
-              <h3 className="text-2xl font-bold text-primary mb-6">Réservation pour Livraison</h3>
+              <h3 className="text-2xl font-bold text-primary mb-6">{t('livraisonPage.formTitle')}</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <input
                     type="text"
-                    placeholder="Votre nom"
+                    placeholder={t('livraisonPage.formName')}
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:ring-2 focus:ring-primary"
@@ -279,7 +295,7 @@ const Livraison = () => {
                   />
                   <input
                     type="email"
-                    placeholder="E-mail"
+                    placeholder={t('livraisonPage.formEmail')}
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:ring-2 focus:ring-primary"
@@ -290,7 +306,7 @@ const Livraison = () => {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <input
                     type="tel"
-                    placeholder="Numéro de téléphone"
+                    placeholder={t('livraisonPage.formPhone')}
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:ring-2 focus:ring-primary"
@@ -298,7 +314,7 @@ const Livraison = () => {
                   />
                   <input
                     type="text"
-                    placeholder="Numéro de commande (si applicable)"
+                    placeholder={t('livraisonPage.formOrderNumber')}
                     value={formData.orderNumber}
                     onChange={(e) => setFormData({ ...formData, orderNumber: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl border border-border bg-white focus:outline-none focus:ring-2 focus:ring-primary"
@@ -306,7 +322,7 @@ const Livraison = () => {
                 </div>
 
                 <textarea
-                  placeholder="Adresse de livraison"
+                  placeholder={t('livraisonPage.formAddress')}
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   rows={2}
@@ -315,7 +331,7 @@ const Livraison = () => {
                 />
 
                 <textarea
-                  placeholder="Description des articles à livrer"
+                  placeholder={t('livraisonPage.formItems')}
                   value={formData.itemsDescription}
                   onChange={(e) => setFormData({ ...formData, itemsDescription: e.target.value })}
                   rows={3}
@@ -326,7 +342,7 @@ const Livraison = () => {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Préférences de livraison :
+                      {t('livraisonPage.formDeliveryPrefs')}
                     </label>
                     <div className="space-y-2">
                       <label className="flex items-center gap-2 cursor-pointer">
@@ -338,7 +354,7 @@ const Livraison = () => {
                           onChange={(e) => setFormData({ ...formData, deliveryType: e.target.value })}
                           className="w-4 h-4 text-primary"
                         />
-                        <span className="text-foreground">Livraison standard</span>
+                        <span className="text-foreground">{t('livraisonPage.formStandard')}</span>
                       </label>
                       <label className="flex items-center gap-2 cursor-pointer">
                         <input
@@ -349,14 +365,14 @@ const Livraison = () => {
                           onChange={(e) => setFormData({ ...formData, deliveryType: e.target.value })}
                           className="w-4 h-4 text-primary"
                         />
-                        <span className="text-foreground">Livraison express</span>
+                        <span className="text-foreground">{t('livraisonPage.formExpress')}</span>
                       </label>
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-sm font-medium text-foreground mb-2">
-                      Assurance supplémentaire :
+                      {t('livraisonPage.formInsurance')}
                     </label>
                     <div className="space-y-2">
                       <label className="flex items-center gap-2 cursor-pointer">
@@ -368,7 +384,7 @@ const Livraison = () => {
                           onChange={(e) => setFormData({ ...formData, insurance: e.target.value })}
                           className="w-4 h-4 text-primary"
                         />
-                        <span className="text-foreground text-sm">Oui, je souhaite ajouter une assurance</span>
+                        <span className="text-foreground text-sm">{t('livraisonPage.formInsuranceYes')}</span>
                       </label>
                       <label className="flex items-center gap-2 cursor-pointer">
                         <input
@@ -379,7 +395,7 @@ const Livraison = () => {
                           onChange={(e) => setFormData({ ...formData, insurance: e.target.value })}
                           className="w-4 h-4 text-primary"
                         />
-                        <span className="text-foreground text-sm">Non</span>
+                        <span className="text-foreground text-sm">{t('livraisonPage.formInsuranceNo')}</span>
                       </label>
                     </div>
                   </div>
@@ -388,7 +404,7 @@ const Livraison = () => {
                 {/* File Upload */}
                 <div>
                   <label className="block text-sm font-medium text-foreground mb-2">
-                    Joindre un fichier (photo des articles, facture, etc.) :
+                    {t('livraisonPage.formFileLabel')}
                   </label>
                   <div className="relative">
                     <input
@@ -405,7 +421,7 @@ const Livraison = () => {
                         className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl border-2 border-dashed border-border bg-white hover:border-primary hover:bg-primary/5 cursor-pointer transition-colors"
                       >
                         <Upload className="w-5 h-5 text-muted-foreground" />
-                        <span className="text-muted-foreground">Cliquez pour sélectionner un fichier</span>
+                        <span className="text-muted-foreground">{t('livraisonPage.formFileSelect')}</span>
                       </label>
                     ) : (
                       <div className="flex items-center justify-between w-full px-4 py-3 rounded-xl border border-primary bg-primary/5">
@@ -424,12 +440,12 @@ const Livraison = () => {
                     )}
                   </div>
                   <p className="text-xs text-muted-foreground mt-1">
-                    Formats acceptés : images, PDF, Word (max 10 Mo)
+                    {t('livraisonPage.formFileFormats')}
                   </p>
                 </div>
 
                 <textarea
-                  placeholder="Message ou demande spéciale (optionnel)"
+                  placeholder={t('livraisonPage.formMessage')}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={3}
@@ -437,7 +453,7 @@ const Livraison = () => {
                 />
 
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 py-6 text-lg">
-                  Envoyer la demande
+                  {t('livraisonPage.formSubmit')}
                 </Button>
               </form>
             </motion.div>
@@ -449,13 +465,13 @@ const Livraison = () => {
               viewport={{ once: true }}
             >
               <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-3">
-                Besoin d'aide ?
+                {t('livraisonPage.needHelp')}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-primary mb-6">
-                Contactez-nous directement
+                {t('livraisonPage.contactDirectly')}
               </h2>
               <p className="text-muted-foreground mb-8">
-                Notre équipe est disponible pour répondre à toutes vos questions concernant notre service de livraison internationale.
+                {t('livraisonPage.contactDesc')}
               </p>
 
               <div className="space-y-4">
@@ -467,7 +483,7 @@ const Livraison = () => {
                     <Phone className="w-6 h-6 text-white" />
                   </div>
                   <div>
-                    <span className="text-sm text-muted-foreground">Appelez-nous</span>
+                    <span className="text-sm text-muted-foreground">{t('livraisonPage.callUs')}</span>
                     <span className="block text-lg font-bold text-primary">+33 698-272483</span>
                   </div>
                 </a>
@@ -485,22 +501,16 @@ const Livraison = () => {
                   </div>
                   <div>
                     <span className="text-sm text-muted-foreground">WhatsApp</span>
-                    <span className="block text-lg font-bold text-primary">Discuter avec nous</span>
+                    <span className="block text-lg font-bold text-primary">{t('livraisonPage.whatsappChat')}</span>
                   </div>
                 </a>
               </div>
 
               {/* Features List */}
               <div className="mt-8 p-6 bg-primary/5 rounded-2xl">
-                <h4 className="font-bold text-primary mb-4">Notre engagement :</h4>
+                <h4 className="font-bold text-primary mb-4">{t('livraisonPage.ourCommitment')}</h4>
                 <ul className="space-y-3">
-                  {[
-                    "Emballage professionnel et sécurisé",
-                    "Suivi en temps réel de votre colis",
-                    "Livraison dans le monde entier",
-                    "Assurance disponible sur demande",
-                    "Service client réactif"
-                  ].map((feature) => (
+                  {commitments.map((feature) => (
                     <li key={feature} className="flex items-center gap-3">
                       <div className="w-5 h-5 rounded-full bg-secondary/30 flex items-center justify-center flex-shrink-0">
                         <Check className="w-3 h-3 text-primary" />
