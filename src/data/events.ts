@@ -1,3 +1,10 @@
+import fiancaillesImg from '@/assets/images/events/fiancailles.webp';
+import anniversairesImg from '@/assets/images/events/anniversaires.webp';
+import evjfEvjgImg from '@/assets/images/events/evjf-evjg.webp';
+import soireePriveeImg from '@/assets/images/events/soiree-privee.webp';
+import animationImg from '@/assets/images/events/animation.webp';
+import autresServicesImg from '@/assets/images/events/autres-services.webp';
+
 export interface EventType {
   id: string;
   title: string;
@@ -137,9 +144,9 @@ export const eventTypes: EventType[] = [
     title: "Fiançailles",
     description: "Célébrez votre engagement dans un cadre exceptionnel",
     longDescription: "Vos fiançailles méritent un cadre à la hauteur de votre amour. Que vous souhaitiez une soirée intime sur un rooftop avec vue sur la Médina ou une grande fête traditionnelle, nous créons l'ambiance parfaite pour célébrer votre engagement avec vos proches.",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/06/view-table-arrangement-by-wedding-planner-scaled-1.jpg",
+    image: fiancaillesImg,
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/06/view-table-arrangement-by-wedding-planner-scaled-1.jpg",
+      fiancaillesImg,
       "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800",
       "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800",
       "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800"
@@ -209,9 +216,9 @@ export const eventTypes: EventType[] = [
     title: "Anniversaires",
     description: "Des fêtes mémorables pour tous les âges",
     longDescription: "Qu'il s'agisse d'un anniversaire d'enfant, d'un passage à la trentaine, d'un 50ème mémorable ou d'un anniversaire de mariage, nous créons des fêtes sur mesure qui marqueront les esprits. Thématiques originales, lieux insolites et animations exceptionnelles.",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/06/party-portraits-young-adults-having-fun-scaled-1.jpg",
+    image: anniversairesImg,
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/06/party-portraits-young-adults-having-fun-scaled-1.jpg",
+      anniversairesImg,
       "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800",
       "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?w=800",
       "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=800"
@@ -281,9 +288,9 @@ export const eventTypes: EventType[] = [
     title: "EVJF / EVJG",
     description: "Des moments de folie entre amis avant le grand jour",
     longDescription: "Offrez à la future mariée ou au futur marié une expérience inoubliable à Marrakech ! Entre activités sensationnelles, spa de luxe, soirées endiablées et moments de complicité, nous créons le weekend parfait pour enterrer la vie de célibataire en beauté.",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/7xm508608.jpg",
+    image: evjfEvjgImg,
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/7xm508608.jpg",
+      evjfEvjgImg,
       "https://images.unsplash.com/photo-1529543544277-0b91cdab9668?w=800",
       "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800",
       "https://images.unsplash.com/photo-1496024840928-4c417adf211d?w=800"
@@ -357,9 +364,9 @@ export const eventTypes: EventType[] = [
     title: "Soirées Privées",
     description: "Galas, corporate events et célébrations exclusives",
     longDescription: "Des soirées d'exception pour les moments qui comptent. Qu'il s'agisse d'un gala d'entreprise, d'une soirée de lancement, d'un dîner privé ou d'une fête exclusive, nous transformons vos événements en expériences inoubliables dans les lieux les plus prestigieux de Marrakech.",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/7xm564269.jpg",
+    image: soireePriveeImg,
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/7xm564269.jpg",
+      soireePriveeImg,
       "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
       "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800",
       "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800"
@@ -429,9 +436,9 @@ export const eventTypes: EventType[] = [
     title: "Gipsy Sueño",
     description: "Animation musicale internationale de renommée",
     longDescription: "Gipsy Sueño est notre groupe phare, mêlant musiques du monde, flamenco, rumba et rythmes envoûtants. Avec des musiciens talentueux et une énergie communicative, ils transforment chaque événement en fête inoubliable. Disponibles pour mariages, soirées privées et événements corporate.",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/71137665_2230934303699493_6792019247049474048_n.jpg",
+    image: animationImg,
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/71137665_2230934303699493_6792019247049474048_n.jpg",
+      animationImg,
       "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800",
       "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800",
       "https://images.unsplash.com/photo-1501612780327-45045538702b?w=800"
