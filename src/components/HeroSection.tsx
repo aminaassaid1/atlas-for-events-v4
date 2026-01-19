@@ -1,24 +1,49 @@
 import { motion } from "framer-motion";
 import { Facebook, Instagram } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useState, useRef, useEffect } from "react";
 import heroVideo from "@/assets/heroVideo.mp4";
 
 const HeroSection = () => {
   const { t } = useTranslation();
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    // Start loading immediately
+    video.load();
+    
+    const handleCanPlay = () => {
+      setIsVideoLoaded(true);
+      video.play().catch(() => {
+        // Autoplay may be blocked, that's ok
+      });
+    };
+
+    video.addEventListener('canplaythrough', handleCanPlay);
+    
+    // Fallback: show video after 2 seconds even if not fully loaded
+    const timeout = setTimeout(() => setIsVideoLoaded(true), 2000);
+
+    return () => {
+      video.removeEventListener('canplaythrough', handleCanPlay);
+      clearTimeout(timeout);
+    };
+  }, []);
 
   return (
     <section className="min-h-[calc(100vh-80px)] sm:min-h-screen overflow-hidden relative bg-primary">
       {/* Video Background */}
       <video
+        ref={videoRef}
         muted
         loop
-        autoPlay
         playsInline
-        preload="metadata"
-        poster="/placeholder.svg"
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover size-full z-0"
-        onCanPlay={(e) => (e.currentTarget.style.opacity = '1')}
-        style={{ opacity: 0, transition: 'opacity 0.3s ease-in-out' }}
+        preload="auto"
+        className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover size-full z-0 transition-opacity duration-500 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
       >
         <source src={heroVideo} type="video/mp4" />
       </video>
