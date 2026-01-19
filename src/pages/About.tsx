@@ -30,15 +30,15 @@ import destAgadir from "@/assets/images/destinations/agadir-about.webp";
 import destCasablanca from "@/assets/images/destinations/casablanca-about.webp";
 import destTanger from "@/assets/images/destinations/tanger-about.webp";
 
-// Service images from Atlas For Events
-import serviceGuide from "@/assets/images/services/guide-expert.jpg";
-import serviceDivertissement from "@/assets/images/services/divertissement.jpg";
-import serviceTransport from "@/assets/images/services/transport-vip.jpg";
-import serviceGastronomie from "@/assets/images/services/gastronomie.jpg";
-import serviceCuisine from "@/assets/images/services/cuisine-locale.jpg";
-import serviceSpa from "@/assets/images/services/spa-massage.jpg";
-import serviceRepos from "@/assets/images/services/repos-detente.webp";
-import serviceHebergement from "@/assets/images/services/hebergement.jpg";
+// Service images - Best quality from project
+import serviceGuide from "@/assets/images/activities/marrakech-medina.webp";
+import serviceDivertissement from "@/assets/images/events/soiree-privee.webp";
+import serviceTransport from "@/assets/images/transport/chauffeur.webp";
+import serviceGastronomie from "@/assets/images/activities/diner-agafay-table.webp";
+import serviceCuisine from "@/assets/images/activities/cours-cuisine.jpg";
+import serviceSpa from "@/assets/images/spa/massage.webp";
+import serviceRepos from "@/assets/images/activities/agafay-lounge.webp";
+import serviceHebergement from "@/assets/images/hebergement/riad-dar-ikalimo.webp";
 
 // Title separator
 import titleSeparator from "@/assets/images/background/Title-Separator.png";
