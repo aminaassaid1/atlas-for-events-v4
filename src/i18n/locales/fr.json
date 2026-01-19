@@ -1036,7 +1036,12 @@
     "categoryAdventure": "Aventure",
     "categoryNature": "Nature",
     "categoryCulture": "Culture",
-    "categoryFood": "Cuisine"
+    "categoryFood": "Cuisine",
+    "categoryDesert": "Désert",
+    "categoryPremium": "Premium",
+    "categoryGastronomy": "Gastronomie",
+    "categoryShow": "Spectacle",
+    "categoryCoast": "Côte"
   },
   "destinationDetail": {
     "notFound": "Destination introuvable",

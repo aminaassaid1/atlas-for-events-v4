@@ -4,8 +4,8 @@
  */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ChevronRight, MapPin, Clock, Star, Car, Plane, UserCheck, ArrowRight, Phone, MessageCircle } from "lucide-react";
-import { useState } from "react";
+import { ChevronRight, MapPin, Clock, Star, Car, Plane, UserCheck, ArrowRight, Phone, MessageCircle, ChevronLeft } from "lucide-react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
@@ -144,6 +144,8 @@ const destinations = [
 
 const Vacances = () => {
   const { t } = useTranslation();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -153,6 +155,13 @@ const Vacances = () => {
     travelers: "",
     message: ""
   });
+
+  // Pagination logic
+  const totalPages = Math.ceil(destinations.length / itemsPerPage);
+  const paginatedDestinations = useMemo(() => {
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    return destinations.slice(startIndex, startIndex + itemsPerPage);
+  }, [currentPage]);
 
   const stats = [
     { value: "6+", label: t('vacationsPage.statsDestinations') },
@@ -272,9 +281,9 @@ const Vacances = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {destinations.map((destination, index) => (
+            {paginatedDestinations.map((destination, index) => (
               <motion.div
-                key={destination.name}
+                key={destination.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -343,6 +352,48 @@ const Vacances = () => {
               </motion.div>
             ))}
           </div>
+
+          {/* Pagination Controls */}
+          {totalPages > 1 && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center justify-center gap-2 mt-12"
+            >
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className="rounded-full"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </Button>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  size="icon"
+                  onClick={() => setCurrentPage(page)}
+                  className="rounded-full w-10 h-10"
+                >
+                  {page}
+                </Button>
+              ))}
+
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages}
+                className="rounded-full"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </Button>
+            </motion.div>
+          )}
         </div>
       </section>
 
