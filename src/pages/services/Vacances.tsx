@@ -14,71 +14,133 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
 // Real data from CSV export
-const destinations = [{
-  id: "merzouga-sahara",
-  name: "Merzouga - Sahara",
-  duration: "3 jours",
-  price: 299,
-  originalPrice: 350,
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg",
-  description: "Trekking à chameau, Erg Chebbi et camps de luxe dans le Sahara",
-  category: "Désert",
-  rating: 5.0,
-  includes: ["1 nuit hôtel", "1 nuit bivouac", "Balade dromadaire", "Demi-pension", "Transport"]
-}, {
-  id: "ouarzazate",
-  name: "Ouarzazate",
-  duration: "1 jour",
-  price: 30,
-  originalPrice: 50,
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/hassan-ouajbir-INcADDyMwwo-unsplash-scaled.jpg",
-  description: "Explorez le désert et les Kasbahs historiques, Hollywood du Maroc",
-  category: "Culture",
-  rating: 4.8,
-  includes: ["Kasbah Taourirt", "Ait Ben Haddou UNESCO", "Atlas Studios", "Transport"]
-}, {
-  id: "vallee-ourika",
-  name: "Vallée de l'Ourika",
-  duration: "8 heures",
-  price: 20,
-  originalPrice: 45,
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/matthew-fainman-3yonP2JaGTU-unsplash-scaled.jpg",
-  description: "Cascades majestueuses, randonnées et villages berbères traditionnels",
-  category: "Nature",
-  rating: 4.9,
-  includes: ["Cascades Setti Fatma", "Villages berbères", "Jardins botaniques", "Transport"]
-}, {
-  id: "essaouira",
-  name: "Essaouira",
-  duration: "10 heures",
-  price: 20,
-  originalPrice: 45,
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/rigel-No_Y3bn4lNQ-unsplash-scaled.jpg",
-  description: "Médina historique UNESCO, plages et poisson frais",
-  category: "Côte",
-  rating: 4.8,
-  includes: ["Médina UNESCO", "Atelier marqueterie", "Mellah", "Déjeuner poisson frais", "Transport"]
-}, {
-  id: "asilah",
-  name: "Asilah",
-  duration: "2 jours",
-  price: 55,
-  image: "https://atlasforevents.com/wp-content/uploads/2022/08/aziz-acharki-Bl-azXExvOs-unsplash-scaled.jpg",
-  description: "Ville côtière charmante aux murs peints et art de rue",
-  category: "Côte",
-  rating: 4.7,
-  includes: ["Médina artistique", "Plages", "Art de rue", "Transport"]
-}, {
-  id: "chefchaouen",
-  name: "Chefchaouen",
-  duration: "2 jours",
-  price: 55,
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/sanket-babu-2VQCV9FIL9U-unsplash-scaled.jpg",
-  description: "La perle bleue du Maroc, ruelles pittoresques dans les montagnes du Rif",
-  category: "Montagne",
-  rating: 5.0,
-  includes: ["Ville bleue", "Randonnée Rif", "Artisanat local", "Transport"]
-}];
+const destinations = [
+  {
+    id: "cooperative-argan",
+    name: "Visite Coopérative d'Argan",
+    duration: "Demi-journée",
+    price: 40,
+    originalPrice: 60,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
+    description: "Découvrez MARJANA, une immersion dans la production d'Argan au Maroc",
+    category: "Culture",
+    rating: 4.9,
+    includes: ["Visite guidée", "Démonstrations", "Dégustation", "Transport"]
+  },
+  {
+    id: "trekking-agafay",
+    name: "Aventure dans l'Agafay",
+    duration: "3-4 heures",
+    price: 50,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/randoagafay.jpg",
+    description: "Trekking à dos de chameau et délices culturels dans le désert d'Agafay",
+    category: "Désert",
+    rating: 4.8,
+    includes: ["Balade à dos de chameau", "Immersion culturelle", "Repas traditionnel", "Transport"]
+  },
+  {
+    id: "palmeraie-chameau",
+    name: "Balade Chameau Palmeraie",
+    duration: "1-2 heures",
+    price: 25,
+    originalPrice: 40,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/d2daa107ff6b37140d01fafba2a01625.jpg-1.webp",
+    description: "Expérience envoûtante à dos de chameau dans la Palmeraie de Marrakech",
+    category: "Nature",
+    rating: 4.9,
+    includes: ["Balade chameau", "Thé marocain", "Transferts", "Assurance"]
+  },
+  {
+    id: "quad-marrakech",
+    name: "Aventure en Quad",
+    duration: "2-3 heures",
+    price: 35,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/145-4.jpg",
+    description: "Excursion en quad palpitante à travers la Palmeraie de Marrakech",
+    category: "Aventure",
+    rating: 4.7,
+    includes: ["Quad Yamaha 250cc", "Équipement complet", "Thé marocain", "Transport"]
+  },
+  {
+    id: "montgolfiere",
+    name: "Vol en Montgolfière",
+    duration: "5 heures",
+    price: 180,
+    originalPrice: 200,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg",
+    description: "Survolez les villages berbères et l'Atlas en montgolfière",
+    category: "Premium",
+    rating: 5.0,
+    includes: ["Vol 1h", "Petit-déjeuner", "Certificat", "Transport 4x4"]
+  },
+  {
+    id: "cours-cuisine",
+    name: "Cours de Cuisine Marocaine",
+    duration: "4 heures",
+    price: 45,
+    originalPrice: 60,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29-1.jpeg",
+    description: "Cours de cuisine authentique dans le désert d'Agafay",
+    category: "Gastronomie",
+    rating: 4.9,
+    includes: ["Cours avec chef", "Repas complet", "Recettes", "Transport"]
+  },
+  {
+    id: "buggy-palmeraie",
+    name: "Aventure en Buggy",
+    duration: "2 heures",
+    price: 70,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+    description: "Aventure palpitante en buggy dans la Palmeraie de Marrakech",
+    category: "Aventure",
+    rating: 4.8,
+    includes: ["Buggy", "Pause thé berbère", "Guide", "Transport"]
+  },
+  {
+    id: "diner-chez-ali",
+    name: "Dîner Spectacle Chez Ali",
+    duration: "4 heures",
+    price: 45,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/9cabd722-e487-4d05-be00-109180fcf9d9.avif",
+    description: "Soirée magique avec dîner marocain et spectacle Fantasia",
+    category: "Spectacle",
+    rating: 4.7,
+    includes: ["Dîner marocain", "Spectacle folklore", "Fantasia", "Transport"]
+  },
+  {
+    id: "sunset-agafay",
+    name: "Coucher de Soleil Agafay",
+    duration: "5 heures",
+    price: 45,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/78b38e7f-e50d-402f-a9fa-b13e30075673.jpeg",
+    description: "Coucher de soleil et dîner magique dans le désert d'Agafay avec dromadaires",
+    category: "Désert",
+    rating: 4.9,
+    includes: ["Promenade dromadaire", "Coucher de soleil", "Dîner étoilé", "Transport"]
+  },
+  {
+    id: "cascades-ouzoud",
+    name: "Cascades d'Ouzoud",
+    duration: "10 heures",
+    price: 40,
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
+    description: "Excursion aux plus hautes cascades du Maroc (110m)",
+    category: "Nature",
+    rating: 4.8,
+    includes: ["Cascades", "Baignade", "Macaques", "Transport"]
+  },
+  {
+    id: "visite-marrakech",
+    name: "Visite Privée Marrakech",
+    duration: "7 heures",
+    price: 40,
+    image: "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
+    description: "Découvrez les trésors de Marrakech : Koutoubia, Bahia, Souks",
+    category: "Culture",
+    rating: 5.0,
+    includes: ["Guide privé", "Entrées sites", "Mellah", "Souks"]
+  }
+];
 
 const Vacances = () => {
   const { t } = useTranslation();
