@@ -82,7 +82,7 @@ const properties = [
     type: "Riad",
     location: "Médina de Marrakech",
     price: 110,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/449029567_879500140885989_1644015659908909457_n-1-636x426.jpg",
+    image: "/src/assets/images/hebergement/riad-dar-ikalimo.webp",
     features: ["Vues panoramiques", "Activités nature", "Petit-déjeuner inclus"],
     beds: 4,
     baths: 3,
