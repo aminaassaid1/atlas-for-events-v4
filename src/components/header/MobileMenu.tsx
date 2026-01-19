@@ -83,13 +83,13 @@ const MobileMenu = ({
         <div className="lg:hidden block max-lg:p-5 border-t border-gray-200 mt-4">
           <div className="space-y-3">
             <Link to={currentLang === 'en' ? '/en/favoris' : '/favoris'} className="block text-primary font-medium py-2" onClick={onClose}>
-              {t('common.favorites')}
+              {t('common.favorites', 'Mes favoris')}
             </Link>
             <Link to={currentLang === 'en' ? '/en/panier' : '/panier'} className="block text-primary font-medium py-2" onClick={onClose}>
-              {t('common.myCart')}
+              {t('common.myCart', 'Mon panier')}
             </Link>
             <Link to={currentLang === 'en' ? '/en/mes-commandes' : '/mes-commandes'} className="block text-primary font-medium py-2" onClick={onClose}>
-              {t('common.myOrders')}
+              {t('common.myOrders', 'Mes commandes')}
             </Link>
           </div>
         </div>
