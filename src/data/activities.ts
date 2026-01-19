@@ -861,12 +861,13 @@ export const activities: Activity[] = [
     price: 40,
     originalPrice: 55,
     duration: "10h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
+    image: "/src/assets/images/activities/ouzoud-falls.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
-      "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=800",
-      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800"
+      "/src/assets/images/activities/ouzoud-falls.webp",
+      "/src/assets/images/activities/ouzoud-monkey.webp",
+      "/src/assets/images/activities/ouzoud-panorama.webp",
+      "/src/assets/images/activities/ouzoud-boats.webp",
+      "/src/assets/images/activities/ouzoud-boat-ride.webp"
     ],
     description: "Découvrez les plus hautes cascades d'Afrique du Nord",
     longDescription: "Partez à la découverte des majestueuses Cascades d'Ouzoud, les plus hautes d'Afrique du Nord avec leurs 110 mètres de chute. Cette excursion d'une journée vous emmène à travers les paysages de l'Atlas, avec possibilité de baignade dans les bassins naturels et rencontre avec les macaques de Barbarie qui peuplent le site.",
