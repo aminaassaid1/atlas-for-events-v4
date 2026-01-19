@@ -1181,5 +1181,11 @@
     "whatsappDate": "Date",
     "whatsappGuests": "Invités",
     "whatsappMessageLabel": "Message"
+  },
+  "common": {
+    "from": "À partir de",
+    "viewDetails": "Voir détails",
+    "promo": "PROMO",
+    "perPerson": "par personne"
   }
 }

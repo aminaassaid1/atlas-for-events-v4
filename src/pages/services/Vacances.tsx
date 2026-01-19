@@ -4,7 +4,7 @@
  */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ChevronRight, MapPin, Clock, Star, Car, Plane, UserCheck, ArrowRight, Phone, MessageCircle, ChevronLeft } from "lucide-react";
+import { ChevronRight, Car, Plane, UserCheck, ArrowRight, Phone, MessageCircle, ChevronLeft } from "lucide-react";
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/layout/PageLayout";
@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { ActivityCard } from "@/components/cards";
 
 // Real data from CSV export
 const destinations = [
@@ -282,74 +283,20 @@ const Vacances = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {paginatedDestinations.map((destination, index) => (
-              <motion.div
+              <ActivityCard
                 key={destination.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img src={destination.image} alt={destination.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-foreground flex items-center gap-1.5">
-                      <Clock className="w-4 h-4 text-primary" />
-                      {destination.duration}
-                    </span>
-                    <span className="bg-secondary/90 text-secondary-foreground px-3 py-1.5 rounded-full text-xs font-bold">
-                      {destination.category}
-                    </span>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
-                      <Star className="w-3.5 h-3.5 fill-current" />
-                      {destination.rating}
-                    </span>
-                  </div>
-                  {destination.originalPrice && (
-                    <div className="absolute bottom-4 left-4">
-                      <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
-                        {t('vacationsPage.promo')}
-                      </span>
-                    </div>
-                  )}
-                </div>
-                <div className="p-6">
-                  <div className="flex items-start justify-between mb-3">
-                    <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
-                      <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
-                      {destination.name}
-                    </h3>
-                  </div>
-                  <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{destination.description}</p>
-                  
-                  <div className="flex flex-wrap gap-1.5 mb-4">
-                    {destination.includes.slice(0, 3).map(item => (
-                      <span key={item} className="text-xs bg-muted px-2 py-1 rounded-md text-muted-foreground">
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-end justify-between">
-                    <div>
-                      <span className="text-xs text-muted-foreground">{t('vacationsPage.from')}</span>
-                      <div className="flex items-baseline gap-2">
-                        <span className="text-2xl font-bold text-primary">{destination.price}€</span>
-                        {destination.originalPrice && (
-                          <span className="text-sm text-muted-foreground line-through">{destination.originalPrice}€</span>
-                        )}
-                      </div>
-                    </div>
-                    <Button size="sm" className="rounded-full" asChild>
-                      <Link to={`/destinations/${destination.id}`}>
-                        {t('vacationsPage.viewDetails')}
-                      </Link>
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
+                item={destination}
+                index={index}
+                variant="full"
+                linkType="destinations"
+                showPromo={true}
+                showCategory={true}
+                showDescription={true}
+                showMapPin={true}
+                fromLabel={t('vacationsPage.from')}
+                viewDetailsLabel={t('vacationsPage.viewDetails')}
+                promoLabel={t('vacationsPage.promo')}
+              />
             ))}
           </div>
 

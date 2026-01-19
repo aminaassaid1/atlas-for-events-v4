@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getDestinationById, destinations as allDestinations } from "@/data/destinations";
+import { ActivityCard } from "@/components/cards";
 
 const DestinationDetail = () => {
   const { t } = useTranslation();
@@ -519,40 +520,15 @@ const DestinationDetail = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {relatedDestinations.map((dest, index) => <motion.div key={dest.id} initial={{
-            opacity: 0,
-            y: 20
-          }} whileInView={{
-            opacity: 1,
-            y: 0
-          }} viewport={{
-            once: true
-          }} transition={{
-            delay: index * 0.1
-          }} className="group">
-                  <Link to={`/destinations/${dest.id}`} className="block">
-                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
-                      <img src={dest.image} alt={dest.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute top-3 left-3 flex gap-2">
-                        <Badge className="bg-white/90 text-foreground">{dest.duration}</Badge>
-                      </div>
-                      <div className="absolute top-3 right-3">
-                        <Badge className="bg-primary text-primary-foreground gap-1">
-                          <Star className="w-3 h-3 fill-current" />
-                          {dest.rating}
-                        </Badge>
-                      </div>
-                    </div>
-                    <h3 className="font-title text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
-                      {dest.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{dest.description}</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-lg font-bold text-primary">{dest.price}€</span>
-                      {dest.originalPrice && <span className="text-sm text-muted-foreground line-through">{dest.originalPrice}€</span>}
-                    </div>
-                  </Link>
-                </motion.div>)}
+              {relatedDestinations.map((dest, index) => (
+                <ActivityCard
+                  key={dest.id}
+                  item={dest}
+                  index={index}
+                  variant="related"
+                  linkType="destinations"
+                />
+              ))}
             </div>
           </div>
         </section>}
