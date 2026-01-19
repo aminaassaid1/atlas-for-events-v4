@@ -23,12 +23,12 @@ import testimonial2 from "@/assets/images/testimonial-2.jpg";
 import testimonial3 from "@/assets/images/testimonial-3.jpg";
 
 // Destination images from Atlas For Events
-import destMarrakech from "@/assets/images/destinations/marrakech.jpg";
-import destEssaouira from "@/assets/images/destinations/essaouira.jpg";
-import destFes from "@/assets/images/destinations/fes.jpg";
-import destAgadir from "@/assets/images/destinations/agadir.jpg";
-import destCasablanca from "@/assets/images/destinations/casablanca.jpg";
-import destTanger from "@/assets/images/destinations/tanger.jpg";
+import destMarrakech from "@/assets/images/destinations/marrakech-about.webp";
+import destEssaouira from "@/assets/images/destinations/essaouira-about.webp";
+import destFes from "@/assets/images/destinations/fes-about.webp";
+import destAgadir from "@/assets/images/destinations/agadir-about.webp";
+import destCasablanca from "@/assets/images/destinations/casablanca-about.webp";
+import destTanger from "@/assets/images/destinations/tanger-about.webp";
 
 // Service images from Atlas For Events
 import serviceGuide from "@/assets/images/services/guide-expert.jpg";
