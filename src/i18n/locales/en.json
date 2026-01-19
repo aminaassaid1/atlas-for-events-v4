@@ -1168,6 +1168,13 @@
     "removedFromCartDesc": "The product has been removed from your cart."
   },
   "evenementsPage": {
-    "whatsappMessage": "Event Request"
+    "whatsappMessage": "Event Request",
+    "whatsappName": "Name",
+    "whatsappEmail": "Email",
+    "whatsappPhone": "Phone",
+    "whatsappType": "Type",
+    "whatsappDate": "Date",
+    "whatsappGuests": "Guests",
+    "whatsappMessageLabel": "Message"
   }
 }
