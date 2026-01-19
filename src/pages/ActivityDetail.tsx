@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/accordion";
 import { getActivityById, activities as allActivities } from "@/data/activities";
 import { ActivityCard } from "@/components/cards";
+import { resolveImagePath, resolveImagePaths } from "@/lib/imageResolver";
 
 const ActivityDetail = () => {
   const { t, i18n } = useTranslation();
@@ -124,7 +125,7 @@ const ActivityDetail = () => {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  src={activity.gallery[activeImage]}
+                  src={resolveImagePath(activity.gallery[activeImage])}
                   alt={activity.name}
                   className="w-full h-full object-cover"
                 />
@@ -180,7 +181,7 @@ const ActivityDetail = () => {
                     activeImage === idx ? "ring-4 ring-primary" : "hover:opacity-80"
                   }`}
                 >
-                  <img src={img} alt={`${activity.name} ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img src={resolveImagePath(img)} alt={`${activity.name} ${idx + 1}`} className="w-full h-full object-cover" />
                   {idx === 3 && activity.gallery.length > 4 && (
                     <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                       <span className="text-white font-semibold flex items-center gap-2">
