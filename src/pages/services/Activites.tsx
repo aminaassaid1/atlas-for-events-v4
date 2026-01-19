@@ -14,6 +14,23 @@ import ProductFilters from "@/components/ProductFilters";
 import Pagination from "@/components/Pagination";
 import { ActivityCard } from "@/components/cards";
 
+// Import activity images
+import quadSunset from "@/assets/images/activities/quad-sunset.webp";
+import montgolfiereSunrise from "@/assets/images/activities/montgolfiere-sunrise.webp";
+import chameauPalmeraieGroup from "@/assets/images/activities/chameau-palmeraie-group.webp";
+import agafayCamelRide from "@/assets/images/activities/agafay-camel-ride.webp";
+import buggyPalmeraie from "@/assets/images/activities/buggy-palmeraie.webp";
+import coursCuisine from "@/assets/images/activities/cours-cuisine.jpg";
+import chezAliEntrance from "@/assets/images/activities/chez-ali-entrance.webp";
+import dinerAgafaySunset from "@/assets/images/activities/diner-agafay-sunset.webp";
+import ouzoudFalls from "@/assets/images/activities/ouzoud-falls.webp";
+import marrakechJemaaFna from "@/assets/images/activities/marrakech-jemaa-fna.webp";
+import merzougaCamp from "@/assets/images/activities/merzouga-camp.webp";
+import ouarzazateKasbahs from "@/assets/images/activities/ouarzazate-kasbahs.jpg";
+import essaouiraCoast from "@/assets/images/activities/essaouira-coast.webp";
+import asilahMural from "@/assets/images/activities/asilah-mural.webp";
+import imlilVillage from "@/assets/images/activities/imlil-village.webp";
+
 const ITEMS_PER_PAGE = 6;
 
 // Real data from CSV export - each activity has a slug for URL routing
@@ -25,7 +42,7 @@ const activities = [{
   category: "adventure",
   price: 35,
   duration: "2-3h",
-  image: "/src/assets/images/activities/quad-sunset.webp",
+  image: quadSunset,
   rating: 4.9,
   includes: ["Quad Yamaha 250cc", "Équipement complet", "Guide professionnel", "Transport"],
   includesEn: ["Yamaha 250cc Quad", "Full equipment", "Professional guide", "Transport"]
@@ -37,7 +54,7 @@ const activities = [{
   category: "adventure",
   price: 200,
   duration: "5h",
-  image: "/src/assets/images/activities/montgolfiere-sunrise.webp",
+  image: montgolfiereSunrise,
   rating: 5.0,
   includes: ["Vol 1h", "Petit-déjeuner berbère", "Certificat souvenir", "Transport 4x4"],
   includesEn: ["1h flight", "Berber breakfast", "Souvenir certificate", "4x4 Transport"]
@@ -49,7 +66,7 @@ const activities = [{
   category: "nature",
   price: 40,
   duration: "1-2h",
-  image: "/src/assets/images/activities/chameau-palmeraie-group.webp",
+  image: chameauPalmeraieGroup,
   rating: 4.8,
   includes: ["Balade relaxante", "Thé marocain", "Assurance", "Transport"],
   includesEn: ["Relaxing ride", "Moroccan tea", "Insurance", "Transport"]
@@ -61,7 +78,7 @@ const activities = [{
   category: "adventure",
   price: 50,
   duration: "3-4h",
-  image: "/src/assets/images/activities/agafay-camel-ride.webp",
+  image: agafayCamelRide,
   rating: 4.9,
   includes: ["Balade à dos de chameau", "Immersion culturelle", "Repas traditionnel", "Transport"],
   includesEn: ["Camel ride", "Cultural immersion", "Traditional meal", "Transport"]
@@ -73,7 +90,7 @@ const activities = [{
   category: "adventure",
   price: 70,
   duration: "2h",
-  image: "/src/assets/images/activities/buggy-palmeraie.webp",
+  image: buggyPalmeraie,
   rating: 4.9,
   includes: ["Buggy tout-terrain", "Pause thé village berbère", "Guide", "Transport"],
   includesEn: ["Off-road buggy", "Tea break in Berber village", "Guide", "Transport"]
@@ -85,7 +102,7 @@ const activities = [{
   category: "food",
   price: 60,
   duration: "4h",
-  image: "/src/assets/images/activities/cours-cuisine.jpg",
+  image: coursCuisine,
   rating: 5.0,
   includes: ["Cours avec chef local", "Repas complet", "Recettes traditionnelles", "Transport"],
   includesEn: ["Class with local chef", "Full meal", "Traditional recipes", "Transport"]
@@ -97,7 +114,7 @@ const activities = [{
   category: "culture",
   price: 45,
   duration: "4h",
-  image: "/src/assets/images/activities/chez-ali-entrance.webp",
+  image: chezAliEntrance,
   rating: 4.6,
   includes: ["Dîner marocain", "Spectacle Fantasia", "Folklore berbère", "Transport"],
   includesEn: ["Moroccan dinner", "Fantasia show", "Berber folklore", "Transport"]
@@ -109,7 +126,7 @@ const activities = [{
   category: "nature",
   price: 45,
   duration: "5h",
-  image: "/src/assets/images/activities/diner-agafay-sunset.webp",
+  image: dinerAgafaySunset,
   rating: 4.8,
   includes: ["Promenade dromadaire", "Dîner sous les étoiles", "Coucher de soleil", "Transport"],
   includesEn: ["Camel ride", "Dinner under the stars", "Sunset", "Transport"]
@@ -121,7 +138,7 @@ const activities = [{
   category: "nature",
   price: 40,
   duration: "10h",
-  image: "/src/assets/images/activities/ouzoud-falls.webp",
+  image: ouzoudFalls,
   rating: 4.9,
   includes: ["Cascades 110m", "Baignade possible", "Rencontre macaques", "Transport"],
   includesEn: ["110m waterfalls", "Swimming possible", "Macaque encounter", "Transport"]
@@ -133,7 +150,7 @@ const activities = [{
   category: "culture",
   price: 40,
   duration: "7h",
-  image: "/src/assets/images/activities/marrakech-jemaa-fna.webp",
+  image: marrakechJemaaFna,
   rating: 4.8,
   includes: ["Koutoubia", "Palais Bahia", "Tombeaux Saadiens", "Souks"],
   includesEn: ["Koutoubia", "Bahia Palace", "Saadian Tombs", "Souks"]
@@ -145,7 +162,7 @@ const activities = [{
   category: "adventure",
   price: 299,
   duration: "2 jours",
-  image: "/src/assets/images/activities/merzouga-camp.webp",
+  image: merzougaCamp,
   rating: 5.0,
   includes: ["Trekking chameau", "Camp de luxe", "Erg Chebbi", "Transport"],
   includesEn: ["Camel trekking", "Luxury camp", "Erg Chebbi", "Transport"]
@@ -157,7 +174,7 @@ const activities = [{
   category: "culture",
   price: 50,
   duration: "1 journée",
-  image: "/src/assets/images/activities/ouarzazate-kasbahs.jpg",
+  image: ouarzazateKasbahs,
   rating: 4.7,
   includes: ["Kasbahs historiques", "Studio Atlas", "Guide local", "Transport"],
   includesEn: ["Historic Kasbahs", "Atlas Studios", "Local guide", "Transport"]
@@ -181,7 +198,7 @@ const activities = [{
   category: "nature",
   price: 45,
   duration: "1 journée",
-  image: "/src/assets/images/activities/essaouira-coast.webp",
+  image: essaouiraCoast,
   rating: 4.9,
   includes: ["Médina UNESCO", "Port historique", "Temps libre", "Transport"],
   includesEn: ["UNESCO Medina", "Historic port", "Free time", "Transport"]
@@ -193,7 +210,7 @@ const activities = [{
   category: "culture",
   price: 55,
   duration: "1 journée",
-  image: "/src/assets/images/activities/asilah-mural.webp",
+  image: asilahMural,
   rating: 4.6,
   includes: ["Murs blanchis", "Fresques colorées", "Plages", "Transport"],
   includesEn: ["Whitewashed walls", "Colorful murals", "Beaches", "Transport"]
@@ -217,7 +234,7 @@ const activities = [{
   category: "adventure",
   price: 45,
   duration: "1 journée",
-  image: "/src/assets/images/activities/imlil-village.webp",
+  image: imlilVillage,
   rating: 4.8,
   includes: ["Randonnée", "Villages berbères", "Déjeuner", "Transport"],
   includesEn: ["Hiking", "Berber villages", "Lunch", "Transport"]
