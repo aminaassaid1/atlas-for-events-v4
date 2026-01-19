@@ -1,13 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { PageLayout } from "@/components/layout";
+import HeroSection from "@/components/HeroSection";
+import SearchBar from "@/components/SearchBar";
+import DestinationsSection from "@/components/DestinationsSection";
+import FeaturesSection from "@/components/FeaturesSection";
+import ClientLogos from "@/components/ClientLogos";
+import VideoStats from "@/components/VideoStats";
+
+import ToursSection from "@/components/ToursSection";
+import StepsSection from "@/components/StepsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
+import NewsletterSection from "@/components/NewsletterSection";
+import GipsySuenoSection from "@/components/GipsySuenoSection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <PageLayout>
+      <section id="accueil">
+        <HeroSection />
+      </section>
+      <SearchBar />
+      <section id="destinations">
+        <DestinationsSection />
+      </section>
+      <FeaturesSection />
+      <ClientLogos />
+      <VideoStats />
+      <section id="evenements">
+        <ToursSection />
+      </section>
+      <StepsSection />
+      <GipsySuenoSection />
+      <TestimonialsSection />
+      <NewsletterSection />
+    </PageLayout>
   );
 };
 
