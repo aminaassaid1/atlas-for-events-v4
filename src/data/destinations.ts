@@ -1119,10 +1119,12 @@ export const destinations: Destination[] = [
     name: "Aventure en Quad - Palmeraie",
     duration: "2-3 heures",
     price: 35,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/145-4.jpg",
+    image: "/src/assets/images/activities/quad-sunset.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/145-4.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/tour_img-442450-70-636x426.jpg.webp"
+      "/src/assets/images/activities/quad-sunset.webp",
+      "/src/assets/images/activities/quad-group.webp",
+      "/src/assets/images/activities/quad-ride.webp",
+      "/src/assets/images/activities/quad-adventure.webp"
     ],
     description: "Excursion en quad palpitante à travers la Palmeraie de Marrakech",
     longDescription: "Découvrez la fascinante Palmeraie de Marrakech lors d'une palpitante excursion en quad à travers ses paysages sereins, parsemés de milliers de palmiers. Cette aventure offre une opportunité parfaite pour se détendre, apprécier la beauté naturelle, et vivre une montée d'adrénaline. Réservez dès maintenant pour une expérience inoubliable !",

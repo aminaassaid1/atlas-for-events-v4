@@ -24,7 +24,7 @@ const activities = [{
   category: "adventure",
   price: 35,
   duration: "2-3h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/145-4.jpg",
+  image: "/src/assets/images/activities/quad-sunset.webp",
   rating: 4.9,
   includes: ["Quad Yamaha 250cc", "Équipement complet", "Guide professionnel", "Transport"],
   includesEn: ["Yamaha 250cc Quad", "Full equipment", "Professional guide", "Transport"]

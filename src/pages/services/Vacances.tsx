@@ -56,7 +56,7 @@ const destinations = [
     name: "Aventure en Quad",
     duration: "2-3 heures",
     price: 35,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/145-4.jpg",
+    image: "/src/assets/images/activities/quad-sunset.webp",
     description: "Excursion en quad palpitante à travers la Palmeraie de Marrakech",
     category: "Aventure",
     rating: 4.7,
