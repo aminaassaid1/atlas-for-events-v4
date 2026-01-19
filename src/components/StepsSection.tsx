@@ -70,18 +70,18 @@ const StepsSection = () => {
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                className="w-full sm:w-64 lg:w-56 flex-shrink-0 mx-auto lg:mx-0"
+                className="w-full sm:w-72 lg:w-64 flex-shrink-0 mx-auto lg:mx-0"
               >
-                <div className="rounded-xl overflow-hidden shadow-lg">
+                <div className="rounded-2xl overflow-hidden shadow-xl ring-4 ring-secondary/20">
                   <img
                     alt={t('steps.specialOffer')}
-                    className="w-full h-40 sm:h-48 object-cover"
+                    className="w-full h-48 sm:h-56 object-cover hover:scale-105 transition-transform duration-500"
                     loading="lazy"
                     src={stepsDesertCamelsImg}
                   />
                 </div>
-                <div className="bg-secondary rounded-xl p-4 sm:p-5 -mt-6 ml-3 relative z-10 shadow-lg max-w-[200px]">
-                  <span className="text-primary font-semibold text-base sm:text-lg block mb-1">
+                <div className="bg-gradient-to-br from-secondary to-secondary/90 rounded-xl p-4 sm:p-5 -mt-8 ml-4 relative z-10 shadow-xl max-w-[180px] backdrop-blur-sm">
+                  <span className="text-primary font-semibold text-sm sm:text-base block mb-1">
                     {t('steps.specialOffer')}
                   </span>
                   <div className="flex items-baseline">
@@ -154,13 +154,19 @@ const StepsSection = () => {
 
               {/* Main Image */}
               <div className="relative">
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-secondary/20 rounded-full -z-10" />
+                <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-80 h-80 bg-gradient-to-t from-secondary/30 to-secondary/10 rounded-full blur-2xl -z-10" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent rounded-3xl -z-10 translate-x-4 translate-y-4" />
                 <img
                   alt={t('steps.travelerAlt')}
-                  className="relative z-10 mx-auto max-w-sm rounded-2xl shadow-xl"
+                  className="relative z-10 mx-auto w-full max-w-md rounded-3xl shadow-2xl ring-4 ring-white/50 object-cover aspect-[4/5]"
                   loading="lazy"
                   src={stepsChefchaouenImg}
                 />
+                {/* Decorative badge */}
+                <div className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-xl z-20">
+                  <div className="text-primary font-bold text-lg">🇲🇦</div>
+                  <div className="text-xs text-muted-foreground">Maroc</div>
+                </div>
               </div>
             </motion.div>
           </div>
