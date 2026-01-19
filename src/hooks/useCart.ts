@@ -5,6 +5,7 @@
  */
 import { useState, useEffect, useCallback } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 import { getProductById, Product } from "@/data/products";
 
 const CART_STORAGE_KEY = "atlas_cart";
@@ -37,6 +38,7 @@ export const useCart = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   // Load cart from localStorage on mount
   useEffect(() => {
@@ -96,11 +98,11 @@ export const useCart = () => {
     }
 
     toast({
-      title: "Ajouté au panier",
-      description: "Le produit a été ajouté à votre panier.",
+      title: t('toasts.addedToCart'),
+      description: t('toasts.addedToCartDesc'),
     });
     return true;
-  }, [cartItems, toast]);
+  }, [cartItems, toast, t]);
 
   const updateQuantity = useCallback((itemId: string, quantity: number) => {
     if (quantity < 1) {
@@ -116,11 +118,11 @@ export const useCart = () => {
   const removeFromCart = useCallback((itemId: string) => {
     setCartItems(prev => prev.filter(item => item.id !== itemId));
     toast({
-      title: "Retiré du panier",
-      description: "Le produit a été retiré de votre panier.",
+      title: t('toasts.removedFromCart'),
+      description: t('toasts.removedFromCartDesc'),
     });
     return true;
-  }, [toast]);
+  }, [toast, t]);
 
   const clearCart = useCallback(() => {
     setCartItems([]);
