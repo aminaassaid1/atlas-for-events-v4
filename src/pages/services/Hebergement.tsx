@@ -22,7 +22,7 @@ const properties = [
     type: "Appartement",
     location: "5 min de Carré Eden",
     price: 80,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-25-at-20.44.37-4-636x426.jpeg",
+    image: "/src/assets/images/hebergement/appart-victor-hugo.jpg",
     features: ["Grande terrasse", "Piscine privée", "Vue panoramique"],
     beds: 3,
     baths: 2,
