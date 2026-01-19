@@ -10,12 +10,13 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
-const galleryImages = [
-  "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-11-at-22.00.05-3.jpeg",
-  "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-11-at-22.00.05-2.jpeg",
-  "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-11-at-22.00.06-1.jpeg",
-  "https://atlasforevents.com/wp-content/uploads/2024/08/2150917946-1-scaled.jpg",
-];
+// Local spa images
+import hammamImg from "@/assets/images/spa/hammam.webp";
+import hydrafacialImg from "@/assets/images/spa/hydrafacial.webp";
+import massageImg from "@/assets/images/spa/massage.webp";
+import liftingImg from "@/assets/images/spa/lifting.webp";
+
+const galleryImages = [hammamImg, massageImg, hydrafacialImg, liftingImg];
 
 const Spa = () => {
   const { t } = useTranslation();
@@ -54,25 +55,25 @@ const Spa = () => {
       name: t('spaPage.treatment1'),
       description: t('spaPage.treatment1Desc'),
       duration: "1h30",
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-11-at-22.00.05-3.jpeg",
+      image: hammamImg,
     },
     {
       name: t('spaPage.treatment2'),
       description: t('spaPage.treatment2Desc'),
       duration: "45min",
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-11-at-22.00.05-2.jpeg",
+      image: hydrafacialImg,
     },
     {
       name: t('spaPage.treatment3'),
       description: t('spaPage.treatment3Desc'),
       duration: "1h",
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/2150917946-1-scaled.jpg",
+      image: massageImg,
     },
     {
       name: t('spaPage.treatment4'),
       description: t('spaPage.treatment4Desc'),
       duration: "1h",
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-11-at-22.00.06-1.jpeg",
+      image: liftingImg,
     },
   ];
 
