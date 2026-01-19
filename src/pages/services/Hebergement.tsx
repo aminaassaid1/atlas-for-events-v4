@@ -16,6 +16,14 @@ import { fr, enUS } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
 
+// Import accommodation images
+import appartVictorHugo from "@/assets/images/hebergement/appart-victor-hugo.jpg";
+import villaOrientalys from "@/assets/images/hebergement/villa-orientalys.webp";
+import beAgafayHideaway from "@/assets/images/hebergement/be-agafay-hideaway.webp";
+import agafayLuxuryCamp from "@/assets/images/hebergement/agafay-luxury-camp.webp";
+import bedouinAgafay from "@/assets/images/hebergement/bedouin-agafay.jpg";
+import riadDarIkalimo from "@/assets/images/hebergement/riad-dar-ikalimo.webp";
+
 const properties = [
   {
     id: 1,
@@ -23,7 +31,7 @@ const properties = [
     type: "Appartement",
     location: "5 min de Carré Eden",
     price: 80,
-    image: "/src/assets/images/hebergement/appart-victor-hugo.jpg",
+    image: appartVictorHugo,
     features: ["Grande terrasse", "Piscine privée", "Vue panoramique"],
     beds: 3,
     baths: 2,
@@ -35,7 +43,7 @@ const properties = [
     type: "Villa",
     location: "Marrakech",
     price: 120,
-    image: "/src/assets/images/hebergement/villa-orientalys.webp",
+    image: villaOrientalys,
     features: ["Piscine privée", "Chef privé", "Jardin luxuriant"],
     beds: 5,
     baths: 4,
@@ -47,7 +55,7 @@ const properties = [
     type: "Camp de luxe",
     location: "Désert d'Agafay",
     price: 150,
-    image: "/src/assets/images/hebergement/be-agafay-hideaway.webp",
+    image: beAgafayHideaway,
     features: ["Vues panoramiques", "Gastronomie", "Expériences exclusives"],
     beds: 2,
     baths: 1,
@@ -59,7 +67,7 @@ const properties = [
     type: "Camp de luxe",
     location: "Désert d'Agafay",
     price: 200,
-    image: "/src/assets/images/hebergement/agafay-luxury-camp.webp",
+    image: agafayLuxuryCamp,
     features: ["Tente de luxe", "Vues imprenables", "Expériences exclusives"],
     beds: 2,
     baths: 1,
@@ -71,7 +79,7 @@ const properties = [
     type: "Camp de luxe",
     location: "Désert d'Agafay",
     price: 50,
-    image: "/src/assets/images/hebergement/bedouin-agafay.jpg",
+    image: bedouinAgafay,
     features: ["Luxe authentique", "Transport privé", "Dîner inclus"],
     beds: 2,
     baths: 1,
@@ -83,7 +91,7 @@ const properties = [
     type: "Riad",
     location: "Médina de Marrakech",
     price: 110,
-    image: "/src/assets/images/hebergement/riad-dar-ikalimo.webp",
+    image: riadDarIkalimo,
     features: ["Vues panoramiques", "Activités nature", "Petit-déjeuner inclus"],
     beds: 4,
     baths: 3,
