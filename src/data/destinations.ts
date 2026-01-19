@@ -158,12 +158,13 @@ export const destinations: Destination[] = [
     duration: "1 jour",
     price: 30,
     originalPrice: 50,
-    image: "https://atlasforevents.com/wp-content/uploads/2022/07/hassan-ouajbir-INcADDyMwwo-unsplash-scaled.jpg",
+    image: "/src/assets/images/destinations/ouarzazate-ait-benhaddou.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/07/hassan-ouajbir-INcADDyMwwo-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=800",
-      "https://images.unsplash.com/photo-1548820070-26f8c22e0c8e?w=800",
-      "https://images.unsplash.com/photo-1553522991-71439aa62779?w=800"
+      "/src/assets/images/destinations/ouarzazate-ait-benhaddou.webp",
+      "/src/assets/images/destinations/ouarzazate-cinema.webp",
+      "/src/assets/images/destinations/ouarzazate-kasbah.webp",
+      "/src/assets/images/destinations/ouarzazate-studios.webp",
+      "/src/assets/images/destinations/ouarzazate-panorama.webp"
     ],
     description: "Explorez le désert et les Kasbahs historiques, Hollywood du Maroc",
     longDescription: "Découvrez Ouarzazate, surnommée le 'Hollywood du Maroc', porte d'entrée du Sahara et capitale du cinéma africain. Cette excursion d'une journée vous fait traverser le spectaculaire col du Tizi n'Tichka et visiter les sites emblématiques comme la Kasbah Aït Ben Haddou, classée au patrimoine mondial de l'UNESCO, et les fameux Atlas Studios où ont été tournés de nombreux films hollywoodiens.",
