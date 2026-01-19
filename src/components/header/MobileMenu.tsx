@@ -95,7 +95,7 @@ const MobileMenu = ({
         <>
           {/* Overlay */}
           <motion.div
-            className="lg:hidden fixed inset-0 bg-black z-50"
+            className="lg:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
             variants={overlayVariants}
             initial="hidden"
             animate="visible"
