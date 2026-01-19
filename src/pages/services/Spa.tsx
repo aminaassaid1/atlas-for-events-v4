@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight, Sparkles, Heart, Leaf, Clock, Check, Star } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -19,7 +20,7 @@ import liftingImg from "@/assets/images/spa/lifting.webp";
 const galleryImages = [hammamImg, massageImg, hydrafacialImg, liftingImg];
 
 const Spa = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [currentImage, setCurrentImage] = useState(0);
   const [formData, setFormData] = useState({
     name: "",
@@ -83,9 +84,23 @@ const Spa = () => {
     window.open(`https://wa.me/33698272483?text=${encodeURIComponent(whatsappMessage)}`, "_blank");
   };
 
+  const isEnglish = i18n.language === 'en';
+
   return (
     <PageLayout>
-
+      <SEO 
+        title={isEnglish ? "Luxury Spa & Hammam in Marrakech" : "Spa & Hammam de Luxe à Marrakech"}
+        description={isEnglish 
+          ? "Discover our luxury spa treatments in Marrakech: traditional hammam, relaxing massages, hydrafacial, and lash lifting. Book your wellness moment."
+          : "Découvrez nos soins spa de luxe à Marrakech : hammam traditionnel, massages relaxants, hydrafacial et lifting des cils. Réservez votre moment bien-être."
+        }
+        keywords={isEnglish 
+          ? "spa Marrakech, hammam Morocco, massage Marrakech, hydrafacial, wellness Marrakech, relaxation Morocco"
+          : "spa Marrakech, hammam Maroc, massage Marrakech, hydrafacial, bien-être Marrakech, relaxation Maroc"
+        }
+        url="https://atlasforevents.com/services/spa"
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       {/* Hero Section - Visual Heavy */}
       <section className="relative h-[70vh] min-h-[600px] flex items-center overflow-hidden">
         <div className="absolute inset-0">

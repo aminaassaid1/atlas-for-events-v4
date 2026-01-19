@@ -3,6 +3,7 @@ import { Compass, Target, ArrowRight, MapPin, Users, Award, Heart } from "lucide
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { PageLayout } from "@/components/layout";
+import { SEO } from "@/components/common";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -115,6 +116,19 @@ const About = () => {
 
   return (
     <PageLayout>
+      <SEO 
+        title={isEnglish ? "About Us - Events & Travel Experts" : "À Propos - Experts en Événementiel & Voyages"}
+        description={isEnglish 
+          ? "Discover Atlas For Events: your trusted partner for exceptional events and unforgettable trips in Morocco. 10+ years of experience, 3500+ satisfied clients."
+          : "Découvrez Atlas For Events : votre partenaire de confiance pour des événements d'exception et des voyages inoubliables au Maroc. 10+ ans d'expérience, 3500+ clients satisfaits."
+        }
+        keywords={isEnglish 
+          ? "about Atlas For Events, event agency Morocco, travel agency Marrakech, Morocco tourism experts"
+          : "à propos Atlas For Events, agence événementielle Maroc, agence de voyage Marrakech, experts tourisme Maroc"
+        }
+        url="https://atlasforevents.com/a-propos"
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       {/* Hero Banner - Travlla Style with Sky Background */}
       <section className="relative min-h-[400px] lg:min-h-[640px] overflow-hidden bg-gradient-to-b from-[#e8f6f7] via-[#f0f9fa] to-white">
         {/* Cloud Animation Layer */}
