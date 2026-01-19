@@ -14,188 +14,13 @@ import Pagination from "@/components/Pagination";
 import { Badge } from "@/components/ui/badge";
 import { useWishlist } from "@/hooks/useWishlist";
 import { useCart } from "@/hooks/useCart";
+import { useProducts, getMaxPrice } from "@/hooks/useProducts";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useTranslation } from "react-i18next";
 
 /** Number of products displayed per page */
 const ITEMS_PER_PAGE = 6;
-const products = [{
-  id: "sculpture-tigre",
-  titleKey: "boutique.products.tigre.title",
-  descriptionKey: "boutique.products.tigre.description",
-  title: "Sculpture de Tigre",
-  description: "Patiné pour créer des nuances de couleur profondes, cette sculpture de tigre ajoute une touche sauvage et captivante.",
-  price: 1200,
-  promoPrice: 950,
-  category: "animals",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_446105775_1447896869153270_1767624893679144948_n.jpg",
-  featured: true
-}, {
-  id: "sculpture-francaise",
-  title: "Décor Rustique Français",
-  description: "Une pièce d'artisanat qui apporte une touche de caractère français et une allure rustique raffinée.",
-  price: 2100,
-  category: "art",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_405526959_2086872588329838_7097565981473782259_n.jpg"
-}, {
-  id: "masque-fer",
-  title: "Masque en Fer",
-  description: "Symbolise la force, la permanence et la protection. Véhicule des émotions et messages spécifiques.",
-  price: 400,
-  promoPrice: 300,
-  category: "art",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_404625983_918108063167758_456017404151619637_n.jpg"
-}, {
-  id: "sculpture-love",
-  title: "Sculpture 'Love'",
-  description: "Bien plus qu'un simple mot, c'est un signe universel de connexion profonde et d'affection sincère.",
-  price: 1200,
-  promoPrice: 1000,
-  category: "love",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_426362713_1416635565605604_5737235251505988302_n.jpg",
-  featured: true
-}, {
-  id: "sculpture-coeur",
-  title: "Cœur en Métal",
-  description: "Une œuvre d'art unique combinant la symbolique de l'amour avec la robustesse du métal.",
-  price: 350,
-  promoPrice: 250,
-  category: "love",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_363397227_1276068149703332_8660124873249972597_n.jpg"
-}, {
-  id: "musicien-traditionnel",
-  title: "Musicien Traditionnel",
-  description: "Fusionne la richesse culturelle de la musique folklorique avec l'élégance du métal.",
-  price: 1200,
-  promoPrice: 950,
-  category: "art",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_366468486_1336392386950978_4583135099507275873_n.jpg"
-}, {
-  id: "sculpture-poulpe",
-  title: "Sculpture de Poulpe",
-  description: "Célébration de la beauté naturelle et de la créativité artistique, transformant un être marin en œuvre d'art.",
-  price: 600,
-  promoPrice: 500,
-  category: "animals",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_336314321_949159476214796_2713949355795524875_n.jpg"
-}, {
-  id: "moto-classique",
-  title: "Moto Classique en Fer",
-  description: "Capture l'essence de l'âge d'or des deux-roues avec la solidité et la durabilité du métal.",
-  price: 600,
-  promoPrice: 480,
-  category: "art",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_340175591_1218518492113323_5604309101263040371_n.jpg"
-}, {
-  id: "danseuse",
-  title: "Danseuse en Métal",
-  description: "Capture le moment suspendu d'une danseuse en pleine performance, travail artistique du métal.",
-  price: 1200,
-  promoPrice: 950,
-  category: "art",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_350855543_821640626376442_2563639300462206681_n.jpg",
-  featured: true
-}, {
-  id: "chevaux-coeur",
-  title: "Chevaux en Cœur",
-  description: "Deux chevaux en fer entrelacés formant un cœur, symbolisant l'amour et l'harmonie.",
-  price: 600,
-  promoPrice: 490,
-  category: "love",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_352742043_832002301777708_1043833392189585069_n.jpg"
-}, {
-  id: "aloe-vera",
-  title: "Aloe Vera en Fer",
-  description: "Représente la résilience et la pérennité, associant la guérison à la force du métal.",
-  price: 1200,
-  promoPrice: 950,
-  category: "nature",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_356247948_218060877792856_870404231871872033_n.jpg"
-}, {
-  id: "chien-gardien",
-  title: "Chien Gardien",
-  description: "Sculpture de chien en fer incarnant la force, la protection et la vigilance.",
-  price: 1000,
-  promoPrice: 900,
-  category: "animals",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_332804900_190977726888807_420786158872697835_n.jpg"
-}, {
-  id: "chien-majestueux",
-  title: "Chien Majestueux",
-  description: "Magnifique sculpture de chien fabriquée à partir de pièces métalliques recyclées.",
-  price: 600,
-  promoPrice: 490,
-  category: "animals",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_333191225_182544461143385_1641709296420581110_n.jpg"
-}, {
-  id: "table-fer",
-  title: "Table en Fer Forgé",
-  description: "Touche industrielle chic, combine fonctionnalité et design raffiné.",
-  price: 600,
-  promoPrice: 490,
-  category: "art",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_333083288_763474918538476_7013887538194844501_n.jpg"
-}, {
-  id: "cheval-metallique",
-  title: "Cheval Métallique",
-  description: "Fusion unique entre force brute et élégance, forgée à partir de pièces mécaniques.",
-  price: 600,
-  promoPrice: 480,
-  category: "animals",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_334185902_197191692912242_6089816500759657632_n.jpg"
-}, {
-  id: "gorille-rouge",
-  title: "Gorille en Fer Rouge",
-  description: "Symbolique de force et de protection, pièce artistique imposante de 1,8m.",
-  price: 600,
-  promoPrice: 490,
-  category: "animals",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_323841078_716556763318356_5348694906768779134_n.jpeg"
-}, {
-  id: "fee-sculpture",
-  title: "Fée en Fer",
-  description: "Symbole de grâce et de résilience, chef-d'œuvre alliant force et beauté féerique.",
-  price: 3500,
-  promoPrice: 3000,
-  category: "art",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_323937554_465605432447126_2009281168850065877_n.jpeg",
-  featured: true
-}, {
-  id: "lion-majestueux",
-  title: "Lion Majestueux",
-  description: "Touche de grandeur incarnant la puissance et la noblesse du roi des animaux.",
-  price: 2500,
-  promoPrice: 2200,
-  category: "animals",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_327563158_162827876502835_3674423743897636290_n.jpg",
-  featured: true
-}, {
-  id: "cactus-bleu",
-  title: "Cactus Figue de Barbarie",
-  description: "Symbole de résilience et d'art contemporain, touche unique en métal bleu.",
-  price: 600,
-  promoPrice: 480,
-  category: "nature",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_324393054_203940202118371_5761780136401158672_n.jpeg"
-}, {
-  id: "cactus-artistique",
-  title: "Cactus Artistique",
-  description: "Sculpture décorative inspirée de la nature, allie élégance et robustesse.",
-  price: 600,
-  promoPrice: 460,
-  category: "nature",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_324070855_199349772650401_5703573515266047967_n.jpeg"
-}, {
-  id: "coeur-recycle",
-  title: "Cœur en Pièces Auto",
-  description: "Sculpture 'Love' en pièces auto recyclées, symbolisant l'amour et la connexion.",
-  price: 2000,
-  promoPrice: 1500,
-  category: "love",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_323953202_218768757254423_4496043203147168358_n.jpeg"
-}];
-const MAX_PRICE = 3500;
 const containerVariants = {
   hidden: {
     opacity: 0
@@ -227,8 +52,10 @@ const cardVariants = {
 const Boutique = () => {
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === 'en';
+  const { products, isLoading: productsLoading } = useProducts();
+  const maxPrice = useMemo(() => getMaxPrice(products), [products]);
   const [activeCategory, setActiveCategory] = useState("all");
-  const [priceRange, setPriceRange] = useState<[number, number]>([0, MAX_PRICE]);
+  const [priceRange, setPriceRange] = useState<[number, number]>([0, 10000]);
   const [showPromoOnly, setShowPromoOnly] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
@@ -243,6 +70,14 @@ const Boutique = () => {
   const {
     addToCart
   } = useCart();
+  
+  // Update price range when products load
+  useMemo(() => {
+    if (products.length > 0 && priceRange[1] === 10000) {
+      setPriceRange([0, maxPrice]);
+    }
+  }, [products, maxPrice]);
+  
   const categories = useMemo(() => [{
     id: "all",
     name: t('boutique.all'),
@@ -276,10 +111,10 @@ const Boutique = () => {
       const productPrice = product.promoPrice || product.price;
       const matchesCategory = activeCategory === "all" || product.category === activeCategory;
       const matchesPrice = productPrice >= priceRange[0] && productPrice <= priceRange[1];
-      const matchesPromo = !showPromoOnly || product.promoPrice !== undefined;
+      const matchesPromo = !showPromoOnly || product.promoPrice !== null;
       return matchesCategory && matchesPrice && matchesPromo;
     });
-  }, [activeCategory, priceRange, showPromoOnly]);
+  }, [products, activeCategory, priceRange, showPromoOnly]);
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
   const paginatedProducts = useMemo(() => {
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
@@ -451,7 +286,7 @@ const Boutique = () => {
 
           {/* Filters */}
           <div className="mb-10 sticky top-16 z-30 bg-background/80 backdrop-blur-lg py-4 -mx-4 px-4 rounded-xl">
-            <ProductFilters categories={categories} activeCategory={activeCategory} onCategoryChange={handleCategoryChange} priceRange={priceRange} maxPrice={MAX_PRICE} onPriceChange={handlePriceChange} showPromoOnly={showPromoOnly} onPromoChange={handlePromoChange} />
+            <ProductFilters categories={categories} activeCategory={activeCategory} onCategoryChange={handleCategoryChange} priceRange={priceRange} maxPrice={maxPrice} onPriceChange={handlePriceChange} showPromoOnly={showPromoOnly} onPromoChange={handlePromoChange} />
           </div>
 
           {/* Results Count */}
@@ -574,7 +409,7 @@ const Boutique = () => {
               <p className="text-muted-foreground mb-6">{t('boutique.adjustFilters')}</p>
               <Button onClick={() => {
             setActiveCategory("all");
-            setPriceRange([0, MAX_PRICE]);
+            setPriceRange([0, maxPrice]);
             setShowPromoOnly(false);
           }}>
                 {t('boutique.resetFilters')}
