@@ -4,6 +4,8 @@ import { useTranslation } from "react-i18next";
 import hotBalloonRightImg from "@/assets/images/hotballon-right.png";
 import cloudImg from "@/assets/images/cloud-1.png";
 import support24Img from "@/assets/images/24-Image.png";
+import stepsChefchaouenImg from "@/assets/images/steps-chefchaouen.webp";
+import stepsDesertCamelsImg from "@/assets/images/steps-desert-camels.webp";
 
 const StepsSection = () => {
   const { t } = useTranslation();
@@ -75,7 +77,7 @@ const StepsSection = () => {
                     alt={t('steps.specialOffer')}
                     className="w-full h-40 sm:h-48 object-cover"
                     loading="lazy"
-                    src="/lovable-uploads/bbcc1f72-195f-4c4f-9c4d-215aca43b703.png"
+                    src={stepsDesertCamelsImg}
                   />
                 </div>
                 <div className="bg-secondary rounded-xl p-4 sm:p-5 -mt-6 ml-3 relative z-10 shadow-lg max-w-[200px]">
@@ -155,9 +157,9 @@ const StepsSection = () => {
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-72 h-72 bg-secondary/20 rounded-full -z-10" />
                 <img
                   alt={t('steps.travelerAlt')}
-                  className="relative z-10 mx-auto max-w-sm"
+                  className="relative z-10 mx-auto max-w-sm rounded-2xl shadow-xl"
                   loading="lazy"
-                  src="/lovable-uploads/dd02e8ce-5162-4dcf-9e88-85b44c7c40f2.webp"
+                  src={stepsChefchaouenImg}
                 />
               </div>
             </motion.div>
