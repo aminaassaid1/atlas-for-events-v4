@@ -212,6 +212,90 @@ export type Database = {
         }
         Relationships: []
       }
+      services: {
+        Row: {
+          active: boolean
+          category: string | null
+          created_at: string
+          description: string | null
+          duration: string | null
+          featured: boolean
+          features: Json | null
+          gallery: Json | null
+          highlights: Json | null
+          id: string
+          image_url: string | null
+          includes: Json | null
+          location: string | null
+          long_description: string | null
+          metadata: Json | null
+          original_price: number | null
+          price: number | null
+          rating: number | null
+          review_count: number | null
+          service_type: string
+          slug: string
+          sort_order: number | null
+          subtitle: string | null
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          featured?: boolean
+          features?: Json | null
+          gallery?: Json | null
+          highlights?: Json | null
+          id?: string
+          image_url?: string | null
+          includes?: Json | null
+          location?: string | null
+          long_description?: string | null
+          metadata?: Json | null
+          original_price?: number | null
+          price?: number | null
+          rating?: number | null
+          review_count?: number | null
+          service_type: string
+          slug: string
+          sort_order?: number | null
+          subtitle?: string | null
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          category?: string | null
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          featured?: boolean
+          features?: Json | null
+          gallery?: Json | null
+          highlights?: Json | null
+          id?: string
+          image_url?: string | null
+          includes?: Json | null
+          location?: string | null
+          long_description?: string | null
+          metadata?: Json | null
+          original_price?: number | null
+          price?: number | null
+          rating?: number | null
+          review_count?: number | null
+          service_type?: string
+          slug?: string
+          sort_order?: number | null
+          subtitle?: string | null
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       testimonials: {
         Row: {
           active: boolean

@@ -9,6 +9,7 @@ import {
   FileText,
   LogOut,
   X,
+  Briefcase,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
@@ -18,6 +19,7 @@ const navItems = [
   { path: '/admin', icon: LayoutDashboard, label: 'Dashboard', end: true },
   { path: '/admin/orders', icon: ShoppingCart, label: 'Commandes' },
   { path: '/admin/products', icon: Package, label: 'Produits' },
+  { path: '/admin/services', icon: Briefcase, label: 'Services' },
   { path: '/admin/analytics', icon: BarChart3, label: 'Analytiques' },
   { path: '/admin/content', icon: FileText, label: 'Contenu' },
 ];

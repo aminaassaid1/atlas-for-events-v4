@@ -39,6 +39,7 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminProducts from "./pages/admin/AdminProducts";
+import AdminServices from "./pages/admin/AdminServices";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminContent from "./pages/admin/AdminContent";
 
@@ -100,6 +101,7 @@ const App = () => (
                   <Route index element={<AdminDashboard />} />
                   <Route path="orders" element={<AdminOrders />} />
                   <Route path="products" element={<AdminProducts />} />
+                  <Route path="services" element={<AdminServices />} />
                   <Route path="analytics" element={<AdminAnalytics />} />
                   <Route path="content" element={<AdminContent />} />
                 </Route>
