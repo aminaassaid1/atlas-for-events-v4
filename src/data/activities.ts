@@ -733,12 +733,12 @@ export const activities: Activity[] = [
     price: 45,
     originalPrice: 60,
     duration: "2-3h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+    image: "/src/assets/images/activities/buggy-palmeraie.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
-      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800",
-      "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800",
-      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800"
+      "/src/assets/images/activities/buggy-palmeraie.webp",
+      "/src/assets/images/activities/buggy-desert.webp",
+      "/src/assets/images/activities/buggy-fleet.webp",
+      "/src/assets/images/activities/buggy-group.webp"
     ],
     description: "Aventure en buggy à travers la Palmeraie de Marrakech",
     longDescription: "Pilotez un buggy puissant à travers les pistes de la Palmeraie de Marrakech. Cette activité offre plus de confort et de puissance que le quad, idéale pour les couples ou les familles. Traversez les villages berbères et profitez d'une pause thé traditionnelle.",
