@@ -216,7 +216,7 @@ const activities = [{
   category: "adventure",
   price: 45,
   duration: "1 journée",
-  image: "https://atlasforevents.com/wp-content/uploads/2022/08/alpha-plus-wmwnqKDZHfo-unsplash-1-scaled.jpg",
+  image: "/src/assets/images/activities/imlil-village.webp",
   rating: 4.8,
   includes: ["Randonnée", "Villages berbères", "Déjeuner", "Transport"],
   includesEn: ["Hiking", "Berber villages", "Lunch", "Transport"]

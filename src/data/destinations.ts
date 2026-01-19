@@ -722,12 +722,13 @@ export const destinations: Destination[] = [
     duration: "1 jour",
     price: 35,
     originalPrice: 50,
-    image: "https://atlasforevents.com/wp-content/uploads/2022/08/morocco-atlas-mountains-imlil.jpg",
+    image: "/src/assets/images/activities/imlil-village.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/08/morocco-atlas-mountains-imlil.jpg",
-      "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
-      "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800",
-      "https://images.unsplash.com/photo-1528127269322-539801943592?w=800"
+      "/src/assets/images/activities/imlil-village.webp",
+      "/src/assets/images/activities/imlil-snow.webp",
+      "/src/assets/images/activities/imlil-trekking.webp",
+      "/src/assets/images/activities/imlil-panorama.webp",
+      "/src/assets/images/activities/imlil-valley.webp"
     ],
     description: "Randonnée dans les montagnes de l'Atlas au pied du Toubkal",
     longDescription: "Découvrez Imlil, village berbère niché à 1740m d'altitude, point de départ des randonnées vers le Mont Toubkal, plus haut sommet d'Afrique du Nord (4167m). Cette excursion vous offre une immersion dans la vie traditionnelle des montagnards berbères, avec des paysages à couper le souffle et un déjeuner chez l'habitant.",

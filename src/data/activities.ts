@@ -1361,12 +1361,13 @@ export const activities: Activity[] = [
     price: 45,
     originalPrice: 60,
     duration: "1 journée",
-    image: "https://atlasforevents.com/wp-content/uploads/2022/08/alpha-plus-wmwnqKDZHfo-unsplash-1-scaled.jpg",
+    image: "/src/assets/images/activities/imlil-village.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/08/alpha-plus-wmwnqKDZHfo-unsplash-1-scaled.jpg",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
-      "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800"
+      "/src/assets/images/activities/imlil-village.webp",
+      "/src/assets/images/activities/imlil-snow.webp",
+      "/src/assets/images/activities/imlil-trekking.webp",
+      "/src/assets/images/activities/imlil-panorama.webp",
+      "/src/assets/images/activities/imlil-valley.webp"
     ],
     description: "Randonnée dans le Haut Atlas et villages berbères authentiques",
     longDescription: "Partez à la découverte du Haut Atlas depuis Imlil, point de départ vers le Mont Toubkal. Randonnez à travers des paysages montagneux spectaculaires, visitez des villages berbères traditionnels accrochés aux flancs des montagnes et partagez un déjeuner authentique chez l'habitant.",
