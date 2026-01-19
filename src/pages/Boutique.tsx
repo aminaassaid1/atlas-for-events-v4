@@ -5,7 +5,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Truck, Shield, Package, ArrowRight, Gem, Heart, Dog, Flower2, Grid3X3, Sparkles, Star, Tag, Eye, LogIn, LogOut, User, ShoppingCart, Check } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
-import { SEO } from "@/components/common";
+import { SEO, OptimizedImage } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useMemo, useCallback } from "react";
@@ -513,11 +513,12 @@ const Boutique = () => {
 
                   {/* Image - Clickable link to product detail */}
                   <Link to={`/boutique/${product.id}`} className="block relative aspect-square overflow-hidden">
-                    <motion.img src={product.image} alt={product.title} className="w-full h-full object-cover" whileHover={{
-                  scale: 1.08
-                }} transition={{
-                  duration: 0.5
-                }} />
+                    <OptimizedImage 
+                      src={product.image} 
+                      alt={`${product.title} - Sculpture métal artisanale`}
+                      aspectRatio="square"
+                      className="group-hover:scale-105 transition-transform duration-500"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     
                     {/* Quick view overlay */}

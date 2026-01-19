@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight, Compass, Palette, Mountain, Leaf, UtensilsCrossed, Phone, MessageCircle } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
-import { SEO } from "@/components/common";
+import { SEO, OptimizedImage } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -327,7 +327,12 @@ const Activites = () => {
     {/* Hero Section */}
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src="https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg" alt={t('activitiesPage.heroTitle')} className="w-full h-full object-cover" />
+        <OptimizedImage 
+          src="https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg" 
+          alt={t('activitiesPage.heroTitle')} 
+          priority
+          containerClassName="w-full h-full"
+        />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
       </div>
 

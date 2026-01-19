@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Calendar, Palmtree, Bike, Home, Sparkles, Car, Package, Check, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { PageLayout } from "@/components/layout";
-import { SEO } from "@/components/common";
+import { SEO, OptimizedImage } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -191,7 +191,12 @@ const Services = () => {
               {/* Image */}
               <div className={`relative ${index % 2 === 1 ? "lg:order-2" : ""}`}>
                 <div className="relative overflow-hidden rounded-3xl aspect-[4/3]">
-                  <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                  <OptimizedImage 
+                    src={service.image} 
+                    alt={`${service.title} - Atlas For Events Marrakech`}
+                    aspectRatio="landscape"
+                    className="group-hover:scale-105 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 </div>
                 {/* Floating Icon */}
