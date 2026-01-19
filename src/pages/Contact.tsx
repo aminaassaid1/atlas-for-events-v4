@@ -3,6 +3,7 @@ import { Phone, Mail, MapPin, Clock, Send, MessageCircle, CheckCircle2, Sparkles
 import { useState } from "react";
 import { z } from "zod";
 import { PageLayout } from "@/components/layout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -107,6 +108,12 @@ const Contact = () => {
 
   return (
     <PageLayout>
+      <SEO 
+        title="Contact - Atlas For Events"
+        description="Contactez Atlas For Events pour vos événements et voyages à Marrakech. Disponible 7j/7 par téléphone, email ou WhatsApp."
+        keywords="contact Atlas For Events, événementiel Marrakech contact, réservation voyage Maroc"
+        url="https://atlasforevents.com/contact"
+      />
 
       {/* Hero Banner - Enhanced Travlla Style */}
       <section className="relative min-h-[450px] lg:min-h-[600px] overflow-hidden bg-gradient-to-b from-[#e0f4f5] via-[#eef9fa] to-white">

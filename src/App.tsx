@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "@/components/ScrollToTop";
 import LanguageWrapper from "@/components/LanguageWrapper";
 import Index from "./pages/Index";
@@ -63,30 +64,32 @@ const routesConfig = [
 ];
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <LanguageWrapper>
-          <ScrollToTop />
-          <Routes>
-            {/* French routes (default) */}
-            {routesConfig.map((route) => (
-              <Route key={route.path} path={route.path} element={route.element} />
-            ))}
-            
-            {/* English routes */}
-            {routesConfig.map((route) => (
-              <Route key={`en${route.path}`} path={`/en${route.path === '/' ? '' : route.path}`} element={route.element} />
-            ))}
-            
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </LanguageWrapper>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <LanguageWrapper>
+            <ScrollToTop />
+            <Routes>
+              {/* French routes (default) */}
+              {routesConfig.map((route) => (
+                <Route key={route.path} path={route.path} element={route.element} />
+              ))}
+              
+              {/* English routes */}
+              {routesConfig.map((route) => (
+                <Route key={`en${route.path}`} path={`/en${route.path === '/' ? '' : route.path}`} element={route.element} />
+              ))}
+              
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </LanguageWrapper>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;

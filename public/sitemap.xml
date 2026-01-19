@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <!-- Homepage -->
+  <url>
+    <loc>https://atlasforevents.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Services -->
+  <url>
+    <loc>https://atlasforevents.com/services</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/services"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Events -->
+  <url>
+    <loc>https://atlasforevents.com/services/evenements</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/services/evenements"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/services/evenements"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Vacances/Excursions -->
+  <url>
+    <loc>https://atlasforevents.com/services/vacances</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/services/vacances"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/services/vacances"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Activities -->
+  <url>
+    <loc>https://atlasforevents.com/services/activites</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/services/activites"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/services/activites"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Accommodation -->
+  <url>
+    <loc>https://atlasforevents.com/services/hebergement</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/services/hebergement"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/services/hebergement"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Spa -->
+  <url>
+    <loc>https://atlasforevents.com/services/spa</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/services/spa"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/services/spa"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Transport -->
+  <url>
+    <loc>https://atlasforevents.com/services/transport</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/services/transport"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/services/transport"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Boutique -->
+  <url>
+    <loc>https://atlasforevents.com/boutique</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/boutique"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/boutique"/>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- About -->
+  <url>
+    <loc>https://atlasforevents.com/a-propos</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/a-propos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/a-propos"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Contact -->
+  <url>
+    <loc>https://atlasforevents.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://atlasforevents.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://atlasforevents.com/en/contact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Privacy Policy -->
+  <url>
+    <loc>https://atlasforevents.com/confidentialite</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Refund Policy -->
+  <url>
+    <loc>https://atlasforevents.com/remboursement</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+</urlset>

@@ -1,8 +1,13 @@
+# Atlas For Events - robots.txt
+# https://atlasforevents.com
+
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 2
 
 User-agent: Twitterbot
 Allow: /
@@ -12,3 +17,12 @@ Allow: /
 
 User-agent: *
 Allow: /
+Crawl-delay: 5
+
+# Sitemap location
+Sitemap: https://atlasforevents.com/sitemap.xml
+
+# Disallow admin/private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
