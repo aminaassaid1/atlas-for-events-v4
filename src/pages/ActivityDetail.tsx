@@ -298,7 +298,7 @@ const ActivityDetail = () => {
                     >
                       {activity.itinerary.map((step, idx) => (
                         <div key={idx} className="relative pl-8 pb-6 border-l-2 border-primary/20 last:border-l-0 last:pb-0">
-                          <div className="absolute left-0 top-0 -translate-x-1/2 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xs">
+                          <div className="absolute left-0 top-0 -translate-x-1/2 min-w-12 h-12 px-2 bg-primary rounded-full flex items-center justify-center text-primary-foreground font-bold text-xs whitespace-nowrap">
                             {step.time}
                           </div>
                           <div className="ml-4">
