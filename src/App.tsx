@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "@/components/ScrollToTop";
 import LanguageWrapper from "@/components/LanguageWrapper";
+import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Boutique from "./pages/Boutique";
@@ -31,6 +32,15 @@ import LivraisonPage from "./pages/services/Livraison";
 import DestinationDetail from "./pages/DestinationDetail";
 import ActivityDetail from "./pages/ActivityDetail";
 import EventDetail from "./pages/EventDetail";
+
+// Admin pages
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminLayout from "@/components/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminOrders from "./pages/admin/AdminOrders";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import AdminContent from "./pages/admin/AdminContent";
 
 const queryClient = new QueryClient();
 
@@ -66,28 +76,40 @@ const routesConfig = [
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <LanguageWrapper>
-            <ScrollToTop />
-            <Routes>
-              {/* French routes (default) */}
-              {routesConfig.map((route) => (
-                <Route key={route.path} path={route.path} element={route.element} />
-              ))}
-              
-              {/* English routes */}
-              {routesConfig.map((route) => (
-                <Route key={`en${route.path}`} path={`/en${route.path === '/' ? '' : route.path}`} element={route.element} />
-              ))}
-              
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </LanguageWrapper>
-        </BrowserRouter>
-      </TooltipProvider>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <LanguageWrapper>
+              <ScrollToTop />
+              <Routes>
+                {/* French routes (default) */}
+                {routesConfig.map((route) => (
+                  <Route key={route.path} path={route.path} element={route.element} />
+                ))}
+                
+                {/* English routes */}
+                {routesConfig.map((route) => (
+                  <Route key={`en${route.path}`} path={`/en${route.path === '/' ? '' : route.path}`} element={route.element} />
+                ))}
+                
+                {/* Admin routes */}
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<AdminDashboard />} />
+                  <Route path="orders" element={<AdminOrders />} />
+                  <Route path="products" element={<AdminProducts />} />
+                  <Route path="analytics" element={<AdminAnalytics />} />
+                  <Route path="content" element={<AdminContent />} />
+                </Route>
+                
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </LanguageWrapper>
+          </BrowserRouter>
+        </TooltipProvider>
+      </AuthProvider>
     </QueryClientProvider>
   </HelmetProvider>
 );
