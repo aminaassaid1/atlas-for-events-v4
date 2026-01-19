@@ -192,7 +192,7 @@ const activities = [{
   category: "culture",
   price: 55,
   duration: "1 journée",
-  image: "https://atlasforevents.com/wp-content/uploads/2022/08/aziz-acharki-Bl-azXExvOs-unsplash-scaled.jpg",
+  image: "/src/assets/images/activities/asilah-mural.webp",
   rating: 4.6,
   includes: ["Murs blanchis", "Fresques colorées", "Plages", "Transport"],
   includesEn: ["Whitewashed walls", "Colorful murals", "Beaches", "Transport"]
