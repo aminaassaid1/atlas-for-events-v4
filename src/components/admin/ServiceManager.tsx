@@ -5,28 +5,16 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
-import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from '@/components/ui/tabs';
-import { Plus, Search, Edit, Trash2, Star, Calendar, Mountain, Home, Sparkles, Car } from 'lucide-react';
+import { Plus, Search, Edit, Trash2, Star } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
+import { LucideIcon } from 'lucide-react';
 
 interface Service {
   id: string;
@@ -53,14 +41,13 @@ interface Service {
   sort_order: number;
 }
 
-const serviceTypes = [
-  { value: 'event', label: 'Événements', icon: Calendar },
-  { value: 'vacation', label: 'Vacances', icon: Mountain },
-  { value: 'activity', label: 'Activités', icon: Star },
-  { value: 'accommodation', label: 'Hébergement', icon: Home },
-  { value: 'spa', label: 'Spa', icon: Sparkles },
-  { value: 'transport', label: 'Transport', icon: Car },
-];
+interface ServiceManagerProps {
+  serviceType: 'event' | 'vacation' | 'activity' | 'accommodation' | 'spa' | 'transport';
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  categoryOptions?: string[];
+}
 
 const emptyService = {
   service_type: 'activity',
@@ -86,16 +73,20 @@ const emptyService = {
   sort_order: 0,
 };
 
-export default function AdminServices() {
+export default function ServiceManager({ 
+  serviceType, 
+  title, 
+  description, 
+  icon: Icon,
+  categoryOptions = []
+}: ServiceManagerProps) {
   const [services, setServices] = useState<Service[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [activeTab, setActiveTab] = useState('all');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [editingService, setEditingService] = useState<Service | null>(null);
-  const [formData, setFormData] = useState(emptyService);
+  const [formData, setFormData] = useState({ ...emptyService, service_type: serviceType });
   
-  // Text inputs for arrays
   const [includesText, setIncludesText] = useState('');
   const [highlightsText, setHighlightsText] = useState('');
   const [featuresText, setFeaturesText] = useState('');
@@ -103,19 +94,19 @@ export default function AdminServices() {
 
   useEffect(() => {
     fetchServices();
-  }, []);
+  }, [serviceType]);
 
   async function fetchServices() {
     try {
       const { data, error } = await supabase
         .from('services')
         .select('*')
+        .eq('service_type', serviceType)
         .order('sort_order', { ascending: true })
         .order('created_at', { ascending: false });
 
       if (error) throw error;
       
-      // Transform the data to ensure arrays are properly parsed
       const transformedData = (data || []).map(service => ({
         ...service,
         gallery: Array.isArray(service.gallery) ? service.gallery : [],
@@ -137,7 +128,7 @@ export default function AdminServices() {
     if (service) {
       setEditingService(service);
       setFormData({
-        service_type: service.service_type,
+        service_type: serviceType,
         slug: service.slug,
         title: service.title,
         subtitle: service.subtitle || '',
@@ -165,7 +156,7 @@ export default function AdminServices() {
       setGalleryText(((service.gallery || []) as string[]).join('\n'));
     } else {
       setEditingService(null);
-      setFormData(emptyService);
+      setFormData({ ...emptyService, service_type: serviceType });
       setIncludesText('');
       setHighlightsText('');
       setFeaturesText('');
@@ -180,6 +171,7 @@ export default function AdminServices() {
     try {
       const serviceData = {
         ...formData,
+        service_type: serviceType,
         slug: formData.slug || formData.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''),
         includes: includesText.split('\n').filter(s => s.trim()),
         highlights: highlightsText.split('\n').filter(s => s.trim()),
@@ -268,22 +260,10 @@ export default function AdminServices() {
     }
   };
 
-  const filteredServices = services.filter(service => {
-    const matchesSearch = service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      (service.category?.toLowerCase() || '').includes(searchQuery.toLowerCase());
-    const matchesTab = activeTab === 'all' || service.service_type === activeTab;
-    return matchesSearch && matchesTab;
-  });
-
-  const getServiceTypeIcon = (type: string) => {
-    const serviceType = serviceTypes.find(st => st.value === type);
-    return serviceType?.icon || Star;
-  };
-
-  const getServiceTypeLabel = (type: string) => {
-    const serviceType = serviceTypes.find(st => st.value === type);
-    return serviceType?.label || type;
-  };
+  const filteredServices = services.filter(service =>
+    service.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    (service.category?.toLowerCase() || '').includes(searchQuery.toLowerCase())
+  );
 
   if (isLoading) {
     return (
@@ -296,63 +276,65 @@ export default function AdminServices() {
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between gap-4">
-        <div>
-          <h1 className="text-2xl font-bold text-foreground">Services</h1>
-          <p className="text-muted-foreground">Gérez vos services : événements, vacances, activités, hébergement, spa et transport</p>
+        <div className="flex items-start gap-4">
+          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
+            <Icon className="w-6 h-6 text-primary" />
+          </div>
+          <div>
+            <h1 className="text-2xl font-bold text-foreground">{title}</h1>
+            <p className="text-muted-foreground">{description}</p>
+          </div>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button onClick={() => handleOpenDialog()}>
               <Plus className="w-4 h-4 mr-2" />
-              Ajouter un service
+              Ajouter
             </Button>
           </DialogTrigger>
           <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>
-                {editingService ? 'Modifier le service' : 'Nouveau service'}
+                {editingService ? 'Modifier' : 'Nouveau'} {title.toLowerCase().replace('gestion des ', '').slice(0, -1)}
               </DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-4 mt-4">
               <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="service_type">Type de service *</Label>
-                  <Select
-                    value={formData.service_type}
-                    onValueChange={(value) => setFormData({ ...formData, service_type: value })}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {serviceTypes.map((type) => (
-                        <SelectItem key={type.value} value={type.value}>
-                          {type.label}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="category">Catégorie</Label>
+                <div className="space-y-2 col-span-2 sm:col-span-1">
+                  <Label htmlFor="title">Titre *</Label>
                   <Input
-                    id="category"
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    placeholder="ex: aventure, nature, culture"
+                    id="title"
+                    value={formData.title}
+                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                    required
                   />
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="title">Titre *</Label>
-                <Input
-                  id="title"
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  required
-                />
+                {categoryOptions.length > 0 ? (
+                  <div className="space-y-2 col-span-2 sm:col-span-1">
+                    <Label htmlFor="category">Catégorie</Label>
+                    <select
+                      id="category"
+                      value={formData.category}
+                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                      className="w-full h-10 px-3 rounded-md border border-input bg-background text-sm"
+                    >
+                      <option value="">Sélectionner...</option>
+                      {categoryOptions.map(cat => (
+                        <option key={cat} value={cat}>{cat}</option>
+                      ))}
+                    </select>
+                  </div>
+                ) : (
+                  <div className="space-y-2 col-span-2 sm:col-span-1">
+                    <Label htmlFor="category">Catégorie</Label>
+                    <Input
+                      id="category"
+                      value={formData.category}
+                      onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    />
+                  </div>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -365,7 +347,7 @@ export default function AdminServices() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="slug">Slug</Label>
+                <Label htmlFor="slug">Slug (URL)</Label>
                 <Input
                   id="slug"
                   value={formData.slug}
@@ -385,7 +367,7 @@ export default function AdminServices() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="long_description">Description longue</Label>
+                <Label htmlFor="long_description">Description détaillée</Label>
                 <Textarea
                   id="long_description"
                   value={formData.long_description}
@@ -396,7 +378,7 @@ export default function AdminServices() {
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="price">Prix</Label>
+                  <Label htmlFor="price">Prix (€)</Label>
                   <Input
                     id="price"
                     type="number"
@@ -408,7 +390,7 @@ export default function AdminServices() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="original_price">Prix original</Label>
+                  <Label htmlFor="original_price">Prix barré (€)</Label>
                   <Input
                     id="original_price"
                     type="number"
@@ -427,7 +409,7 @@ export default function AdminServices() {
                     id="duration"
                     value={formData.duration}
                     onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                    placeholder="ex: 2h, 1 jour, 3 jours/2 nuits"
+                    placeholder="ex: 2h, 1 jour"
                   />
                 </div>
 
@@ -437,13 +419,13 @@ export default function AdminServices() {
                     id="location"
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    placeholder="ex: Marrakech, Désert Agafay"
+                    placeholder="ex: Marrakech"
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="image_url">URL de l'image principale</Label>
+                <Label htmlFor="image_url">Image principale (URL)</Label>
                 <Input
                   id="image_url"
                   type="url"
@@ -459,19 +441,19 @@ export default function AdminServices() {
                   id="gallery"
                   value={galleryText}
                   onChange={(e) => setGalleryText(e.target.value)}
-                  rows={3}
-                  placeholder="https://image1.jpg&#10;https://image2.jpg"
+                  rows={2}
+                  placeholder="https://image1.jpg"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="includes">Inclus (un élément par ligne)</Label>
+                <Label htmlFor="includes">Inclus (un par ligne)</Label>
                 <Textarea
                   id="includes"
                   value={includesText}
                   onChange={(e) => setIncludesText(e.target.value)}
-                  rows={3}
-                  placeholder="Transport&#10;Guide&#10;Déjeuner"
+                  rows={2}
+                  placeholder="Transport&#10;Guide"
                 />
               </div>
 
@@ -481,8 +463,7 @@ export default function AdminServices() {
                   id="highlights"
                   value={highlightsText}
                   onChange={(e) => setHighlightsText(e.target.value)}
-                  rows={3}
-                  placeholder="Vue panoramique&#10;Expérience unique"
+                  rows={2}
                 />
               </div>
 
@@ -492,14 +473,13 @@ export default function AdminServices() {
                   id="features"
                   value={featuresText}
                   onChange={(e) => setFeaturesText(e.target.value)}
-                  rows={3}
-                  placeholder="Piscine privée&#10;WiFi gratuit"
+                  rows={2}
                 />
               </div>
 
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="rating">Note</Label>
+                  <Label htmlFor="rating">Note (0-5)</Label>
                   <Input
                     id="rating"
                     type="number"
@@ -512,7 +492,7 @@ export default function AdminServices() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="sort_order">Ordre d'affichage</Label>
+                  <Label htmlFor="sort_order">Ordre</Label>
                   <Input
                     id="sort_order"
                     type="number"
@@ -530,7 +510,7 @@ export default function AdminServices() {
                     onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
                     className="rounded border-border"
                   />
-                  <span className="text-sm">Service vedette</span>
+                  <span className="text-sm">Vedette</span>
                 </label>
 
                 <label className="flex items-center gap-2 cursor-pointer">
@@ -557,143 +537,128 @@ export default function AdminServices() {
         </Dialog>
       </div>
 
-      {/* Tabs for service types */}
-      <Tabs value={activeTab} onValueChange={setActiveTab}>
-        <TabsList className="flex-wrap h-auto gap-1">
-          <TabsTrigger value="all" className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
-            Tous ({services.length})
-          </TabsTrigger>
-          {serviceTypes.map((type) => {
-            const count = services.filter(s => s.service_type === type.value).length;
-            const Icon = type.icon;
-            return (
-              <TabsTrigger 
-                key={type.value} 
-                value={type.value}
-                className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground"
-              >
-                <Icon className="w-4 h-4 mr-1" />
-                {type.label} ({count})
-              </TabsTrigger>
-            );
-          })}
-        </TabsList>
-      </Tabs>
-
       {/* Search */}
       <div className="relative max-w-md">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
         <Input
-          placeholder="Rechercher un service..."
+          placeholder="Rechercher..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="pl-10"
         />
       </div>
 
+      {/* Stats */}
+      <div className="flex gap-4 text-sm">
+        <span className="text-muted-foreground">
+          Total: <span className="font-medium text-foreground">{services.length}</span>
+        </span>
+        <span className="text-muted-foreground">
+          Actifs: <span className="font-medium text-foreground">{services.filter(s => s.active).length}</span>
+        </span>
+        <span className="text-muted-foreground">
+          Vedettes: <span className="font-medium text-foreground">{services.filter(s => s.featured).length}</span>
+        </span>
+      </div>
+
       {/* Services Grid */}
       {filteredServices.length > 0 ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-          {filteredServices.map((service) => {
-            const TypeIcon = getServiceTypeIcon(service.service_type);
-            return (
-              <div
-                key={service.id}
-                className={cn(
-                  'bg-card rounded-xl border border-border overflow-hidden',
-                  !service.active && 'opacity-60'
+          {filteredServices.map((service) => (
+            <div
+              key={service.id}
+              className={cn(
+                'bg-card rounded-xl border border-border overflow-hidden',
+                !service.active && 'opacity-60'
+              )}
+            >
+              <div className="aspect-video relative">
+                {service.image_url ? (
+                  <img
+                    src={service.image_url}
+                    alt={service.title}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-muted flex items-center justify-center">
+                    <Icon className="w-12 h-12 text-muted-foreground" />
+                  </div>
                 )}
-              >
-                <div className="aspect-video relative">
-                  {service.image_url ? (
-                    <img
-                      src={service.image_url}
-                      alt={service.title}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-muted flex items-center justify-center">
-                      <TypeIcon className="w-12 h-12 text-muted-foreground" />
-                    </div>
-                  )}
+                {service.category && (
                   <div className="absolute top-2 left-2">
                     <span className="px-2 py-1 text-xs font-medium bg-primary text-primary-foreground rounded-full">
-                      {getServiceTypeLabel(service.service_type)}
+                      {service.category}
                     </span>
                   </div>
-                  <button
-                    onClick={() => toggleFeatured(service)}
-                    className={cn(
-                      'absolute top-2 right-2 p-2 rounded-full transition-colors',
-                      service.featured
-                        ? 'bg-secondary text-secondary-foreground'
-                        : 'bg-white/80 text-muted-foreground hover:bg-white'
-                    )}
-                  >
-                    <Star className={cn('w-4 h-4', service.featured && 'fill-current')} />
-                  </button>
-                </div>
-
-                <div className="p-4">
-                  <h3 className="font-medium text-foreground truncate">{service.title}</h3>
-                  <div className="flex items-center gap-2 mt-1">
-                    {service.category && (
-                      <span className="text-xs text-muted-foreground capitalize">{service.category}</span>
-                    )}
-                    {service.duration && (
-                      <span className="text-xs text-muted-foreground">• {service.duration}</span>
-                    )}
-                  </div>
-                  
-                  {service.price && (
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="font-bold text-foreground">
-                        {service.price.toLocaleString('fr-FR')} €
-                      </span>
-                      {service.original_price && service.original_price > service.price && (
-                        <span className="text-sm text-muted-foreground line-through">
-                          {service.original_price.toLocaleString('fr-FR')} €
-                        </span>
-                      )}
-                    </div>
+                )}
+                <button
+                  onClick={() => toggleFeatured(service)}
+                  className={cn(
+                    'absolute top-2 right-2 p-2 rounded-full transition-colors',
+                    service.featured
+                      ? 'bg-secondary text-secondary-foreground'
+                      : 'bg-white/80 text-muted-foreground hover:bg-white'
                   )}
+                >
+                  <Star className={cn('w-4 h-4', service.featured && 'fill-current')} />
+                </button>
+              </div>
 
-                  <div className="flex items-center gap-2 mt-4">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="flex-1"
-                      onClick={() => handleOpenDialog(service)}
-                    >
-                      <Edit className="w-3 h-3 mr-1" />
-                      Modifier
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => toggleActive(service)}
-                    >
-                      {service.active ? 'Désactiver' : 'Activer'}
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-destructive hover:text-destructive"
-                      onClick={() => handleDelete(service.id)}
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
+              <div className="p-4">
+                <h3 className="font-medium text-foreground truncate">{service.title}</h3>
+                <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
+                  {service.duration && <span>{service.duration}</span>}
+                  {service.location && <span>• {service.location}</span>}
+                </div>
+                
+                {service.price && (
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className="font-bold text-foreground">
+                      {service.price.toLocaleString('fr-FR')} €
+                    </span>
+                    {service.original_price && service.original_price > service.price && (
+                      <span className="text-sm text-muted-foreground line-through">
+                        {service.original_price.toLocaleString('fr-FR')} €
+                      </span>
+                    )}
                   </div>
+                )}
+
+                <div className="flex items-center gap-2 mt-4">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="flex-1"
+                    onClick={() => handleOpenDialog(service)}
+                  >
+                    <Edit className="w-3 h-3 mr-1" />
+                    Modifier
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => toggleActive(service)}
+                  >
+                    {service.active ? 'Off' : 'On'}
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="text-destructive hover:text-destructive"
+                    onClick={() => handleDelete(service.id)}
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </Button>
                 </div>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       ) : (
         <div className="bg-card rounded-xl border border-border p-8 text-center text-muted-foreground">
           {searchQuery
-            ? 'Aucun service ne correspond à votre recherche'
-            : 'Aucun service pour le moment'}
+            ? 'Aucun résultat trouvé'
+            : 'Aucun élément pour le moment. Cliquez sur "Ajouter" pour commencer.'}
         </div>
       )}
     </div>

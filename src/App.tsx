@@ -39,7 +39,12 @@ import AdminLayout from "@/components/admin/AdminLayout";
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AdminOrders from "./pages/admin/AdminOrders";
 import AdminProducts from "./pages/admin/AdminProducts";
-import AdminServices from "./pages/admin/AdminServices";
+import AdminEventsService from "./pages/admin/AdminEventsService";
+import AdminVacationsService from "./pages/admin/AdminVacationsService";
+import AdminActivitiesService from "./pages/admin/AdminActivitiesService";
+import AdminAccommodationService from "./pages/admin/AdminAccommodationService";
+import AdminSpaService from "./pages/admin/AdminSpaService";
+import AdminTransportService from "./pages/admin/AdminTransportService";
 import AdminAnalytics from "./pages/admin/AdminAnalytics";
 import AdminContent from "./pages/admin/AdminContent";
 
@@ -101,7 +106,12 @@ const App = () => (
                   <Route index element={<AdminDashboard />} />
                   <Route path="orders" element={<AdminOrders />} />
                   <Route path="products" element={<AdminProducts />} />
-                  <Route path="services" element={<AdminServices />} />
+                  <Route path="services/events" element={<AdminEventsService />} />
+                  <Route path="services/vacations" element={<AdminVacationsService />} />
+                  <Route path="services/activities" element={<AdminActivitiesService />} />
+                  <Route path="services/accommodation" element={<AdminAccommodationService />} />
+                  <Route path="services/spa" element={<AdminSpaService />} />
+                  <Route path="services/transport" element={<AdminTransportService />} />
                   <Route path="analytics" element={<AdminAnalytics />} />
                   <Route path="content" element={<AdminContent />} />
                 </Route>
