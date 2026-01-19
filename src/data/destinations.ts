@@ -242,12 +242,9 @@ export const destinations: Destination[] = [
     duration: "8 heures",
     price: 20,
     originalPrice: 45,
-    image: "https://atlasforevents.com/wp-content/uploads/2022/07/matthew-fainman-3yonP2JaGTU-unsplash-scaled.jpg",
+    image: "/src/assets/images/destinations/ourika-valley.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/07/matthew-fainman-3yonP2JaGTU-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=800",
-      "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800",
-      "https://images.unsplash.com/photo-1528127269322-539801943592?w=800"
+      "/src/assets/images/destinations/ourika-valley.jpg"
     ],
     description: "Cascades majestueuses, randonnées et villages berbères traditionnels",
     longDescription: "Échappez à l'agitation de Marrakech le temps d'une journée pour découvrir la fraîcheur de la vallée de l'Ourika. Cette excursion vous emmène au pied de l'Atlas, à travers des villages berbères authentiques, jusqu'aux célèbres cascades de Setti Fatma. Profitez d'une randonnée revigorante, découvrez l'artisanat local et savourez un déjeuner traditionnel au bord de la rivière.",
@@ -646,12 +643,9 @@ export const destinations: Destination[] = [
     duration: "2 jours / 1 nuit",
     price: 120,
     originalPrice: 160,
-    image: "https://atlasforevents.com/wp-content/uploads/2022/08/view-agadir-city-from-the-kasbah-morocco.jpg",
+    image: "/src/assets/images/destinations/agadir.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/08/view-agadir-city-from-the-kasbah-morocco.jpg",
-      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800",
-      "https://images.unsplash.com/photo-1596046478951-f55bc993cf7c?w=800",
-      "https://images.unsplash.com/photo-1528127269322-539801943592?w=800"
+      "/src/assets/images/destinations/agadir.jpg"
     ],
     description: "Soleil, plages dorées et détente sur la côte atlantique",
     longDescription: "Évadez-vous vers Agadir, la station balnéaire la plus ensoleillée du Maroc. Profitez de ses 300 jours de soleil par an, de ses plages de sable doré et de sa promenade maritime. Une escapade parfaite pour combiner détente, sports nautiques et découverte de la ville reconstruite après le tremblement de terre de 1960.",
@@ -804,12 +798,12 @@ export const destinations: Destination[] = [
     duration: "1 jour ou 1 nuit",
     price: 45,
     originalPrice: 70,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes-636x426.webp",
+    image: "/src/assets/images/activities/agafay-dunes.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes-636x426.webp",
-      "https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=800",
-      "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=800",
-      "https://images.unsplash.com/photo-1517623249442-af85e65ee9f7?w=800"
+      "/src/assets/images/activities/agafay-dunes.webp",
+      "/src/assets/images/activities/agafay-camel-ride.webp",
+      "/src/assets/images/activities/agafay-lounge.webp",
+      "/src/assets/images/activities/agafay-sunset.webp"
     ],
     description: "L'expérience désertique à 45 minutes de Marrakech",
     longDescription: "Le désert d'Agafay offre une expérience désertique unique à seulement 45 minutes de Marrakech. Ce désert de pierres avec vue sur l'Atlas est le cadre parfait pour un coucher de soleil mémorable, un dîner sous les étoiles ou une nuit en camp de luxe. Combinez quad, balade à dos de chameau et gastronomie berbère.",
@@ -884,13 +878,13 @@ export const destinations: Destination[] = [
     duration: "Demi-journée",
     price: 40,
     originalPrice: 60,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
+    image: "/src/assets/images/destinations/argan-cooperative-1.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-3.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-1.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.54.jpeg"
+      "/src/assets/images/destinations/argan-cooperative-1.jpg",
+      "/src/assets/images/destinations/argan-cooperative-2.jpg",
+      "/src/assets/images/destinations/argan-cooperative-3.jpg",
+      "/src/assets/images/destinations/argan-cooperative-4.jpg",
+      "/src/assets/images/destinations/argan-cooperative-5.jpg"
     ],
     description: "Découvrez MARJANA, une immersion dans la production d'Argan au Maroc",
     longDescription: "Chez MARJANA, nous offrons aux visiteurs une opportunité exclusive de découvrir l'héritage riche et le processus minutieux derrière nos précieux produits à base d'argan. Notre coopérative est bien plus qu'un lieu de production ; c'est une plongée au cœur de la tradition et du savoir-faire marocains. Découvrez la magie de l'huile d'argan dans la première coopérative au Maroc accréditée par l'État et reconnue à l'international.",
@@ -1297,13 +1291,9 @@ export const destinations: Destination[] = [
     duration: "4 heures",
     price: 45,
     originalPrice: 60,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29-1.jpeg",
+    image: "/src/assets/images/activities/cours-cuisine.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29-1.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.28.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29-2.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.30.jpeg"
+      "/src/assets/images/activities/cours-cuisine.jpg"
     ],
     description: "Cours de cuisine authentique dans le désert d'Agafay",
     longDescription: "Plongez dans les saveurs riches de la cuisine marocaine avec un cours de cuisine immersif dans le magnifique désert d'Agafay. Apprenez à préparer des plats traditionnels tout en profitant d'un cadre exceptionnel, loin de l'agitation de la ville. Sous la direction d'un chef marocain, vous apprendrez à cuisiner des plats emblématiques tels que le tajine et le couscous.",
