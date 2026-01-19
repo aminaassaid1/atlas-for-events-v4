@@ -72,7 +72,7 @@ const activities = [{
   category: "adventure",
   price: 70,
   duration: "2h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+  image: "/src/assets/images/activities/buggy-palmeraie.webp",
   rating: 4.9,
   includes: ["Buggy tout-terrain", "Pause thé village berbère", "Guide", "Transport"],
   includesEn: ["Off-road buggy", "Tea break in Berber village", "Guide", "Transport"]

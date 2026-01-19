@@ -91,7 +91,7 @@ const destinations = [
     name: "Aventure en Buggy",
     duration: "2 heures",
     price: 70,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+    image: "/src/assets/images/activities/buggy-palmeraie.webp",
     description: "Aventure palpitante en buggy dans la Palmeraie de Marrakech",
     category: "Aventure",
     rating: 4.8,

@@ -1370,11 +1370,12 @@ export const destinations: Destination[] = [
     name: "Aventure en Buggy - Palmeraie",
     duration: "2 heures",
     price: 70,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+    image: "/src/assets/images/activities/buggy-palmeraie.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/DNxVXn292ofCPX5QE9Rx.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Marrakech-quad-buggy-41.jpg"
+      "/src/assets/images/activities/buggy-palmeraie.webp",
+      "/src/assets/images/activities/buggy-desert.webp",
+      "/src/assets/images/activities/buggy-fleet.webp",
+      "/src/assets/images/activities/buggy-group.webp"
     ],
     description: "Aventure palpitante en buggy dans la Palmeraie de Marrakech",
     longDescription: "Préparez-vous pour une aventure en buggy exaltante à travers la captivante palmeraie entourant Marrakech. Cette activité palpitante offre une perspective unique des paysages sahariens, combinant excitation et vues imprenables. Traversez des sentiers escarpés et admirez les paysages sahariens. Faites une pause dans un village berbère pour savourer un thé à la menthe traditionnel.",
