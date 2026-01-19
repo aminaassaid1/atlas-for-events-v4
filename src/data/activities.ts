@@ -487,12 +487,13 @@ export const activities: Activity[] = [
     price: 45,
     originalPrice: 60,
     duration: "4h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/9cabd722-e487-4d05-be00-109180fcf9d9.avif",
+    image: "/src/assets/images/activities/chez-ali-entrance.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/9cabd722-e487-4d05-be00-109180fcf9d9.avif",
-      "https://images.unsplash.com/photo-1551632436-cbf8dd35adfa?w=800",
-      "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800",
-      "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800"
+      "/src/assets/images/activities/chez-ali-entrance.webp",
+      "/src/assets/images/activities/chez-ali-tent.webp",
+      "/src/assets/images/activities/chez-ali-show.webp",
+      "/src/assets/images/activities/chez-ali-restaurant.webp",
+      "/src/assets/images/activities/chez-ali-fantasia.webp"
     ],
     description: "Soirée spectacle Fantasia avec dîner marocain traditionnel",
     longDescription: "Plongez dans la culture marocaine lors d'une soirée exceptionnelle Chez Ali. Profitez d'un dîner traditionnel composé de spécialités marocaines tout en admirant le spectacle de la Fantasia : cavaliers berbères, danseurs, acrobates et musiciens vous transporteront dans les traditions ancestrales du Maroc.",

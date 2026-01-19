@@ -96,7 +96,7 @@ const activities = [{
   category: "culture",
   price: 45,
   duration: "4h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/9cabd722-e487-4d05-be00-109180fcf9d9.avif",
+  image: "/src/assets/images/activities/chez-ali-entrance.webp",
   rating: 4.6,
   includes: ["Dîner marocain", "Spectacle Fantasia", "Folklore berbère", "Transport"],
   includesEn: ["Moroccan dinner", "Fantasia show", "Berber folklore", "Transport"]
