@@ -143,12 +143,13 @@ export const activities: Activity[] = [
     price: 45,
     originalPrice: 65,
     duration: "2-3h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+    image: "/src/assets/images/activities/quad-agafay-pool.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
-      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800",
-      "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800",
-      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800"
+      "/src/assets/images/activities/quad-agafay-pool.webp",
+      "/src/assets/images/activities/quad-agafay-dust.webp",
+      "/src/assets/images/activities/quad-agafay-group.webp",
+      "/src/assets/images/activities/quad-agafay-duo.webp",
+      "/src/assets/images/activities/quad-agafay-village.webp"
     ],
     description: "Aventure quad dans le désert de pierres d'Agafay avec vue sur l'Atlas",
     longDescription: "Découvrez le désert d'Agafay en quad pour une aventure hors des sentiers battus. Ce désert de pierres offre des paysages lunaires spectaculaires avec vue imprenable sur les montagnes de l'Atlas. Parfait pour les amateurs d'adrénaline qui veulent combiner sensations fortes et beauté naturelle.",
