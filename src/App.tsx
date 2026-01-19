@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import LanguageWrapper from "@/components/LanguageWrapper";
 import Index from "./pages/Index";
@@ -44,6 +44,7 @@ const routesConfig = [
   { path: "/services/spa", element: <SpaPage /> },
   { path: "/services/transport", element: <TransportPage /> },
   { path: "/services/livraison", element: <LivraisonPage /> },
+  { path: "/destinations", element: <Navigate to="/services/vacances" replace /> },
   { path: "/destinations/:id", element: <DestinationDetail /> },
   { path: "/activites/:id", element: <ActivityDetail /> },
   { path: "/evenements/:id", element: <EventDetail /> },
@@ -54,6 +55,7 @@ const routesConfig = [
   { path: "/checkout", element: <Checkout /> },
   { path: "/favoris", element: <Wishlist /> },
   { path: "/mes-commandes", element: <Orders /> },
+  { path: "/about", element: <Navigate to="/a-propos" replace /> },
   { path: "/a-propos", element: <About /> },
   { path: "/contact", element: <Contact /> },
   { path: "/remboursement", element: <RefundPolicy /> },
