@@ -70,7 +70,7 @@ const properties = [
     type: "Camp de luxe",
     location: "Désert d'Agafay",
     price: 50,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/419760597_677102024567035_474413547800764016_n.jpg",
+    image: "/src/assets/images/hebergement/bedouin-agafay.jpg",
     features: ["Luxe authentique", "Transport privé", "Dîner inclus"],
     beds: 2,
     baths: 1,
