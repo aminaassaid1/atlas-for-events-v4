@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight, Home, Users, Shield, Utensils, Car, Sparkles, Star, MapPin, Bed, Bath, Wifi, Phone, Calendar, Check } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -367,7 +368,8 @@ const ReservationFormSection = ({ selectedProperty, onClearProperty }: Reservati
 };
 
 const Hebergement = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const [activeFilter, setActiveFilter] = useState("Tous");
   const [selectedProperty, setSelectedProperty] = useState("");
 
@@ -394,6 +396,19 @@ const Hebergement = () => {
 
   return (
     <PageLayout>
+      <SEO 
+        title={isEnglish ? "Luxury Accommodation in Marrakech" : "Hébergement de Luxe à Marrakech"}
+        description={isEnglish 
+          ? "Discover our selection of luxury accommodations in Marrakech: private villas, traditional riads, apartments, and desert camps. Book your dream stay."
+          : "Découvrez notre sélection d'hébergements de luxe à Marrakech : villas privées, riads traditionnels, appartements et camps dans le désert. Réservez votre séjour de rêve."
+        }
+        keywords={isEnglish 
+          ? "accommodation Marrakech, luxury villa Morocco, riad Marrakech, desert camp Agafay, private apartment Morocco"
+          : "hébergement Marrakech, villa luxe Maroc, riad Marrakech, camp désert Agafay, appartement privé Maroc"
+        }
+        url="https://atlasforevents.com/services/hebergement"
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
 
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden">

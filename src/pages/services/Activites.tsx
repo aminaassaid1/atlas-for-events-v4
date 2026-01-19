@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight, Compass, Palette, Mountain, Leaf, UtensilsCrossed, Phone, MessageCircle } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -310,6 +311,19 @@ const Activites = () => {
   };
 
   return <PageLayout>
+    <SEO 
+      title={isEnglish ? "Activities & Experiences in Marrakech" : "Activités & Expériences à Marrakech"}
+      description={isEnglish 
+        ? "Discover unforgettable activities in Marrakech: quad biking, hot air balloon, camel rides, desert excursions, cooking classes, and more."
+        : "Découvrez des activités inoubliables à Marrakech : quad, montgolfière, balade en chameau, excursions désert, cours de cuisine et plus encore."
+      }
+      keywords={isEnglish 
+        ? "activities Marrakech, quad Morocco, hot air balloon Marrakech, desert excursion, camel ride, cooking class Morocco"
+        : "activités Marrakech, quad Maroc, montgolfière Marrakech, excursion désert, balade chameau, cours cuisine Maroc"
+      }
+      url="https://atlasforevents.com/services/activites"
+      locale={isEnglish ? "en_US" : "fr_FR"}
+    />
     {/* Hero Section */}
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">

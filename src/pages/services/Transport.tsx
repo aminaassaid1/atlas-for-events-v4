@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ChevronRight, Car, Plane, UserCheck, Shield, Clock, Check, Phone, MapPin, Users } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -31,7 +32,8 @@ const priceTable = [
 ];
 
 const Transport = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -78,6 +80,19 @@ const Transport = () => {
 
   return (
     <PageLayout>
+      <SEO 
+        title={isEnglish ? "VIP Transport & Airport Transfers Marrakech" : "Transport VIP & Transferts Aéroport Marrakech"}
+        description={isEnglish 
+          ? "Premium transport services in Marrakech: airport transfers, private driver, car rental, excursions. Available 24/7 with professional drivers."
+          : "Services de transport premium à Marrakech : transferts aéroport, chauffeur privé, location de voiture, excursions. Disponible 24h/24 avec chauffeurs professionnels."
+        }
+        keywords={isEnglish 
+          ? "transport Marrakech, airport transfer Morocco, private driver Marrakech, car rental Morocco, VIP transport"
+          : "transport Marrakech, transfert aéroport Maroc, chauffeur privé Marrakech, location voiture Maroc, transport VIP"
+        }
+        url="https://atlasforevents.com/services/transport"
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
 
       {/* Hero Section with Video/Image Background */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
