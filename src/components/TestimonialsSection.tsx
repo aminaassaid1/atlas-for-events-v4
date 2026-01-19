@@ -2,9 +2,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import testimonial1 from "@/assets/images/testimonial-1.jpg";
-import testimonial2 from "@/assets/images/testimonial-2.jpg";
-import testimonial3 from "@/assets/images/testimonial-3.jpg";
+import testimonial1 from "@/assets/images/activities/quad-agafay-dust.webp";
+import testimonial2 from "@/assets/images/activities/merzouga-dunes.webp";
+import testimonial3 from "@/assets/images/activities/ouzoud-falls.webp";
 import airplaneTakeoff from "@/assets/images/airplane-takeoff.png";
 
 const TestimonialsSection = () => {
