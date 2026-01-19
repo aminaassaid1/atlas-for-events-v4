@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
-import { Lock, Mail, Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { Lock, Mail, Eye, EyeOff, ArrowLeft, UserPlus } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function AdminLogin() {
@@ -13,29 +13,43 @@ export default function AdminLogin() {
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { signIn, isAdmin } = useAuthContext();
+  const [isSignUp, setIsSignUp] = useState(false);
+  const { signIn, signUp, isAdmin, user } = useAuthContext();
   const navigate = useNavigate();
 
   // Redirect if already admin
-  if (isAdmin) {
-    navigate('/admin', { replace: true });
-  }
+  useEffect(() => {
+    if (isAdmin) {
+      navigate('/admin', { replace: true });
+    }
+  }, [isAdmin, navigate]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
-      const { error } = await signIn(email, password);
-      
-      if (error) {
-        toast.error('Email ou mot de passe incorrect');
-        return;
-      }
+      if (isSignUp) {
+        const { error } = await signUp(email, password);
+        
+        if (error) {
+          toast.error(error.message || 'Erreur lors de l\'inscription');
+          return;
+        }
+        
+        toast.success('Compte créé ! Contactez l\'administrateur pour obtenir les droits d\'accès.');
+        setIsSignUp(false);
+      } else {
+        const { error } = await signIn(email, password);
+        
+        if (error) {
+          toast.error('Email ou mot de passe incorrect');
+          return;
+        }
 
-      // Check admin status will be handled by auth context
-      toast.success('Connexion réussie');
-      navigate('/admin');
+        toast.success('Connexion réussie');
+        navigate('/admin');
+      }
     } catch (error) {
       toast.error('Une erreur est survenue');
     } finally {
@@ -53,10 +67,14 @@ export default function AdminLogin() {
         <div className="bg-card rounded-2xl shadow-2xl p-8 border border-border/50">
           <div className="text-center mb-8">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-              <Lock className="w-8 h-8 text-primary" />
+              {isSignUp ? <UserPlus className="w-8 h-8 text-primary" /> : <Lock className="w-8 h-8 text-primary" />}
             </div>
-            <h1 className="text-2xl font-bold text-foreground">Administration</h1>
-            <p className="text-muted-foreground mt-2">Connectez-vous pour accéder au tableau de bord</p>
+            <h1 className="text-2xl font-bold text-foreground">
+              {isSignUp ? 'Créer un compte' : 'Administration'}
+            </h1>
+            <p className="text-muted-foreground mt-2">
+              {isSignUp ? 'Inscrivez-vous pour demander l\'accès' : 'Connectez-vous pour accéder au tableau de bord'}
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -104,15 +122,25 @@ export default function AdminLogin() {
               className="w-full"
               disabled={isLoading}
             >
-              {isLoading ? 'Connexion...' : 'Se connecter'}
+              {isLoading 
+                ? (isSignUp ? 'Création...' : 'Connexion...') 
+                : (isSignUp ? 'Créer le compte' : 'Se connecter')}
             </Button>
           </form>
 
-          <div className="mt-6 text-center">
+          <div className="mt-6 space-y-3">
+            <Button
+              variant="ghost"
+              className="w-full text-muted-foreground hover:text-foreground"
+              onClick={() => setIsSignUp(!isSignUp)}
+            >
+              {isSignUp ? 'Déjà un compte ? Se connecter' : 'Pas de compte ? S\'inscrire'}
+            </Button>
+            
             <Button
               variant="ghost"
               onClick={() => navigate('/')}
-              className="text-muted-foreground hover:text-foreground"
+              className="w-full text-muted-foreground hover:text-foreground"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Retour au site
