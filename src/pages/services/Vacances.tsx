@@ -68,7 +68,7 @@ const destinations = [
     duration: "5 heures",
     price: 180,
     originalPrice: 200,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg",
+    image: "/src/assets/images/activities/montgolfiere-sunrise.webp",
     description: "Survolez les villages berbères et l'Atlas en montgolfière",
     category: "Premium",
     rating: 5.0,

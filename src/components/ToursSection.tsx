@@ -18,7 +18,7 @@ const ToursSection = () => {
       rating: 4.9,
     },
     {
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg",
+      image: "/src/assets/images/activities/montgolfiere-sunrise.webp",
       location: t('tours.tour2Location'),
       duration: t('tours.tour2Duration'),
       title: t('tours.tour2Title'),
