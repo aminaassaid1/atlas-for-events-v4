@@ -11,6 +11,11 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import transportHeroImage from "@/assets/images/transport-hero.webp";
 
+// Local transport images
+import locationImg from "@/assets/images/transport/location.webp";
+import chauffeurImg from "@/assets/images/transport/chauffeur.webp";
+import airportPickupImg from "@/assets/images/transport/airport-pickup.webp";
+
 const priceTable = [
   { service: "Arrivée aéroport", small: "350 DHS", large: "Sur devis" },
   { service: "Départ aéroport", small: "350 DHS", large: "Sur devis" },
@@ -42,19 +47,19 @@ const Transport = () => {
       icon: Car,
       title: t('transportPage.carRental'),
       description: t('transportPage.carRentalDesc'),
-      image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80"
+      image: locationImg
     },
     {
       icon: UserCheck,
       title: t('transportPage.personalDriver'),
       description: t('transportPage.personalDriverDesc'),
-      image: "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800&q=80"
+      image: chauffeurImg
     },
     {
       icon: Plane,
       title: t('transportPage.airportPickup'),
       description: t('transportPage.airportPickupDesc'),
-      image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800&q=80"
+      image: airportPickupImg
     }
   ];
 
