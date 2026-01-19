@@ -113,7 +113,7 @@ const destinations = [
     name: "Coucher de Soleil Agafay",
     duration: "5 heures",
     price: 45,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/78b38e7f-e50d-402f-a9fa-b13e30075673.jpeg",
+    image: "/src/assets/images/activities/diner-agafay-sunset.webp",
     description: "Coucher de soleil et dîner magique dans le désert d'Agafay avec dromadaires",
     category: "Désert",
     rating: 4.9,

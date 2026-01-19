@@ -559,12 +559,13 @@ export const activities: Activity[] = [
     price: 65,
     originalPrice: 85,
     duration: "5h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Cours-de-cuisine-marocaine-authentique-dans-le-desert-dAgafay.jpg",
+    image: "/src/assets/images/activities/diner-agafay-sunset.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Cours-de-cuisine-marocaine-authentique-dans-le-desert-dAgafay.jpg",
-      "https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=800",
-      "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=800",
-      "https://images.unsplash.com/photo-1517623249442-af85e65ee9f7?w=800"
+      "/src/assets/images/activities/diner-agafay-sunset.webp",
+      "/src/assets/images/activities/diner-agafay-tent.webp",
+      "/src/assets/images/activities/diner-agafay-horizon.webp",
+      "/src/assets/images/activities/diner-agafay-table.webp",
+      "/src/assets/images/activities/diner-agafay-cushions.webp"
     ],
     description: "Dîner gastronomique dans le désert d'Agafay au coucher du soleil",
     longDescription: "Vivez une expérience culinaire exceptionnelle dans le cadre magique du désert d'Agafay. Admirez le coucher de soleil sur les montagnes de l'Atlas avant de savourer un dîner traditionnel marocain sous les étoiles. Musique live et ambiance intimiste garanties.",
