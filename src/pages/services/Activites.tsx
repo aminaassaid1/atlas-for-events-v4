@@ -180,7 +180,7 @@ const activities = [{
   category: "nature",
   price: 45,
   duration: "1 journée",
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/rigel-No_Y3bn4lNQ-unsplash-scaled.jpg",
+  image: "/src/assets/images/activities/essaouira-coast.webp",
   rating: 4.9,
   includes: ["Médina UNESCO", "Port historique", "Temps libre", "Transport"],
   includesEn: ["UNESCO Medina", "Historic port", "Free time", "Transport"]

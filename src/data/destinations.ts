@@ -322,12 +322,14 @@ export const destinations: Destination[] = [
     duration: "10 heures",
     price: 20,
     originalPrice: 45,
-    image: "https://atlasforevents.com/wp-content/uploads/2022/07/rigel-No_Y3bn4lNQ-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/essaouira-coast.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/07/rigel-No_Y3bn4lNQ-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=800",
-      "https://images.unsplash.com/photo-1553913861-c372b5c93b02?w=800",
-      "https://images.unsplash.com/photo-1580746738099-62dbda180c32?w=800"
+      "/src/assets/images/activities/essaouira-coast.webp",
+      "/src/assets/images/activities/essaouira-ramparts.webp",
+      "/src/assets/images/activities/essaouira-boats.webp",
+      "/src/assets/images/activities/essaouira-port.webp",
+      "/src/assets/images/activities/essaouira-medina.webp",
+      "/src/assets/images/activities/essaouira-harbor.webp"
     ],
     description: "Médina historique UNESCO, plages et poisson frais",
     longDescription: "Découvrez Essaouira, la perle de l'Atlantique. Cette ville portuaire au charme envoûtant vous séduira par sa médina classée au patrimoine mondial de l'UNESCO, ses remparts face à l'océan, et son atmosphère artistique unique. Flânez dans les ruelles où Jimi Hendrix trouva l'inspiration, dégustez le meilleur poisson frais du Maroc au port, et laissez-vous bercer par les alizés.",

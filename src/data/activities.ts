@@ -1178,12 +1178,14 @@ export const activities: Activity[] = [
     price: 45,
     originalPrice: 60,
     duration: "1 journée",
-    image: "https://atlasforevents.com/wp-content/uploads/2022/07/rigel-No_Y3bn4lNQ-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/essaouira-coast.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/07/rigel-No_Y3bn4lNQ-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1555881400-69294e40a5ef?w=800",
-      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800"
+      "/src/assets/images/activities/essaouira-coast.webp",
+      "/src/assets/images/activities/essaouira-ramparts.webp",
+      "/src/assets/images/activities/essaouira-boats.webp",
+      "/src/assets/images/activities/essaouira-port.webp",
+      "/src/assets/images/activities/essaouira-medina.webp",
+      "/src/assets/images/activities/essaouira-harbor.webp"
     ],
     description: "Découvrez la perle de l'Atlantique et sa médina UNESCO",
     longDescription: "Partez à la découverte d'Essaouira, ancienne Mogador, ville côtière aux remparts blancs et bleus. Explorez la médina classée UNESCO, flânez dans le port de pêche animé, dégustez du poisson frais grillé et profitez de la brise atlantique sur les longues plages de sable.",
