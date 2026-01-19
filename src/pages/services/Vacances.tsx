@@ -135,7 +135,7 @@ const destinations = [
     name: "Visite Privée Marrakech",
     duration: "7 heures",
     price: 40,
-    image: "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/marrakech-jemaa-fna.webp",
     description: "Découvrez les trésors de Marrakech : Koutoubia, Bahia, Souks",
     category: "Culture",
     rating: 5.0,

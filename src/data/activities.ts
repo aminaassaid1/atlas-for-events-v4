@@ -925,12 +925,15 @@ export const activities: Activity[] = [
     price: 40,
     originalPrice: 55,
     duration: "7h",
-    image: "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/marrakech-jemaa-fna.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1553913861-c372b5c93b02?w=800",
-      "https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=800",
-      "https://images.unsplash.com/photo-1580746738099-62dbda180c32?w=800"
+      "/src/assets/images/activities/marrakech-jemaa-fna.webp",
+      "/src/assets/images/activities/marrakech-koutoubia.webp",
+      "/src/assets/images/activities/marrakech-koutoubia-fountain.webp",
+      "/src/assets/images/activities/marrakech-menara.webp",
+      "/src/assets/images/activities/marrakech-souk.webp",
+      "/src/assets/images/activities/marrakech-medina.webp",
+      "/src/assets/images/activities/marrakech-museum-door.webp"
     ],
     description: "Explorez les trésors historiques de la ville ocre",
     longDescription: "Découvrez les joyaux de Marrakech lors d'une visite guidée complète. De la majestueuse mosquée Koutoubia au somptueux Palais Bahia, des mystérieux Tombeaux Saadiens aux souks animés, plongez dans l'histoire millénaire de la ville ocre avec un guide expert francophone.",

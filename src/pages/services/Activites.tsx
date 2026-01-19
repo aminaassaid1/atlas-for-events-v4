@@ -132,7 +132,7 @@ const activities = [{
   category: "culture",
   price: 40,
   duration: "7h",
-  image: "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
+  image: "/src/assets/images/activities/marrakech-jemaa-fna.webp",
   rating: 4.8,
   includes: ["Koutoubia", "Palais Bahia", "Tombeaux Saadiens", "Souks"],
   includesEn: ["Koutoubia", "Bahia Palace", "Saadian Tombs", "Souks"]
