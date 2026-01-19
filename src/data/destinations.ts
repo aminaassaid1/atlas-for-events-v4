@@ -57,12 +57,14 @@ export const destinations: Destination[] = [
     duration: "3 jours / 2 nuits",
     price: 280,
     originalPrice: 350,
-    image: "https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/merzouga-camp.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=800",
-      "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=800",
-      "https://images.unsplash.com/photo-1517623249442-af85e65ee9f7?w=800"
+      "/src/assets/images/activities/merzouga-camp.webp",
+      "/src/assets/images/activities/merzouga-camel.webp",
+      "/src/assets/images/activities/merzouga-quad.webp",
+      "/src/assets/images/activities/merzouga-caravan.webp",
+      "/src/assets/images/activities/merzouga-aerial.webp",
+      "/src/assets/images/activities/merzouga-dunes.webp"
     ],
     description: "Trekking à chameau, Erg Chebbi et camps de luxe dans le Sahara",
     longDescription: "Embarquez pour une aventure inoubliable au cœur du Sahara marocain. Cette expédition de 3 jours vous emmène à travers les majestueuses dunes de l'Erg Chebbi, où vous découvrirez la magie du désert sous les étoiles. Montez à dos de dromadaire au coucher du soleil, dormez dans un camp de luxe traditionnel, et réveillez-vous avec les premiers rayons du soleil illuminant les dunes dorées.",
