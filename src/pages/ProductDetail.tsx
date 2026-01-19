@@ -10,10 +10,10 @@ import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { getProductById, products } from "@/data/products";
+import { useProduct, useProducts } from "@/hooks/useProducts";
 import { useCart } from "@/hooks/useCart";
 import { useWishlist } from "@/hooks/useWishlist";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 // Mock reviews data - will be translated in component
@@ -118,7 +118,8 @@ const ProductDetail = () => {
   const { addToCart } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
   
-  const product = id ? getProductById(id) : undefined;
+  const { product, isLoading } = useProduct(id);
+  const { products: allProducts } = useProducts();
   const extendedDesc = getExtendedDescription(t);
   const specs = product ? getProductSpecs(product.category, t) : [];
   const mockReviews = getLocalizedReviews(t);
@@ -131,11 +132,24 @@ const ProductDetail = () => {
     percentage: (mockReviews.filter(r => r.rating === star).length / mockReviews.length) * 100
   }));
   
+  const relatedProducts = useMemo(() => allProducts.filter(p => p.category === product?.category && p.id !== product?.id).slice(0, 4), [allProducts, product]);
+  
   const handleHelpful = (reviewId: number) => {
     if (!helpfulReviews.includes(reviewId)) {
       setHelpfulReviews([...helpfulReviews, reviewId]);
     }
   };
+  
+  if (isLoading) {
+    return (
+      <PageLayout>
+        <div className="container mx-auto px-4 pt-32 pb-20 flex items-center justify-center">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+        </div>
+      </PageLayout>
+    );
+  }
+  
   if (!product) {
     return (
       <PageLayout>
@@ -166,7 +180,6 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     addToCart(product.id, quantity);
   };
-  const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
   const features = [{
     icon: Truck,
     label: t('product.worldwideDelivery')
