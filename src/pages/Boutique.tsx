@@ -346,7 +346,7 @@ const Boutique = () => {
         <div className="absolute top-20 left-0 w-96 h-96 bg-secondary/20 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl" />
         
-        <div className="container mx-auto px-4 relative z-10 mt-[70px]">
+        <div className="container mx-auto px-4 relative z-10 mt-[100px]">
           <motion.div initial={{
           opacity: 0,
           y: 30
