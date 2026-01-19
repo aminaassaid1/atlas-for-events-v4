@@ -480,12 +480,13 @@ export const destinations: Destination[] = [
     duration: "2 jours / 1 nuit",
     price: 150,
     originalPrice: 200,
-    image: "https://atlasforevents.com/wp-content/uploads/2022/08/annie-spratt-tJf8i2vqHLw-unsplash-scaled.jpg",
+    image: "/src/assets/images/destinations/fes-tanneries-2.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/08/annie-spratt-tJf8i2vqHLw-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1553913861-c372b5c93b02?w=800",
-      "https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=800",
-      "https://images.unsplash.com/photo-1580746738099-62dbda180c32?w=800"
+      "/src/assets/images/destinations/fes-tanneries-2.webp",
+      "/src/assets/images/destinations/fes-riad.webp",
+      "/src/assets/images/destinations/fes-tanneries-1.webp",
+      "/src/assets/images/destinations/fes-murailles.webp",
+      "/src/assets/images/destinations/fes-panorama.webp"
     ],
     description: "Découvrez la plus ancienne médina du monde et le patrimoine impérial de Fès",
     longDescription: "Fès est le cœur spirituel et culturel du Maroc. Cette excursion de 2 jours vous fait découvrir la plus grande médina médiévale du monde, ses souks labyrinthiques, ses célèbres tanneries et son patrimoine architectural exceptionnel. Une immersion totale dans l'histoire millénaire du royaume.",
