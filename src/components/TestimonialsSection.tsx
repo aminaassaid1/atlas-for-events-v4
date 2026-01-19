@@ -5,6 +5,9 @@ import { useTranslation } from "react-i18next";
 import testimonial1 from "@/assets/images/activities/quad-agafay-dust.webp";
 import testimonial2 from "@/assets/images/activities/merzouga-dunes.webp";
 import testimonial3 from "@/assets/images/activities/ouzoud-falls.webp";
+import testimonial4 from "@/assets/images/activities/montgolfiere-sunrise.webp";
+import testimonial5 from "@/assets/images/activities/chameau-palmeraie-ride.webp";
+import testimonial6 from "@/assets/images/activities/merzouga-camp.webp";
 import airplaneTakeoff from "@/assets/images/airplane-takeoff.png";
 
 const TestimonialsSection = () => {
@@ -32,6 +35,27 @@ const TestimonialsSection = () => {
       image: testimonial3,
       rating: 5,
       text: t('testimonials.text3')
+    },
+    {
+      name: "Jean-Pierre B.",
+      role: t('testimonials.role4'),
+      image: testimonial4,
+      rating: 5,
+      text: t('testimonials.text4')
+    },
+    {
+      name: "Camille R.",
+      role: t('testimonials.role5'),
+      image: testimonial5,
+      rating: 5,
+      text: t('testimonials.text5')
+    },
+    {
+      name: "Laurent F.",
+      role: t('testimonials.role6'),
+      image: testimonial6,
+      rating: 5,
+      text: t('testimonials.text6')
     }
   ];
 
