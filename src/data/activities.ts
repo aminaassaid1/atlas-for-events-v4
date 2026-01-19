@@ -992,12 +992,14 @@ export const activities: Activity[] = [
     price: 299,
     originalPrice: 399,
     duration: "2 jours",
-    image: "https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/merzouga-camp.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=800",
-      "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=800",
-      "https://images.unsplash.com/photo-1517623249442-af85e65ee9f7?w=800"
+      "/src/assets/images/activities/merzouga-camp.webp",
+      "/src/assets/images/activities/merzouga-camel.webp",
+      "/src/assets/images/activities/merzouga-quad.webp",
+      "/src/assets/images/activities/merzouga-caravan.webp",
+      "/src/assets/images/activities/merzouga-aerial.webp",
+      "/src/assets/images/activities/merzouga-dunes.webp"
     ],
     description: "Vivez l'expérience ultime du Sahara à Merzouga",
     longDescription: "Partez pour une aventure inoubliable de 2 jours dans le désert du Sahara à Merzouga. Traversez les gorges du Dadès et du Todra, admirez les dunes dorées de l'Erg Chebbi, vivez un coucher de soleil magique à dos de dromadaire et passez une nuit sous les étoiles dans un camp de luxe berbère.",

@@ -144,7 +144,7 @@ const activities = [{
   category: "adventure",
   price: 299,
   duration: "2 jours",
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg",
+  image: "/src/assets/images/activities/merzouga-camp.webp",
   rating: 5.0,
   includes: ["Trekking chameau", "Camp de luxe", "Erg Chebbi", "Transport"],
   includesEn: ["Camel trekking", "Luxury camp", "Erg Chebbi", "Transport"]
