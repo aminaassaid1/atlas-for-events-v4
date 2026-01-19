@@ -12,7 +12,7 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
-import logoDark from '@/assets/logo-dark.png';
+import logo from '@/assets/logo.png';
 
 const navItems = [
   { path: '/admin', icon: LayoutDashboard, label: 'Dashboard', end: true },
@@ -57,7 +57,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="flex items-center justify-between p-4 border-b border-white/10">
-            <img src={logoDark} alt="Atlas For Events" className="h-10" />
+            <img src={logo} alt="Atlas For Events" className="h-10" />
             <Button
               variant="ghost"
               size="icon"
