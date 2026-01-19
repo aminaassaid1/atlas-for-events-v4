@@ -4,6 +4,19 @@ import evjfEvjgImg from '@/assets/images/events/evjf-evjg.webp';
 import soireePriveeImg from '@/assets/images/events/soiree-privee.webp';
 import animationImg from '@/assets/images/events/animation.webp';
 import autresServicesImg from '@/assets/images/events/autres-services.webp';
+import mariageBeachImg from '@/assets/images/events/mariage-beach.webp';
+import mariageTableImg from '@/assets/images/events/mariage-table.webp';
+
+// Local placeholder images for galleries (using existing event images as fallbacks)
+const weddingGallery = [mariageBeachImg, mariageTableImg, mariageBeachImg, mariageTableImg];
+const fiancaillesGallery = [fiancaillesImg, fiancaillesImg, fiancaillesImg, fiancaillesImg];
+const anniversairesGallery = [anniversairesImg, anniversairesImg, anniversairesImg, anniversairesImg];
+const evjfGallery = [evjfEvjgImg, evjfEvjgImg, evjfEvjgImg, evjfEvjgImg];
+const soireeGallery = [soireePriveeImg, soireePriveeImg, soireePriveeImg, soireePriveeImg];
+const animationGallery = [animationImg, animationImg, animationImg, animationImg];
+
+// Default avatar placeholder
+const defaultAvatar = mariageBeachImg;
 
 export interface EventType {
   id: string;
@@ -55,13 +68,8 @@ export const eventTypes: EventType[] = [
     title: "Mariages",
     description: "Le plus beau jour de votre vie mérite une organisation parfaite",
     longDescription: "Créez le mariage de vos rêves à Marrakech, la ville rouge aux mille couleurs. Nos wedding planners expérimentés vous accompagnent dans chaque étape, de la sélection du lieu à la coordination du jour J. Palais, riads, jardins ou désert : nous créons des décors féeriques pour un moment inoubliable.",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/06/bride-groom-having-their-wedding-beach-scaled-1.jpg",
-    gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/06/bride-groom-having-their-wedding-beach-scaled-1.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/06/view-table-arrangement-by-wedding-planner-scaled-1.jpg",
-      "https://images.unsplash.com/photo-1519741497674-611481863552?w=800",
-      "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=800"
-    ],
+    image: mariageBeachImg,
+    gallery: weddingGallery,
     icon: "Heart",
     highlights: [
       "Wedding planner dédié francophone",
@@ -126,7 +134,7 @@ export const eventTypes: EventType[] = [
         rating: 5,
         date: "Mai 2024",
         content: "Un mariage de rêve ! L'équipe Atlas a transformé notre vision en réalité. Le palais était somptueux et nos invités n'en reviennent toujours pas.",
-        avatar: "https://images.unsplash.com/photo-1519741497674-611481863552?w=100&h=100&fit=crop&crop=face"
+        avatar: defaultAvatar
       },
       {
         id: 2,
@@ -135,7 +143,7 @@ export const eventTypes: EventType[] = [
         rating: 5,
         date: "Octobre 2023",
         content: "Notre mariage dans le désert d'Agafay était magique. Le coucher de soleil, les bougies, la musique... Parfait !",
-        avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face"
+        avatar: defaultAvatar
       }
     ]
   },
@@ -145,12 +153,7 @@ export const eventTypes: EventType[] = [
     description: "Célébrez votre engagement dans un cadre exceptionnel",
     longDescription: "Vos fiançailles méritent un cadre à la hauteur de votre amour. Que vous souhaitiez une soirée intime sur un rooftop avec vue sur la Médina ou une grande fête traditionnelle, nous créons l'ambiance parfaite pour célébrer votre engagement avec vos proches.",
     image: fiancaillesImg,
-    gallery: [
-      fiancaillesImg,
-      "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?w=800",
-      "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800",
-      "https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800"
-    ],
+    gallery: fiancaillesGallery,
     icon: "Sparkles",
     highlights: [
       "Lieux romantiques et exclusifs",
@@ -207,7 +210,7 @@ export const eventTypes: EventType[] = [
         rating: 5,
         date: "Décembre 2023",
         content: "La demande en mariage organisée par Atlas était incroyable. Elle a dit oui sous les étoiles du désert !",
-        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+        avatar: defaultAvatar
       }
     ]
   },
@@ -217,12 +220,7 @@ export const eventTypes: EventType[] = [
     description: "Des fêtes mémorables pour tous les âges",
     longDescription: "Qu'il s'agisse d'un anniversaire d'enfant, d'un passage à la trentaine, d'un 50ème mémorable ou d'un anniversaire de mariage, nous créons des fêtes sur mesure qui marqueront les esprits. Thématiques originales, lieux insolites et animations exceptionnelles.",
     image: anniversairesImg,
-    gallery: [
-      anniversairesImg,
-      "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=800",
-      "https://images.unsplash.com/photo-1464349153735-7db50ed83c84?w=800",
-      "https://images.unsplash.com/photo-1504196606672-aef5c9cefc92?w=800"
-    ],
+    gallery: anniversairesGallery,
     icon: "Cake",
     highlights: [
       "Thématiques personnalisées",
@@ -279,7 +277,7 @@ export const eventTypes: EventType[] = [
         rating: 5,
         date: "Septembre 2023",
         content: "Mon mari a eu la surprise de sa vie ! Une soirée parfaite avec tous nos amis, organisée dans le secret.",
-        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+        avatar: defaultAvatar
       }
     ]
   },
@@ -289,12 +287,7 @@ export const eventTypes: EventType[] = [
     description: "Des moments de folie entre amis avant le grand jour",
     longDescription: "Offrez à la future mariée ou au futur marié une expérience inoubliable à Marrakech ! Entre activités sensationnelles, spa de luxe, soirées endiablées et moments de complicité, nous créons le weekend parfait pour enterrer la vie de célibataire en beauté.",
     image: evjfEvjgImg,
-    gallery: [
-      evjfEvjgImg,
-      "https://images.unsplash.com/photo-1529543544277-0b91cdab9668?w=800",
-      "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800",
-      "https://images.unsplash.com/photo-1496024840928-4c417adf211d?w=800"
-    ],
+    gallery: evjfGallery,
     icon: "PartyPopper",
     highlights: [
       "Programmes sur mesure 2-4 jours",
@@ -355,7 +348,7 @@ export const eventTypes: EventType[] = [
         rating: 5,
         date: "Avril 2024",
         content: "3 jours de folie ! La villa était incroyable, les activités géniales et les soirées mémorables. Sarah était aux anges !",
-        avatar: "https://images.unsplash.com/photo-1529543544277-0b91cdab9668?w=100&h=100&fit=crop&crop=face"
+        avatar: defaultAvatar
       }
     ]
   },
@@ -365,12 +358,7 @@ export const eventTypes: EventType[] = [
     description: "Galas, corporate events et célébrations exclusives",
     longDescription: "Des soirées d'exception pour les moments qui comptent. Qu'il s'agisse d'un gala d'entreprise, d'une soirée de lancement, d'un dîner privé ou d'une fête exclusive, nous transformons vos événements en expériences inoubliables dans les lieux les plus prestigieux de Marrakech.",
     image: soireePriveeImg,
-    gallery: [
-      soireePriveeImg,
-      "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800",
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800",
-      "https://images.unsplash.com/photo-1505236858219-8359eb29e329?w=800"
-    ],
+    gallery: soireeGallery,
     icon: "Users",
     highlights: [
       "Lieux d'exception privatisés",
@@ -427,7 +415,7 @@ export const eventTypes: EventType[] = [
         rating: 5,
         date: "Février 2024",
         content: "Un séminaire et gala exceptionnels. L'organisation était parfaite, nos équipes en parlent encore !",
-        avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face"
+        avatar: defaultAvatar
       }
     ]
   },
@@ -437,12 +425,7 @@ export const eventTypes: EventType[] = [
     description: "Animation musicale internationale de renommée",
     longDescription: "Gipsy Sueño est notre groupe phare, mêlant musiques du monde, flamenco, rumba et rythmes envoûtants. Avec des musiciens talentueux et une énergie communicative, ils transforment chaque événement en fête inoubliable. Disponibles pour mariages, soirées privées et événements corporate.",
     image: animationImg,
-    gallery: [
-      animationImg,
-      "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800",
-      "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800",
-      "https://images.unsplash.com/photo-1501612780327-45045538702b?w=800"
-    ],
+    gallery: animationGallery,
     icon: "Music",
     highlights: [
       "Groupe de 4 à 8 musiciens",
@@ -503,7 +486,7 @@ export const eventTypes: EventType[] = [
         rating: 5,
         date: "Juin 2024",
         content: "Gipsy Sueño a mis le feu à notre mariage ! Tous nos invités ont dansé jusqu'au bout de la nuit.",
-        avatar: "https://images.unsplash.com/photo-1519741497674-611481863552?w=100&h=100&fit=crop&crop=face"
+        avatar: defaultAvatar
       }
     ]
   }

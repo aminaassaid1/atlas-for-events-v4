@@ -1,0 +1,9 @@
+// Event images exports for centralized image management
+export { default as mariageBeach } from './mariage-beach.webp';
+export { default as mariageTable } from './mariage-table.webp';
+export { default as fiancailles } from './fiancailles.webp';
+export { default as anniversaires } from './anniversaires.webp';
+export { default as evjfEvjg } from './evjf-evjg.webp';
+export { default as soireePrivee } from './soiree-privee.webp';
+export { default as animation } from './animation.webp';
+export { default as autresServices } from './autres-services.webp';
