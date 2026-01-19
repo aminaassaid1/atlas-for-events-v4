@@ -352,12 +352,12 @@ export const activities: Activity[] = [
     price: 35,
     originalPrice: 50,
     duration: "2h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes-636x426.webp",
+    image: "/src/assets/images/activities/agafay-camel-ride.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes-636x426.webp",
-      "https://images.unsplash.com/photo-1452022449339-59005948ec5b?w=800",
-      "https://images.unsplash.com/photo-1549221987-25a490f65d34?w=800",
-      "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=800"
+      "/src/assets/images/activities/agafay-camel-ride.webp",
+      "/src/assets/images/activities/agafay-lounge.webp",
+      "/src/assets/images/activities/agafay-sunset.webp",
+      "/src/assets/images/activities/agafay-motorcycle.webp"
     ],
     description: "Balade en chameau dans le désert d'Agafay avec coucher de soleil",
     longDescription: "Vivez l'expérience désertique à dos de dromadaire dans le magnifique désert d'Agafay. Cette balade vous offre des paysages lunaires spectaculaires avec vue sur les montagnes de l'Atlas. L'option coucher de soleil transforme cette excursion en un moment magique et inoubliable.",

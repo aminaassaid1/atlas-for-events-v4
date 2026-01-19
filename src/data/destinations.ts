@@ -958,11 +958,12 @@ export const destinations: Destination[] = [
     name: "Aventure dans l'Agafay - Trekking Chameau",
     duration: "3-4 heures",
     price: 50,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/randoagafay.jpg",
+    image: "/src/assets/images/activities/agafay-camel-ride.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/randoagafay.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/alan-at-agafay.webp",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes.webp"
+      "/src/assets/images/activities/agafay-camel-ride.webp",
+      "/src/assets/images/activities/agafay-lounge.webp",
+      "/src/assets/images/activities/agafay-sunset.webp",
+      "/src/assets/images/activities/agafay-motorcycle.webp"
     ],
     description: "Trekking à dos de chameau et délices culturels dans le désert d'Agafay",
     longDescription: "Vivez une aventure unique dans le désert d'Agafay avec une promenade à dos de chameau et une immersion dans la culture locale. Explorez les magnifiques paysages désertiques et découvrez la richesse des traditions marocaines dans ce cadre exceptionnel. Notre chauffeur viendra vous chercher à votre hôtel ou riad à Marrakech pour débuter cette expérience unique.",
