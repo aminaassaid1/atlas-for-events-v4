@@ -338,19 +338,6 @@ const Boutique = () => {
         url="https://atlasforevents.com/boutique"
         locale={isEnglish ? "en_US" : "fr_FR"}
       />
-      {/* Wishlist Bar */}
-      <section className="pt-24 pb-4 bg-muted/30">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-end gap-4">
-            <Button variant="outline" size="sm" className="gap-2" asChild>
-              <Link to="/favoris">
-                <Heart className="w-4 h-4 fill-primary text-primary" />
-                {t('boutique.favorites')} ({wishlistCount})
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
 
       {/* Hero Section */}
       <section className="relative pt-12 pb-24 overflow-hidden">
