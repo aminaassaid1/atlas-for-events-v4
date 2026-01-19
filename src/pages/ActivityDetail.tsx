@@ -19,6 +19,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { getActivityById, activities as allActivities } from "@/data/activities";
+import { ActivityCard } from "@/components/cards";
 
 const ActivityDetail = () => {
   const { t } = useTranslation();
@@ -544,40 +545,13 @@ const ActivityDetail = () => {
 
             <div className="grid md:grid-cols-3 gap-6">
               {relatedActivities.map((act, index) => (
-                <motion.div
+                <ActivityCard
                   key={act.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group"
-                >
-                  <Link to={`/activites/${act.id}`} className="block">
-                    <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
-                      <img
-                        src={act.image}
-                        alt={act.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute top-3 left-3 flex gap-2">
-                        <Badge className="bg-white/90 text-foreground">{act.duration}</Badge>
-                      </div>
-                      <div className="absolute top-3 right-3">
-                        <Badge className="bg-primary text-primary-foreground gap-1">
-                          <Star className="w-3 h-3 fill-current" />
-                          {act.rating}
-                        </Badge>
-                      </div>
-                    </div>
-                    <h3 className="font-title text-lg font-bold text-foreground mb-1 group-hover:text-primary transition-colors">
-                      {act.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground line-clamp-2 mb-2">{act.description}</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-lg font-bold text-primary">{act.price}€</span>
-                    </div>
-                  </Link>
-                </motion.div>
+                  item={act}
+                  index={index}
+                  variant="related"
+                  linkType="activites"
+                />
               ))}
             </div>
           </div>

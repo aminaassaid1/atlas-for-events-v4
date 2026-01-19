@@ -4,13 +4,14 @@
  */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ChevronRight, Compass, Palette, Mountain, Leaf, UtensilsCrossed, Clock, Star, ArrowRight, MapPin, Phone, MessageCircle } from "lucide-react";
+import { ChevronRight, Compass, Palette, Mountain, Leaf, UtensilsCrossed, Phone, MessageCircle } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
 import { Button } from "@/components/ui/button";
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import ProductFilters from "@/components/ProductFilters";
 import Pagination from "@/components/Pagination";
+import { ActivityCard } from "@/components/cards";
 
 const ITEMS_PER_PAGE = 6;
 
@@ -381,49 +382,18 @@ const Activites = () => {
 
         {/* Activities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {paginatedActivities.map((activity, index) => <motion.div key={activity.id} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300">
-            <div className="relative aspect-[4/3] overflow-hidden">
-              <img src={activity.image} alt={isEnglish ? activity.nameEn : activity.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-              <div className="absolute top-4 left-4 flex gap-2">
-                <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-foreground flex items-center gap-1.5">
-                  <Clock className="w-4 h-4 text-primary" />
-                  {activity.duration}
-                </span>
-              </div>
-              <div className="absolute top-4 right-4">
-                <span className="bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
-                  <Star className="w-3.5 h-3.5 fill-current" />
-                  {activity.rating}
-                </span>
-              </div>
-            </div>
-
-            <div className="p-6">
-              <h3 className="text-lg font-bold text-foreground mb-3 line-clamp-2">
-                {isEnglish ? activity.nameEn : activity.name}
-              </h3>
-
-              <div className="flex flex-wrap gap-1.5 mb-4">
-                {(isEnglish ? activity.includesEn : activity.includes).slice(0, 3).map(item => <span key={item} className="text-xs bg-muted px-2 py-1 rounded-md text-muted-foreground">
-                  {item}
-                </span>)}
-              </div>
-
-              <div className="flex items-end justify-between">
-                <div>
-                  <span className="text-xs text-muted-foreground">{t('activitiesPage.from')}</span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-2xl font-bold text-primary">{activity.price}€</span>
-                  </div>
-                </div>
-                <Button size="sm" className="rounded-full" asChild>
-                  <Link to={`/activites/${activity.slug}`}>
-                    {t('activitiesPage.viewDetails')}
-                  </Link>
-                </Button>
-              </div>
-            </div>
-          </motion.div>)}
+          {paginatedActivities.map((activity, index) => (
+            <ActivityCard
+              key={activity.id}
+              item={activity}
+              index={index}
+              variant="full"
+              linkType="activites"
+              showPromo={false}
+              fromLabel={t('activitiesPage.from')}
+              viewDetailsLabel={t('activitiesPage.viewDetails')}
+            />
+          ))}
         </div>
 
         {/* Pagination */}
