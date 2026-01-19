@@ -19,7 +19,7 @@ const DestinationsSection = () => {
       icon: Bike,
       title: t('services.excursions'),
       description: t('services.excursionsDesc'),
-      image: "https://atlasforevents.com/wp-content/uploads/2022/08/milad-alizadeh-JibMa0FbyHw-unsplash-scaled.jpg",
+      image: "/src/assets/images/activities/chefchaouen-activity.jpg",
       link: "/services/vacances",
     },
     {

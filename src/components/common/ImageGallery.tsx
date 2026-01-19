@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, Heart, Share2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import OptimizedImage from "./OptimizedImage";
 
 interface ImageGalleryProps {
   images: string[];
@@ -112,10 +113,11 @@ const ImageGallery = ({
               activeImage === idx ? "ring-4 ring-primary" : "hover:opacity-80"
             }`}
           >
-            <img 
-              src={img} 
-              alt={`${alt} ${idx + 1}`} 
-              className="w-full h-full object-cover" 
+            <OptimizedImage
+              src={img}
+              alt={`${alt} ${idx + 1}`}
+              aspectRatio="landscape"
+              priority={idx < 2}
             />
             {idx === 3 && images.length > 4 && (
               <div className="absolute inset-0 bg-black/50 flex items-center justify-center">

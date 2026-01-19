@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Clock, Star, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { OptimizedImage } from "@/components/common";
 import { useTranslation } from "react-i18next";
 
 export interface CardItem {
@@ -80,10 +81,12 @@ const ActivityCard = ({
       >
         <Link to={linkPath} className="block">
           <div className="relative aspect-[4/3] rounded-xl overflow-hidden mb-4">
-            <img
+            <OptimizedImage
               src={item.image}
               alt={displayName}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              aspectRatio="landscape"
+              className="group-hover:scale-105 transition-transform duration-500"
+              containerClassName="rounded-xl"
             />
             <div className="absolute top-3 left-3 flex gap-2">
               <Badge className="bg-white/90 text-foreground">{item.duration}</Badge>
@@ -122,10 +125,11 @@ const ActivityCard = ({
       className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
     >
       <div className="relative aspect-[4/3] overflow-hidden">
-        <img
+        <OptimizedImage
           src={item.image}
           alt={displayName}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          aspectRatio="landscape"
+          className="group-hover:scale-110 transition-transform duration-500"
         />
         <div className="absolute top-4 left-4 flex gap-2">
           <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-foreground flex items-center gap-1.5">

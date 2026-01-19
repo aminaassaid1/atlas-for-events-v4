@@ -84,7 +84,7 @@ const activities = [{
   category: "food",
   price: 60,
   duration: "4h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29-1.jpeg",
+  image: "/src/assets/images/activities/cours-cuisine.jpg",
   rating: 5.0,
   includes: ["Cours avec chef local", "Repas complet", "Recettes traditionnelles", "Transport"],
   includesEn: ["Class with local chef", "Full meal", "Traditional recipes", "Transport"]
@@ -156,7 +156,7 @@ const activities = [{
   category: "culture",
   price: 50,
   duration: "1 journée",
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/hassan-ouajbir-INcADDyMwwo-unsplash-scaled.jpg",
+  image: "/src/assets/images/activities/ouarzazate-kasbahs.jpg",
   rating: 4.7,
   includes: ["Kasbahs historiques", "Studio Atlas", "Guide local", "Transport"],
   includesEn: ["Historic Kasbahs", "Atlas Studios", "Local guide", "Transport"]
