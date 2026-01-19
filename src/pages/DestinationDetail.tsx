@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -13,7 +14,8 @@ import { getDestinationById, destinations as allDestinations } from "@/data/dest
 import { ActivityCard } from "@/components/cards";
 
 const DestinationDetail = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [activeImage, setActiveImage] = useState(0);
@@ -65,6 +67,14 @@ const DestinationDetail = () => {
     return Math.round((1 - destination.price / destination.originalPrice) * 100);
   };
   return <div className="min-h-screen bg-background">
+      <SEO 
+        title={`${destination.name} - ${isEnglish ? "Excursion from Marrakech" : "Excursion au départ de Marrakech"}`}
+        description={destination.description}
+        keywords={`${destination.name}, excursion, ${destination.category}, Marrakech, Morocco`}
+        url={`https://atlasforevents.com/destinations/${id}`}
+        image={destination.gallery?.[0] || destination.image}
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       <Header />
 
       {/* Hero Section with Gallery */}

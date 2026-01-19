@@ -6,6 +6,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, Heart, ShoppingCart, Truck, Shield, Minus, Plus, Tag, Star, Award, Check, ChevronRight, Package, Ruler, Weight, Palette, Clock, MessageSquare, ThumbsUp, Share2, Zap, RefreshCw, Sparkles, Users } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -105,7 +106,8 @@ const getExtendedDescription = (t: (key: string) => string) => ({
 });
 
 const ProductDetail = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
@@ -178,6 +180,28 @@ const ProductDetail = () => {
   
   return (
     <PageLayout>
+      <SEO 
+        title={`${product.title} - ${isEnglish ? "Metal Art Sculpture" : "Sculpture Métal Artisanale"}`}
+        description={product.description}
+        keywords={`${product.title}, sculpture métal, ${product.category}, artisanat marocain, art décoratif`}
+        url={`https://atlasforevents.com/boutique/${product.id}`}
+        image={product.image}
+        type="product"
+        locale={isEnglish ? "en_US" : "fr_FR"}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": product.title,
+          "description": product.description,
+          "image": product.image,
+          "offers": {
+            "@type": "Offer",
+            "price": product.promoPrice || product.price,
+            "priceCurrency": "EUR",
+            "availability": "https://schema.org/InStock"
+          }
+        }}
+      />
 
       <main className="pt-28 pb-20">
         <div className="container mx-auto px-4 max-w-6xl mt-[65px]">

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Calendar, Palmtree, Bike, Home, Sparkles, Car, Package, Check, ArrowRight } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { PageLayout } from "@/components/layout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -142,6 +143,19 @@ const Services = () => {
 
   return (
     <PageLayout>
+      <SEO 
+        title={isEnglish ? "Our Services - Events, Travel & Wellness" : "Nos Services - Événements, Voyages & Bien-être"}
+        description={isEnglish 
+          ? "Discover all Atlas For Events services: excursions, event planning, activities, accommodation, spa, transport and delivery in Marrakech."
+          : "Découvrez tous les services Atlas For Events : excursions, organisation d'événements, activités, hébergement, spa, transport et livraison à Marrakech."
+        }
+        keywords={isEnglish 
+          ? "services Marrakech, events Morocco, travel services, spa wellness, VIP transport, luxury accommodation"
+          : "services Marrakech, événements Maroc, services voyage, spa bien-être, transport VIP, hébergement luxe"
+        }
+        url="https://atlasforevents.com/services"
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       {/* Hero Section */}
       <section className="pb-20 bg-gradient-to-b from-primary/10 to-background mt-0 pt-[204px]">
         <div className="container mx-auto px-4">

@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Home, ArrowLeft } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { PageLayout } from "@/components/layout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
@@ -12,6 +13,12 @@ const NotFound = () => {
 
   return (
     <PageLayout>
+      <SEO 
+        title={isEnglish ? "Page Not Found - 404" : "Page Non Trouvée - 404"}
+        description={isEnglish ? "The page you are looking for does not exist." : "La page que vous recherchez n'existe pas."}
+        noIndex={true}
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       <div className="min-h-[70vh] flex items-center justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
