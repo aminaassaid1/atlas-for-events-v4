@@ -236,7 +236,6 @@ const Boutique = () => {
     toast
   } = useToast();
   const {
-    user,
     toggleWishlist,
     isInWishlist,
     wishlistCount
@@ -327,26 +326,16 @@ const Boutique = () => {
   const craftPoints = useMemo(() => [t('boutique.craftPoint1'), t('boutique.craftPoint2'), t('boutique.craftPoint3'), t('boutique.craftPoint4'), t('boutique.craftPoint5')], [t]);
   return <PageLayout>
       
-      {/* User Auth Bar */}
+      {/* Wishlist Bar */}
       <section className="pt-24 pb-4 bg-muted/30">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-end gap-4">
-            {user ? <div className="flex items-center gap-4">
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <User className="w-4 h-4" />
-                  <span>{user.email}</span>
-                </div>
-                <Button variant="outline" size="sm" className="gap-2" asChild>
-                  <Link to="/boutique">
-                    <Heart className="w-4 h-4 fill-primary text-primary" />
-                    {t('boutique.favorites')} ({wishlistCount})
-                  </Link>
-                </Button>
-                <Button variant="ghost" size="sm" onClick={handleLogout} className="gap-2">
-                  <LogOut className="w-4 h-4" />
-                  {t('boutique.logout')}
-                </Button>
-              </div> : null}
+            <Button variant="outline" size="sm" className="gap-2" asChild>
+              <Link to="/favoris">
+                <Heart className="w-4 h-4 fill-primary text-primary" />
+                {t('boutique.favorites')} ({wishlistCount})
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
