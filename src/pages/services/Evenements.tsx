@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import PageLayout from "@/components/layout/PageLayout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -16,7 +17,8 @@ import { Textarea } from "@/components/ui/textarea";
 const gipsyVideos = ["https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Video-2024-07-04-at-18.52.58_2b37c77a.mp4", "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Video-2024-07-04-at-18.52.58_7e33d036.mp4", "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Video-2024-07-04-at-18.52.57_2a90b0ce.mp4", "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Video-2024-07-04-at-18.52.57_7d58a4d0.mp4", "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Video-2024-07-04-at-18.52.57_a0f7d79e.mp4"];
 
 const Evenements = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const [lightboxVideo, setLightboxVideo] = useState<number | null>(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [formData, setFormData] = useState({
@@ -136,6 +138,19 @@ const Evenements = () => {
   const prevSlide = () => setCurrentSlide(prev => (prev - 1 + eventTypes.length) % eventTypes.length);
 
   return <PageLayout>
+    <SEO 
+      title={isEnglish ? "Event Planning & Weddings in Marrakech" : "Organisation d'Événements & Mariages à Marrakech"}
+      description={isEnglish 
+        ? "Create unforgettable events in Marrakech: weddings, engagements, birthdays, bachelor/bachelorette parties, private events. Full-service event planning."
+        : "Créez des événements inoubliables à Marrakech : mariages, fiançailles, anniversaires, EVJF/EVJG, soirées privées. Organisation événementielle complète."
+      }
+      keywords={isEnglish 
+        ? "wedding Marrakech, event planning Morocco, birthday party Marrakech, bachelor party Morocco, event organizer"
+        : "mariage Marrakech, organisation événement Maroc, anniversaire Marrakech, EVJF EVJG Maroc, organisateur événement"
+      }
+      url="https://atlasforevents.com/services/evenements"
+      locale={isEnglish ? "en_US" : "fr_FR"}
+    />
     {/* Hero Section */}
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">

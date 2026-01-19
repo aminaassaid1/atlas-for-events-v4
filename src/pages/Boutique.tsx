@@ -5,6 +5,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Truck, Shield, Package, ArrowRight, Gem, Heart, Dog, Flower2, Grid3X3, Sparkles, Star, Tag, Eye, LogIn, LogOut, User, ShoppingCart, Check } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
+import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useMemo, useCallback } from "react";
@@ -224,9 +225,8 @@ const cardVariants = {
   }
 };
 const Boutique = () => {
-  const {
-    t
-  } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isEnglish = i18n.language === 'en';
   const [activeCategory, setActiveCategory] = useState("all");
   const [priceRange, setPriceRange] = useState<[number, number]>([0, MAX_PRICE]);
   const [showPromoOnly, setShowPromoOnly] = useState(false);
@@ -325,7 +325,19 @@ const Boutique = () => {
   }], [t]);
   const craftPoints = useMemo(() => [t('boutique.craftPoint1'), t('boutique.craftPoint2'), t('boutique.craftPoint3'), t('boutique.craftPoint4'), t('boutique.craftPoint5')], [t]);
   return <PageLayout>
-      
+      <SEO 
+        title={isEnglish ? "Metal Art Sculptures Boutique" : "Boutique Sculptures Métal Artisanales"}
+        description={isEnglish 
+          ? "Discover our unique collection of handcrafted metal sculptures. Animal sculptures, art pieces, and decorative items. International delivery available."
+          : "Découvrez notre collection unique de sculptures en métal artisanales. Sculptures animaux, pièces d'art et objets décoratifs. Livraison internationale disponible."
+        }
+        keywords={isEnglish 
+          ? "metal sculptures, handcrafted art, animal sculptures, decorative art, iron sculptures, Moroccan crafts"
+          : "sculptures métal, art artisanal, sculptures animaux, art décoratif, sculptures fer, artisanat marocain"
+        }
+        url="https://atlasforevents.com/boutique"
+        locale={isEnglish ? "en_US" : "fr_FR"}
+      />
       {/* Wishlist Bar */}
       <section className="pt-24 pb-4 bg-muted/30">
         <div className="container mx-auto px-4">
