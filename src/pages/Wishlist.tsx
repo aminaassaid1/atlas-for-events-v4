@@ -17,7 +17,6 @@ const Wishlist = () => {
   const {
     wishlistIds,
     loading,
-    user,
     toggleWishlist
   } = useWishlist();
   const {
@@ -64,14 +63,6 @@ const Wishlist = () => {
         </motion.div>
       </div>
     </PageLayout>;
-  if (!user) {
-    return <EmptyState icon={Heart} title={t('wishlist.yourFavorites')} description={t('wishlist.loginToSave')} action={<Button asChild size="lg" className="rounded-full px-8 gap-2">
-            <Link to={getLocalizedPath("/contact")}>
-              {t('orders.login')}
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </Button>} />;
-  }
   if (loading) {
     return <PageLayout>
         <div className="container mx-auto px-4 pt-32 pb-20 flex flex-col items-center justify-center gap-4">
