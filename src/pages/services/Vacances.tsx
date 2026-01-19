@@ -22,7 +22,7 @@ const destinations = [
     duration: "Demi-journée",
     price: 40,
     originalPrice: 60,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
+    image: "/src/assets/images/destinations/argan-cooperative-1.jpg",
     description: "Découvrez MARJANA, une immersion dans la production d'Argan au Maroc",
     category: "Culture",
     rating: 4.9,

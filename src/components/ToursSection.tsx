@@ -10,7 +10,7 @@ const ToursSection = () => {
 
   const tours = [
     {
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+      image: "/src/assets/images/activities/buggy-palmeraie.webp",
       location: t('tours.tour1Location'),
       duration: t('tours.tour1Duration'),
       title: t('tours.tour1Title'),

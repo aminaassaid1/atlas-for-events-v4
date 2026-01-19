@@ -25,7 +25,7 @@ const Services = () => {
         t('servicesPage.excursionFeature5'),
         t('servicesPage.excursionFeature6'),
       ],
-      image: "https://atlasforevents.com/wp-content/uploads/2022/08/milad-alizadeh-JibMa0FbyHw-unsplash-scaled.jpg",
+      image: "/src/assets/images/activities/chefchaouen-activity.jpg",
       color: "bg-primary"
     },
     {
@@ -61,7 +61,7 @@ const Services = () => {
         t('servicesPage.activityFeature5'),
         t('servicesPage.activityFeature6'),
       ],
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+      image: "/src/assets/images/activities/buggy-palmeraie.webp",
       color: "bg-primary"
     },
     {
@@ -79,7 +79,7 @@ const Services = () => {
         t('servicesPage.accommodationFeature5'),
         t('servicesPage.accommodationFeature6'),
       ],
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/419760597_677102024567035_474413547800764016_n.jpg",
+      image: "/src/assets/images/hebergement/bedouin-agafay.jpg",
       color: "bg-atlas-gold"
     },
     {
@@ -97,7 +97,7 @@ const Services = () => {
         t('servicesPage.spaFeature5'),
         t('servicesPage.spaFeature6'),
       ],
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-11-at-22.00.05-3.jpeg",
+      image: "/src/assets/images/services/spa-massage.jpg",
       color: "bg-primary"
     },
     {
@@ -115,7 +115,7 @@ const Services = () => {
         t('servicesPage.transportFeature5'),
         t('servicesPage.transportFeature6'),
       ],
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/dino-reichmuth-A5rCN8626Ck-unsplash-scaled.jpg",
+      image: "/src/assets/images/transport-hero.webp",
       color: "bg-atlas-gold"
     },
     {

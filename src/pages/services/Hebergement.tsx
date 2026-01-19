@@ -399,9 +399,10 @@ const Hebergement = () => {
       <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://atlasforevents.com/wp-content/uploads/2024/08/419760597_677102024567035_474413547800764016_n.jpg"
+            src="/src/assets/images/hebergement/bedouin-agafay.jpg"
             alt={t('accommodationPage.heroTitle')}
             className="w-full h-full object-cover"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
         </div>
