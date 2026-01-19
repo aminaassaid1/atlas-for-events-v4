@@ -1240,12 +1240,14 @@ export const activities: Activity[] = [
     price: 55,
     originalPrice: 75,
     duration: "1 journée",
-    image: "https://atlasforevents.com/wp-content/uploads/2022/08/aziz-acharki-Bl-azXExvOs-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/asilah-mural.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/08/aziz-acharki-Bl-azXExvOs-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1555881400-69294e40a5ef?w=800",
-      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800",
-      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800"
+      "/src/assets/images/activities/asilah-mural.webp",
+      "/src/assets/images/activities/asilah-medina.webp",
+      "/src/assets/images/activities/asilah-remparts.webp",
+      "/src/assets/images/activities/asilah-coast.webp",
+      "/src/assets/images/activities/asilah-sunset.webp",
+      "/src/assets/images/activities/asilah-walls.webp"
     ],
     description: "Découvrez la ville aux murs peints et fresques colorées",
     longDescription: "Asilah, perle de la côte atlantique marocaine, vous séduira par ses murs blanchis ornés de fresques murales colorées, vestiges de son festival culturel annuel. Explorez la médina aux ruelles fleuries, les remparts portugais et profitez des plages paisibles de cette ville d'artistes.",
