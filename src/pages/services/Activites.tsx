@@ -36,7 +36,7 @@ const activities = [{
   category: "adventure",
   price: 200,
   duration: "5h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg",
+  image: "/src/assets/images/activities/montgolfiere-sunrise.webp",
   rating: 5.0,
   includes: ["Vol 1h", "Petit-déjeuner berbère", "Certificat souvenir", "Transport 4x4"],
   includesEn: ["1h flight", "Berber breakfast", "Souvenir certificate", "4x4 Transport"]

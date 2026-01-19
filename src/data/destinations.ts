@@ -1204,13 +1204,14 @@ export const destinations: Destination[] = [
     duration: "5 heures",
     price: 180,
     originalPrice: 200,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg",
+    image: "/src/assets/images/activities/montgolfiere-sunrise.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.55.50.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.55.50-1.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10-1.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10-2.jpeg"
+      "/src/assets/images/activities/montgolfiere-sunrise.webp",
+      "/src/assets/images/activities/montgolfiere-takeoff.webp",
+      "/src/assets/images/activities/montgolfiere-night.webp",
+      "/src/assets/images/activities/montgolfiere-landscape.webp",
+      "/src/assets/images/activities/montgolfiere-sky.webp",
+      "/src/assets/images/activities/montgolfiere-sunset.webp"
     ],
     description: "Survolez les villages berbères et l'Atlas en montgolfière",
     longDescription: "Embarquez pour une aventure aérienne unique à Marrakech à bord d'une majestueuse montgolfière. Profitez de vues panoramiques époustouflantes sur les villages berbères pittoresques et les montagnes de l'Atlas, tout en survolant le ciel marocain. Votre aventure commence avec un transfert en 4x4 depuis votre hôtel vers un camp berbère de luxe, où un petit-déjeuner délicieux vous attend.",

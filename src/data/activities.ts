@@ -203,12 +203,14 @@ export const activities: Activity[] = [
     price: 200,
     originalPrice: 250,
     duration: "5h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg",
+    image: "/src/assets/images/activities/montgolfiere-sunrise.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg",
-      "https://images.unsplash.com/photo-1507608616759-54f48f0af0ee?w=800",
-      "https://images.unsplash.com/photo-1474623809196-26c1d33457cc?w=800",
-      "https://images.unsplash.com/photo-1520428456505-6c0f94e1cdee?w=800"
+      "/src/assets/images/activities/montgolfiere-sunrise.webp",
+      "/src/assets/images/activities/montgolfiere-takeoff.webp",
+      "/src/assets/images/activities/montgolfiere-night.webp",
+      "/src/assets/images/activities/montgolfiere-landscape.webp",
+      "/src/assets/images/activities/montgolfiere-sky.webp",
+      "/src/assets/images/activities/montgolfiere-sunset.webp"
     ],
     description: "Survolez Marrakech et l'Atlas au lever du soleil en montgolfière",
     longDescription: "Vivez une expérience magique en survolant les paysages spectaculaires de Marrakech au lever du soleil. Du ciel, admirez les montagnes de l'Atlas, la palmeraie, les villages berbères et le désert d'Agafay. Une aventure inoubliable couronnée par un petit-déjeuner berbère traditionnel à l'atterrissage.",
