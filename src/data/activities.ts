@@ -57,12 +57,12 @@ export const activities: Activity[] = [
     price: 35,
     originalPrice: 50,
     duration: "2-3h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/145-4.jpg",
+    image: "/src/assets/images/activities/quad-sunset.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/145-4.jpg",
-      "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800",
-      "https://images.unsplash.com/photo-1609137144813-7d9921338f24?w=800",
-      "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800"
+      "/src/assets/images/activities/quad-sunset.webp",
+      "/src/assets/images/activities/quad-group.webp",
+      "/src/assets/images/activities/quad-ride.webp",
+      "/src/assets/images/activities/quad-adventure.webp"
     ],
     description: "Explorez la Palmeraie de Marrakech en quad Yamaha 250cc",
     longDescription: "Vivez une aventure palpitante à travers les paysages de la Palmeraie de Marrakech. Pilotez un quad Yamaha 250cc à travers les pistes de terre, les palmeraies et les villages berbères traditionnels. Une expérience unique pour les amateurs de sensations fortes et de nature sauvage, avec pause thé dans un village traditionnel.",
