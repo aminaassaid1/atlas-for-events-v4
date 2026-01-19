@@ -108,7 +108,7 @@ const activities = [{
   category: "nature",
   price: 45,
   duration: "5h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/78b38e7f-e50d-402f-a9fa-b13e30075673.jpeg",
+  image: "/src/assets/images/activities/diner-agafay-sunset.webp",
   rating: 4.8,
   includes: ["Promenade dromadaire", "Dîner sous les étoiles", "Coucher de soleil", "Transport"],
   includesEn: ["Camel ride", "Dinner under the stars", "Sunset", "Transport"]

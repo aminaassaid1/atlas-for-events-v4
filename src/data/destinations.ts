@@ -1535,12 +1535,13 @@ export const destinations: Destination[] = [
     name: "Coucher de Soleil et Dîner Agafay",
     duration: "5 heures",
     price: 45,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/78b38e7f-e50d-402f-a9fa-b13e30075673.jpeg",
+    image: "/src/assets/images/activities/diner-agafay-sunset.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/78b38e7f-e50d-402f-a9fa-b13e30075673.jpeg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/alan-at-agafay.webp",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes.webp",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/randoagafay.jpg"
+      "/src/assets/images/activities/diner-agafay-sunset.webp",
+      "/src/assets/images/activities/diner-agafay-tent.webp",
+      "/src/assets/images/activities/diner-agafay-horizon.webp",
+      "/src/assets/images/activities/diner-agafay-table.webp",
+      "/src/assets/images/activities/diner-agafay-cushions.webp"
     ],
     description: "Coucher de soleil et dîner magique dans le désert d'Agafay avec dromadaires",
     longDescription: "Évadez-vous de l'agitation de Marrakech et plongez dans la beauté sereine du désert d'Agafay. Situé à seulement trente kilomètres de Marrakech, ce paysage désertique unique offre un havre de paix et un spectacle naturel à couper le souffle. Vivez un moment inoubliable avec un coucher de soleil suivi d'un délicieux dîner sous un ciel étoilé.",
