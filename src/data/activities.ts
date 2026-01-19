@@ -414,12 +414,9 @@ export const activities: Activity[] = [
     price: 45,
     originalPrice: 65,
     duration: "4h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29-1.jpeg",
+    image: "/src/assets/images/activities/cours-cuisine.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29-1.jpeg",
-      "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=800",
-      "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800",
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800"
+      "/src/assets/images/activities/cours-cuisine.jpg"
     ],
     description: "Apprenez les secrets de la cuisine marocaine avec un chef local",
     longDescription: "Plongez dans l'art culinaire marocain lors d'un cours de cuisine authentique dans le désert d'Agafay. Accompagné d'un chef local, découvrez les techniques ancestrales pour préparer tajines, couscous, pastilla et pâtisseries orientales. Dégustez ensuite vos créations dans un cadre exceptionnel avec vue sur l'Atlas.",
@@ -620,12 +617,9 @@ export const activities: Activity[] = [
     price: 35,
     originalPrice: 50,
     duration: "2h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-07-26-at-12.27.10-1.jpeg",
+    image: "/src/assets/images/services/spa-massage.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-07-26-at-12.27.10-1.jpeg",
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800",
-      "https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=800",
-      "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=800"
+      "/src/assets/images/services/spa-massage.jpg"
     ],
     description: "Expérience authentique de hammam marocain avec gommage et massage",
     longDescription: "Offrez-vous une pause bien-être dans un hammam traditionnel marocain. Profitez d'un rituel complet incluant bain de vapeur, gommage au savon noir et gant kessa, enveloppement au rhassoul et massage relaxant à l'huile d'argan. Une expérience purifiante pour le corps et l'esprit.",
@@ -800,12 +794,12 @@ export const activities: Activity[] = [
     price: 85,
     originalPrice: 120,
     duration: "24h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes-636x426.webp",
+    image: "/src/assets/images/activities/agafay-dunes.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes-636x426.webp",
-      "https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=800",
-      "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=800",
-      "https://images.unsplash.com/photo-1517623249442-af85e65ee9f7?w=800"
+      "/src/assets/images/activities/agafay-dunes.webp",
+      "/src/assets/images/activities/agafay-camel-ride.webp",
+      "/src/assets/images/activities/agafay-lounge.webp",
+      "/src/assets/images/activities/agafay-sunset.webp"
     ],
     description: "Nuit magique sous les étoiles dans un camp de luxe au désert d'Agafay",
     longDescription: "Vivez une nuit inoubliable dans le désert d'Agafay. Arrivez pour le coucher de soleil, savourez un dîner traditionnel sous les étoiles, dormez dans une tente berbère confortable et réveillez-vous au lever du soleil avec les montagnes de l'Atlas en toile de fond. Une expérience authentique et romantique.",
@@ -1056,9 +1050,9 @@ export const activities: Activity[] = [
     price: 50,
     originalPrice: 70,
     duration: "1 journée",
-    image: "https://atlasforevents.com/wp-content/uploads/2022/07/hassan-ouajbir-INcADDyMwwo-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/ouarzazate-kasbahs.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/07/hassan-ouajbir-INcADDyMwwo-unsplash-scaled.jpg",
+      "/src/assets/images/activities/ouarzazate-kasbahs.jpg",
       "/src/assets/images/destinations/ouarzazate-ait-benhaddou.webp",
       "/src/assets/images/destinations/ouarzazate-studios.webp",
       "/src/assets/images/destinations/ouarzazate-kasbah.webp"
@@ -1117,12 +1111,9 @@ export const activities: Activity[] = [
     price: 45,
     originalPrice: 60,
     duration: "1 journée",
-    image: "https://atlasforevents.com/wp-content/uploads/2022/07/matthew-fainman-3yonP2JaGTU-unsplash-scaled.jpg",
+    image: "/src/assets/images/destinations/ourika-valley.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/07/matthew-fainman-3yonP2JaGTU-unsplash-scaled.jpg",
-      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
-      "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800"
+      "/src/assets/images/destinations/ourika-valley.jpg"
     ],
     description: "Randonnée et cascades dans les montagnes de l'Atlas",
     longDescription: "Échappez à la chaleur de Marrakech et découvrez la fraîcheur de la Vallée de l'Ourika, nichée dans les contreforts du Haut Atlas. Randonnez jusqu'aux sept cascades, visitez des villages berbères traditionnels, découvrez une coopérative d'huile d'argan et savourez un déjeuner berbère authentique au bord de la rivière.",
@@ -1304,9 +1295,9 @@ export const activities: Activity[] = [
     price: 55,
     originalPrice: 75,
     duration: "1 journée",
-    image: "https://atlasforevents.com/wp-content/uploads/2022/08/milad-alizadeh-JibMa0FbyHw-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/chefchaouen-activity.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2022/08/milad-alizadeh-JibMa0FbyHw-unsplash-scaled.jpg",
+      "/src/assets/images/activities/chefchaouen-activity.jpg",
       "/src/assets/images/destinations/chefchaouen-1.webp",
       "/src/assets/images/destinations/chefchaouen-2.webp",
       "/src/assets/images/destinations/chefchaouen-3.webp"
@@ -1426,12 +1417,12 @@ export const activities: Activity[] = [
     price: 60,
     originalPrice: 80,
     duration: "2-3h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
+    image: "/src/assets/images/destinations/argan-cooperative-1.jpg",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
-      "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=800",
-      "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800",
-      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800"
+      "/src/assets/images/destinations/argan-cooperative-1.jpg",
+      "/src/assets/images/destinations/argan-cooperative-2.jpg",
+      "/src/assets/images/destinations/argan-cooperative-3.jpg",
+      "/src/assets/images/destinations/argan-cooperative-4.jpg"
     ],
     description: "Découvrez les secrets de l'huile d'argan avec les femmes berbères",
     longDescription: "Visitez une coopérative d'huile d'argan gérée par des femmes berbères. Découvrez le processus ancestral de fabrication de l'huile d'argan, de la récolte des noix au pressage traditionnel. Dégustez l'amlou (pâte d'amandes à l'argan) et emportez des produits authentiques directement des productrices.",
