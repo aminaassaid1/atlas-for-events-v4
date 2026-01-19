@@ -60,7 +60,7 @@ const activities = [{
   category: "adventure",
   price: 50,
   duration: "3-4h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/randoagafay.jpg",
+  image: "/src/assets/images/activities/agafay-camel-ride.webp",
   rating: 4.9,
   includes: ["Balade à dos de chameau", "Immersion culturelle", "Repas traditionnel", "Transport"],
   includesEn: ["Camel ride", "Cultural immersion", "Traditional meal", "Transport"]
