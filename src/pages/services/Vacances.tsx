@@ -45,7 +45,7 @@ const destinations = [
     duration: "1-2 heures",
     price: 25,
     originalPrice: 40,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/d2daa107ff6b37140d01fafba2a01625.jpg-1.webp",
+    image: "/src/assets/images/activities/chameau-palmeraie-group.webp",
     description: "Expérience envoûtante à dos de chameau dans la Palmeraie de Marrakech",
     category: "Nature",
     rating: 4.9,

@@ -283,12 +283,12 @@ export const activities: Activity[] = [
     price: 25,
     originalPrice: 40,
     duration: "1-2h",
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/d2daa107ff6b37140d01fafba2a01625.jpg-1.webp",
+    image: "/src/assets/images/activities/chameau-palmeraie-group.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/d2daa107ff6b37140d01fafba2a01625.jpg-1.webp",
-      "https://images.unsplash.com/photo-1452022449339-59005948ec5b?w=800",
-      "https://images.unsplash.com/photo-1549221987-25a490f65d34?w=800",
-      "https://images.unsplash.com/photo-1518467166778-b88f373ffec7?w=800"
+      "/src/assets/images/activities/chameau-palmeraie-group.webp",
+      "/src/assets/images/activities/chameau-palmeraie-ride.webp",
+      "/src/assets/images/activities/chameau-palmeraie-rest.webp",
+      "/src/assets/images/activities/chameau-palmeraie-sunset.webp"
     ],
     description: "Promenade relaxante à dos de dromadaire dans la Palmeraie de Marrakech",
     longDescription: "Découvrez la Palmeraie de Marrakech de manière authentique, à dos de dromadaire. Cette balade paisible vous emmène à travers les 13 000 hectares de palmiers dattiers, offrant une immersion dans le Maroc traditionnel. Terminez par une pause thé dans un village berbère typique.",

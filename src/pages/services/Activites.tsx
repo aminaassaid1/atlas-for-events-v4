@@ -48,7 +48,7 @@ const activities = [{
   category: "nature",
   price: 40,
   duration: "1-2h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/d2daa107ff6b37140d01fafba2a01625.jpg-1.webp",
+  image: "/src/assets/images/activities/chameau-palmeraie-group.webp",
   rating: 4.8,
   includes: ["Balade relaxante", "Thé marocain", "Assurance", "Transport"],
   includesEn: ["Relaxing ride", "Moroccan tea", "Insurance", "Transport"]
