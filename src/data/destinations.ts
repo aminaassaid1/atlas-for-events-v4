@@ -1702,13 +1702,15 @@ export const destinations: Destination[] = [
     name: "Visite Privée des Trésors de Marrakech",
     duration: "7 heures",
     price: 40,
-    image: "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
+    image: "/src/assets/images/activities/marrakech-jemaa-fna.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/imen-chakir-YeLWmnYxwZ0-unsplash-scaled.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/mourad-saadi-2lwMOji03SY-unsplash-scaled.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/mehdi-el-marouazi-uWLJZcq_Kq8-unsplash-scaled.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/selina-bubendorfer-FP9g9fNk9zA-unsplash-scaled.jpg"
+      "/src/assets/images/activities/marrakech-jemaa-fna.webp",
+      "/src/assets/images/activities/marrakech-koutoubia.webp",
+      "/src/assets/images/activities/marrakech-koutoubia-fountain.webp",
+      "/src/assets/images/activities/marrakech-menara.webp",
+      "/src/assets/images/activities/marrakech-souk.webp",
+      "/src/assets/images/activities/marrakech-medina.webp",
+      "/src/assets/images/activities/marrakech-museum-door.webp"
     ],
     description: "Découvrez les trésors de Marrakech : Koutoubia, Bahia, Souks",
     longDescription: "Explorez Marrakech comme jamais auparavant ! Cette excursion vous fera découvrir les lieux incontournables de la ville, ainsi que ses trésors cachés. Préparez-vous à être émerveillé par l'histoire, l'architecture, et la culture qui font la richesse de Marrakech. De la majestueuse Mosquée Koutoubia au somptueux Palais Bahia, en passant par les souks animés.",
