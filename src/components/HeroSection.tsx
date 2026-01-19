@@ -14,8 +14,11 @@ const HeroSection = () => {
         loop
         autoPlay
         playsInline
-        preload="auto"
+        preload="metadata"
+        poster="/placeholder.svg"
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 object-cover size-full z-0"
+        onCanPlay={(e) => (e.currentTarget.style.opacity = '1')}
+        style={{ opacity: 0, transition: 'opacity 0.3s ease-in-out' }}
       >
         <source src={heroVideo} type="video/mp4" />
       </video>
