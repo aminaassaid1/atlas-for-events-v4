@@ -46,7 +46,7 @@ const Header = () => {
     const baseClasses = "site-header sticky-header absolute lg:left-8.75 lg:right-8.75 lg:top-8.75 left-0 right-0 top-0 duration-500 z-50 transition-all";
     
     if (isScrolled) {
-      return `${baseClasses} !fixed animate-header-scroll-animation bg-primary rounded-b-3xl !top-0`;
+      return `${baseClasses} !fixed animate-header-scroll-animation bg-[#0a1628] rounded-b-3xl !top-0`;
     }
     
     if (useDarkText) {
