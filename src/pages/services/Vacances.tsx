@@ -15,6 +15,17 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { ActivityCard } from "@/components/cards";
 
+// Import images as ES6 modules
+import arganCooperative1 from "@/assets/images/destinations/argan-cooperative-1.jpg";
+import chameauPalmeraieGroup from "@/assets/images/activities/chameau-palmeraie-group.webp";
+import quadSunset from "@/assets/images/activities/quad-sunset.webp";
+import montgolfiereSunrise from "@/assets/images/activities/montgolfiere-sunrise.webp";
+import buggyPalmeraie from "@/assets/images/activities/buggy-palmeraie.webp";
+import chezAliEntrance from "@/assets/images/activities/chez-ali-entrance.webp";
+import dinerAgafaySunset from "@/assets/images/activities/diner-agafay-sunset.webp";
+import ouzoudFalls from "@/assets/images/activities/ouzoud-falls.webp";
+import marrakechJemaaFna from "@/assets/images/activities/marrakech-jemaa-fna.webp";
+
 // Real data from CSV export
 const destinations = [
   {
@@ -23,7 +34,7 @@ const destinations = [
     duration: "Demi-journée",
     price: 40,
     originalPrice: 60,
-    image: "/src/assets/images/destinations/argan-cooperative-1.jpg",
+    image: arganCooperative1,
     description: "Découvrez MARJANA, une immersion dans la production d'Argan au Maroc",
     category: "Culture",
     rating: 4.9,
@@ -46,7 +57,7 @@ const destinations = [
     duration: "1-2 heures",
     price: 25,
     originalPrice: 40,
-    image: "/src/assets/images/activities/chameau-palmeraie-group.webp",
+    image: chameauPalmeraieGroup,
     description: "Expérience envoûtante à dos de chameau dans la Palmeraie de Marrakech",
     category: "Nature",
     rating: 4.9,
@@ -57,7 +68,7 @@ const destinations = [
     name: "Aventure en Quad",
     duration: "2-3 heures",
     price: 35,
-    image: "/src/assets/images/activities/quad-sunset.webp",
+    image: quadSunset,
     description: "Excursion en quad palpitante à travers la Palmeraie de Marrakech",
     category: "Aventure",
     rating: 4.7,
@@ -69,7 +80,7 @@ const destinations = [
     duration: "5 heures",
     price: 180,
     originalPrice: 200,
-    image: "/src/assets/images/activities/montgolfiere-sunrise.webp",
+    image: montgolfiereSunrise,
     description: "Survolez les villages berbères et l'Atlas en montgolfière",
     category: "Premium",
     rating: 5.0,
@@ -92,7 +103,7 @@ const destinations = [
     name: "Aventure en Buggy",
     duration: "2 heures",
     price: 70,
-    image: "/src/assets/images/activities/buggy-palmeraie.webp",
+    image: buggyPalmeraie,
     description: "Aventure palpitante en buggy dans la Palmeraie de Marrakech",
     category: "Aventure",
     rating: 4.8,
@@ -103,7 +114,7 @@ const destinations = [
     name: "Dîner Spectacle Chez Ali",
     duration: "4 heures",
     price: 45,
-    image: "/src/assets/images/activities/chez-ali-entrance.webp",
+    image: chezAliEntrance,
     description: "Soirée magique avec dîner marocain et spectacle Fantasia",
     category: "Spectacle",
     rating: 4.7,
@@ -114,7 +125,7 @@ const destinations = [
     name: "Coucher de Soleil Agafay",
     duration: "5 heures",
     price: 45,
-    image: "/src/assets/images/activities/diner-agafay-sunset.webp",
+    image: dinerAgafaySunset,
     description: "Coucher de soleil et dîner magique dans le désert d'Agafay avec dromadaires",
     category: "Désert",
     rating: 4.9,
@@ -125,7 +136,7 @@ const destinations = [
     name: "Cascades d'Ouzoud",
     duration: "10 heures",
     price: 40,
-    image: "/src/assets/images/activities/ouzoud-falls.webp",
+    image: ouzoudFalls,
     description: "Excursion aux plus hautes cascades du Maroc (110m)",
     category: "Nature",
     rating: 4.8,
@@ -136,7 +147,7 @@ const destinations = [
     name: "Visite Privée Marrakech",
     duration: "7 heures",
     price: 40,
-    image: "/src/assets/images/activities/marrakech-jemaa-fna.webp",
+    image: marrakechJemaaFna,
     description: "Découvrez les trésors de Marrakech : Koutoubia, Bahia, Souks",
     category: "Culture",
     rating: 5.0,
@@ -440,17 +451,13 @@ const Vacances = () => {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="destination">{t('vacationsPage.destination')}</Label>
-                    <select
+                    <Input
                       id="destination"
+                      placeholder={t('vacationsPage.destination')}
                       value={formData.destination}
                       onChange={e => setFormData({ ...formData, destination: e.target.value })}
-                      className="w-full h-10 px-3 rounded-xl border border-input bg-background text-sm"
-                    >
-                      <option value="">{t('vacationsPage.selectDestination')}</option>
-                      {destinations.map(d => (
-                        <option key={d.name} value={d.name}>{d.name}</option>
-                      ))}
-                    </select>
+                      className="rounded-xl"
+                    />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="date">{t('vacationsPage.date')}</Label>
@@ -480,15 +487,14 @@ const Vacances = () => {
                   <Textarea
                     id="message"
                     placeholder={t('vacationsPage.messagePlaceholder')}
-                    rows={4}
                     value={formData.message}
                     onChange={e => setFormData({ ...formData, message: e.target.value })}
-                    className="rounded-xl resize-none"
+                    className="rounded-xl min-h-[120px]"
                   />
                 </div>
-                <Button type="submit" size="lg" className="w-full rounded-xl">
+                <Button type="submit" className="w-full py-6 text-lg">
                   <MessageCircle className="w-5 h-5 mr-2" />
-                  {t('vacationsPage.sendViaWhatsapp')}
+                  {t('vacationsPage.sendRequest')}
                 </Button>
               </form>
             </motion.div>
@@ -497,21 +503,18 @@ const Vacances = () => {
       </section>
 
       {/* Transport Services */}
-      <section className="py-20 bg-lightturquoise">
+      <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
-            <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-3">
-              {t('vacationsPage.transportBadge')}
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               {t('vacationsPage.transportTitle')}
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-muted-foreground">
               {t('vacationsPage.transportDescription')}
             </p>
           </motion.div>
@@ -526,38 +529,30 @@ const Vacances = () => {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 text-center shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-2xl flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-6 bg-primary/10 rounded-2xl flex items-center justify-center">
                   <service.icon className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">{service.title}</h3>
+                <h3 className="text-xl font-bold text-foreground mb-3">{service.title}</h3>
                 <p className="text-muted-foreground">{service.description}</p>
               </motion.div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            className="text-center mt-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t('vacationsPage.ctaTitle')}
-            </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              {t('vacationsPage.ctaDescription')}
-            </p>
-            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-primary font-bold">
-              <Link to="/contact">{t('common.requestQuote')}</Link>
+            <Button asChild size="lg" className="group">
+              <Link to="/services/transport">
+                {t('vacationsPage.viewTransport')}
+                <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
           </motion.div>
         </div>
       </section>
-
     </PageLayout>
   );
 };

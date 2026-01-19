@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import cloudBg from "@/assets/images/background/Cloud-bg.png";
 import hotBalloonLeftImg from "@/assets/images/hotballon-Left.png";
 import hotBalloonRightImg from "@/assets/images/hotballon-right.png";
+import chefchaouenActivity from "@/assets/images/activities/chefchaouen-activity.jpg";
 
 const DestinationsSection = () => {
   const { t } = useTranslation();
@@ -19,7 +20,7 @@ const DestinationsSection = () => {
       icon: Bike,
       title: t('services.excursions'),
       description: t('services.excursionsDesc'),
-      image: "/src/assets/images/activities/chefchaouen-activity.jpg",
+      image: chefchaouenActivity,
       link: "/services/vacances",
     },
     {

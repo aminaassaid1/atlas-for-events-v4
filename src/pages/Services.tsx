@@ -6,6 +6,13 @@ import { SEO, OptimizedImage } from "@/components/common";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
+// Import images as ES6 modules
+import chefchaouenActivity from "@/assets/images/activities/chefchaouen-activity.jpg";
+import buggyPalmeraie from "@/assets/images/activities/buggy-palmeraie.webp";
+import bedouinAgafay from "@/assets/images/hebergement/bedouin-agafay.jpg";
+import spaMassage from "@/assets/images/services/spa-massage.jpg";
+import transportHero from "@/assets/images/transport-hero.webp";
+
 const Services = () => {
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === 'en';
@@ -26,7 +33,7 @@ const Services = () => {
         t('servicesPage.excursionFeature5'),
         t('servicesPage.excursionFeature6'),
       ],
-      image: "/src/assets/images/activities/chefchaouen-activity.jpg",
+      image: chefchaouenActivity,
       color: "bg-primary"
     },
     {
@@ -62,7 +69,7 @@ const Services = () => {
         t('servicesPage.activityFeature5'),
         t('servicesPage.activityFeature6'),
       ],
-      image: "/src/assets/images/activities/buggy-palmeraie.webp",
+      image: buggyPalmeraie,
       color: "bg-primary"
     },
     {
@@ -80,7 +87,7 @@ const Services = () => {
         t('servicesPage.accommodationFeature5'),
         t('servicesPage.accommodationFeature6'),
       ],
-      image: "/src/assets/images/hebergement/bedouin-agafay.jpg",
+      image: bedouinAgafay,
       color: "bg-atlas-gold"
     },
     {
@@ -98,7 +105,7 @@ const Services = () => {
         t('servicesPage.spaFeature5'),
         t('servicesPage.spaFeature6'),
       ],
-      image: "/src/assets/images/services/spa-massage.jpg",
+      image: spaMassage,
       color: "bg-primary"
     },
     {
@@ -116,7 +123,7 @@ const Services = () => {
         t('servicesPage.transportFeature5'),
         t('servicesPage.transportFeature6'),
       ],
-      image: "/src/assets/images/transport-hero.webp",
+      image: transportHero,
       color: "bg-atlas-gold"
     },
     {
