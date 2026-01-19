@@ -562,12 +562,13 @@ export const destinations: Destination[] = [
     duration: "1 jour",
     price: 25,
     originalPrice: 40,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
+    image: "/src/assets/images/activities/ouzoud-falls.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
-      "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=800",
-      "https://images.unsplash.com/photo-1444492417251-9c84a5fa18e0?w=800",
-      "https://images.unsplash.com/photo-1520302723167-2e35c4bcad6a?w=800"
+      "/src/assets/images/activities/ouzoud-falls.webp",
+      "/src/assets/images/activities/ouzoud-monkey.webp",
+      "/src/assets/images/activities/ouzoud-panorama.webp",
+      "/src/assets/images/activities/ouzoud-boats.webp",
+      "/src/assets/images/activities/ouzoud-boat-ride.webp"
     ],
     description: "Les plus hautes cascades du Maroc au cœur de l'Atlas",
     longDescription: "Découvrez les majestueuses cascades d'Ouzoud, les plus hautes du Maroc avec leurs 110 mètres de chute. Situées au cœur de l'Atlas, ces cascades offrent un spectacle naturel époustouflant. Observez les singes magots dans leur habitat naturel, baignez-vous dans les bassins naturels et savourez un déjeuner berbère face à ce panorama exceptionnel.",
@@ -1620,12 +1621,13 @@ export const destinations: Destination[] = [
     name: "Excursion Cascades d'Ouzoud",
     duration: "10 heures",
     price: 40,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
+    image: "/src/assets/images/activities/ouzoud-falls.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/7xm424023.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/7xm574477.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/7xm989658.jpg"
+      "/src/assets/images/activities/ouzoud-falls.webp",
+      "/src/assets/images/activities/ouzoud-monkey.webp",
+      "/src/assets/images/activities/ouzoud-panorama.webp",
+      "/src/assets/images/activities/ouzoud-boats.webp",
+      "/src/assets/images/activities/ouzoud-boat-ride.webp"
     ],
     description: "Excursion aux plus hautes cascades du Maroc (110m)",
     longDescription: "Vivez une expérience inoubliable avec cette excursion d'une journée depuis Marrakech vers les majestueuses Cascades d'Ouzoud, les plus hautes cascades du Maroc avec une chute impressionnante de 110 mètres. Situées dans les montagnes de l'Atlas, ces chutes spectaculaires sont entourées de paysages naturels verdoyants, offrant une évasion parfaite pour les amoureux de la nature.",

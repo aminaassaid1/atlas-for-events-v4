@@ -124,7 +124,7 @@ const destinations = [
     name: "Cascades d'Ouzoud",
     duration: "10 heures",
     price: 40,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
+    image: "/src/assets/images/activities/ouzoud-falls.webp",
     description: "Excursion aux plus hautes cascades du Maroc (110m)",
     category: "Nature",
     rating: 4.8,

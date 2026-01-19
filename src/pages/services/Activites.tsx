@@ -120,7 +120,7 @@ const activities = [{
   category: "nature",
   price: 40,
   duration: "10h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
+  image: "/src/assets/images/activities/ouzoud-falls.webp",
   rating: 4.9,
   includes: ["Cascades 110m", "Baignade possible", "Rencontre macaques", "Transport"],
   includesEn: ["110m waterfalls", "Swimming possible", "Macaque encounter", "Transport"]
