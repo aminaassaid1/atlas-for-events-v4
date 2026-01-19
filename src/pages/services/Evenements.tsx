@@ -128,7 +128,7 @@ const Evenements = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const message = `Demande Événement:%0A%0ANom: ${formData.name}%0AEmail: ${formData.email}%0ATéléphone: ${formData.phone}%0AType: ${formData.eventType}%0ADate: ${formData.date}%0AInvités: ${formData.guests}%0AMessage: ${formData.message}`;
+    const message = `${t('evenementsPage.whatsappMessage')}:%0A%0A${t('evenementsPage.whatsappName')}: ${formData.name}%0A${t('evenementsPage.whatsappEmail')}: ${formData.email}%0A${t('evenementsPage.whatsappPhone')}: ${formData.phone}%0A${t('evenementsPage.whatsappType')}: ${formData.eventType}%0A${t('evenementsPage.whatsappDate')}: ${formData.date}%0A${t('evenementsPage.whatsappGuests')}: ${formData.guests}%0A${t('evenementsPage.whatsappMessageLabel')}: ${formData.message}`;
     window.open(`https://wa.me/33698272483?text=${message}`, "_blank");
   };
 
