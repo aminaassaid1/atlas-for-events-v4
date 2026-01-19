@@ -1455,11 +1455,13 @@ export const destinations: Destination[] = [
     name: "Dîner Spectacle Chez Ali",
     duration: "4 heures",
     price: 45,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/9cabd722-e487-4d05-be00-109180fcf9d9.avif",
+    image: "/src/assets/images/activities/chez-ali-entrance.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/9cabd722-e487-4d05-be00-109180fcf9d9.avif",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/02.jpg",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/images-1.jpeg"
+      "/src/assets/images/activities/chez-ali-entrance.webp",
+      "/src/assets/images/activities/chez-ali-tent.webp",
+      "/src/assets/images/activities/chez-ali-show.webp",
+      "/src/assets/images/activities/chez-ali-restaurant.webp",
+      "/src/assets/images/activities/chez-ali-fantasia.webp"
     ],
     description: "Soirée magique avec dîner marocain et spectacle Fantasia",
     longDescription: "Vivez une soirée extraordinaire au complexe Chez Ali, où la magie des Mille et Une Nuits prend vie. Savourez un dîner marocain délicieux et profitez d'un spectacle folklorique captivant, incluant des performances équestres et des acrobaties impressionnantes. Terminez la soirée avec des feux d'artifice éblouissants.",

@@ -102,7 +102,7 @@ const destinations = [
     name: "Dîner Spectacle Chez Ali",
     duration: "4 heures",
     price: 45,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/9cabd722-e487-4d05-be00-109180fcf9d9.avif",
+    image: "/src/assets/images/activities/chez-ali-entrance.webp",
     description: "Soirée magique avec dîner marocain et spectacle Fantasia",
     category: "Spectacle",
     rating: 4.7,
