@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Globe, Facebook, Instagram } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
 import logo from "@/assets/logo.png";
 import type { NavItem } from "@/types";
 import DesktopNav from "./DesktopNav";
@@ -22,8 +24,27 @@ const MobileMenu = ({
   setOpenDropdown,
   onNavClick
 }: MobileMenuProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+  const currentLang = i18n.language?.startsWith('en') ? 'en' : 'fr';
+  const otherLang = currentLang === 'fr' ? 'en' : 'fr';
 
+  const handleLanguageSwitch = () => {
+    let currentPath = location.pathname;
+    if (currentPath.startsWith('/en')) {
+      currentPath = currentPath.slice(3) || '/';
+    } else if (currentPath.startsWith('/fr')) {
+      currentPath = currentPath.slice(3) || '/';
+    }
+    const newPath = otherLang === 'fr' 
+      ? currentPath 
+      : `/en${currentPath === '/' ? '' : currentPath}`;
+    i18n.changeLanguage(otherLang);
+    navigate(newPath);
+    onClose();
+  };
   const handleNavClick = (item: NavItem) => {
     onNavClick(item);
     onClose();
@@ -40,7 +61,7 @@ const MobileMenu = ({
       />
 
       {/* Sidebar */}
-      <div className={`lg:hidden flex flex-col justify-start font-base fixed h-screen px-5 top-0 z-[60] bg-white w-72 overflow-auto duration-700 header-nav custom-scroll ${isOpen ? 'left-0' : '-left-75'}`}>
+      <div className={`lg:hidden flex flex-col justify-start font-base fixed h-screen h-[100dvh] px-5 top-0 z-[60] bg-white w-72 xs:w-80 overflow-auto duration-700 header-nav scrollbar-hide ${isOpen ? 'left-0' : '-left-80'}`}>
         {/* Mobile Logo */}
         <div className="flex items-center relative z-9 py-6.25 lg:hidden">
           <Link to="/" className="table-cell align-middle" onClick={onClose}>
@@ -73,30 +94,39 @@ const MobileMenu = ({
           </div>
         </div>
 
+        {/* Mobile Language Switcher */}
+        <div className="xs:hidden block p-5 border-t border-gray-200">
+          <button
+            onClick={handleLanguageSwitch}
+            className="flex items-center gap-2 text-primary font-medium py-2 w-full"
+          >
+            <Globe className="h-5 w-5" />
+            <span>{otherLang === 'fr' ? 'Français' : 'English'}</span>
+          </button>
+        </div>
+
         {/* Mobile Social Links */}
-        <div className="lg:hidden block max-lg:p-5 text-center mt-auto">
-          <ul>
-            <li className="inline-block mx-0.5">
-              <a
-                className="size-10 !leading-10 border border-black/10 text-center text-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={socialLinks.facebook}
-              >
-                <i className="fab fa-facebook-f"></i>
-              </a>
-            </li>
-            <li className="inline-block mx-0.5">
-              <a
-                className="size-10 !leading-10 border border-black/10 text-center text-primary"
-                target="_blank"
-                rel="noopener noreferrer"
-                href={socialLinks.instagram}
-              >
-                <i className="fab fa-instagram"></i>
-              </a>
-            </li>
-          </ul>
+        <div className="lg:hidden block max-lg:p-5 text-center mt-auto pb-safe safe-bottom">
+          <div className="flex justify-center gap-3 mb-4">
+            <a
+              className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={socialLinks.facebook}
+              aria-label="Facebook"
+            >
+              <Facebook className="w-5 h-5" />
+            </a>
+            <a
+              className="w-10 h-10 rounded-full border border-primary/20 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={socialLinks.instagram}
+              aria-label="Instagram"
+            >
+              <Instagram className="w-5 h-5" />
+            </a>
+          </div>
         </div>
       </div>
     </>

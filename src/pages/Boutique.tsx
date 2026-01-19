@@ -488,7 +488,7 @@ const Boutique = () => {
 
           {/* Products Grid with AnimatePresence */}
           <AnimatePresence mode="wait">
-            <motion.div key={`${activeCategory}-${currentPage}-${showPromoOnly}`} variants={containerVariants} initial="hidden" animate="visible" className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div key={`${activeCategory}-${currentPage}-${showPromoOnly}`} variants={containerVariants} initial="hidden" animate="visible" className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
               {paginatedProducts.map(product => <motion.div key={product.id} variants={cardVariants} layout className="group relative bg-card rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500">
                   {/* Badges */}
                   <div className="absolute top-4 left-4 z-10 flex flex-col gap-2">
