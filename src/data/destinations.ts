@@ -1042,10 +1042,12 @@ export const destinations: Destination[] = [
     duration: "1-2 heures",
     price: 25,
     originalPrice: 40,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/d2daa107ff6b37140d01fafba2a01625.jpg-1.webp",
+    image: "/src/assets/images/activities/chameau-palmeraie-group.webp",
     gallery: [
-      "https://atlasforevents.com/wp-content/uploads/2024/08/d2daa107ff6b37140d01fafba2a01625.jpg-1.webp",
-      "https://atlasforevents.com/wp-content/uploads/2024/08/52803_18.jpg.webp"
+      "/src/assets/images/activities/chameau-palmeraie-group.webp",
+      "/src/assets/images/activities/chameau-palmeraie-ride.webp",
+      "/src/assets/images/activities/chameau-palmeraie-rest.webp",
+      "/src/assets/images/activities/chameau-palmeraie-sunset.webp"
     ],
     description: "Expérience envoûtante à dos de chameau dans la Palmeraie de Marrakech",
     longDescription: "Embarquez pour une captivante balade à dos de chameau à travers la luxuriante Palmeraie de Marrakech, une oasis tranquille remplie de milliers de palmiers. Ce cadre serein est idéal pour se détendre et se reconnecter avec la nature. Rejoignez-nous pour un voyage inoubliable dans l'un des lieux les plus pittoresques de Marrakech.",
