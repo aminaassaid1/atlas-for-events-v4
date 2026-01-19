@@ -12,6 +12,7 @@ import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getDestinationById, destinations as allDestinations } from "@/data/destinations";
 import { ActivityCard } from "@/components/cards";
+import { resolveImagePath, resolveImagePaths } from "@/lib/imageResolver";
 
 const DestinationDetail = () => {
   const { t, i18n } = useTranslation();
@@ -110,7 +111,7 @@ const DestinationDetail = () => {
                 opacity: 1
               }} exit={{
                 opacity: 0
-              }} src={destination.gallery[activeImage]} alt={destination.name} className="w-full h-full object-cover" />
+              }} src={resolveImagePath(destination.gallery[activeImage])} alt={destination.name} className="w-full h-full object-cover" />
               </AnimatePresence>
               
               {/* Badges */}
@@ -148,7 +149,7 @@ const DestinationDetail = () => {
             x: 0
           }} className="grid grid-cols-2 gap-4">
               {destination.gallery.slice(0, 4).map((img, idx) => <button key={idx} onClick={() => setActiveImage(idx)} className={`relative aspect-[4/3] rounded-xl overflow-hidden transition-all ${activeImage === idx ? "ring-4 ring-primary" : "hover:opacity-80"}`}>
-                  <img src={img} alt={`${destination.name} ${idx + 1}`} className="w-full h-full object-cover" />
+                  <img src={resolveImagePath(img)} alt={`${destination.name} ${idx + 1}`} className="w-full h-full object-cover" />
                   {idx === 3 && destination.gallery.length > 4 && <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
                       <span className="text-white font-semibold flex items-center gap-2">
                         <Camera className="w-5 h-5" />

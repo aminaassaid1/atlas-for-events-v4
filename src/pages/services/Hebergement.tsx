@@ -422,7 +422,7 @@ const Hebergement = () => {
       <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/src/assets/images/hebergement/bedouin-agafay.jpg"
+            src={bedouinAgafay}
             alt={t('accommodationPage.heroTitle')}
             className="w-full h-full object-cover"
             loading="eager"

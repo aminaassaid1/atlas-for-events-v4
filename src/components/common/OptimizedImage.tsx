@@ -4,6 +4,7 @@
  */
 import { useState, useRef, useEffect, ImgHTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
+import { resolveImagePath } from "@/lib/imageResolver";
 
 interface OptimizedImageProps extends Omit<ImgHTMLAttributes<HTMLImageElement>, 'onLoad' | 'onError'> {
   src: string;
@@ -108,7 +109,7 @@ const OptimizedImage = ({
       {isInView && !hasError && (
         <img
           ref={imgRef}
-          src={src}
+          src={resolveImagePath(src)}
           alt={alt}
           loading={priority ? "eager" : "lazy"}
           decoding="async"
