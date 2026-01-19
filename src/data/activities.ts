@@ -845,6 +845,620 @@ export const activities: Activity[] = [
         avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
       }
     ]
+  },
+  {
+    id: "cascades-ouzoud",
+    name: "Cascades d'Ouzoud - Excursion Journée",
+    category: "nature",
+    price: 40,
+    originalPrice: 55,
+    duration: "10h",
+    image: "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2024/08/Ouzoud-Waterfalls-636x426.jpg.webp",
+      "https://images.unsplash.com/photo-1432405972618-c60b0225b8f9?w=800",
+      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800"
+    ],
+    description: "Découvrez les plus hautes cascades d'Afrique du Nord",
+    longDescription: "Partez à la découverte des majestueuses Cascades d'Ouzoud, les plus hautes d'Afrique du Nord avec leurs 110 mètres de chute. Cette excursion d'une journée vous emmène à travers les paysages de l'Atlas, avec possibilité de baignade dans les bassins naturels et rencontre avec les macaques de Barbarie qui peuplent le site.",
+    rating: 4.9,
+    reviewCount: 287,
+    includes: ["Transport", "Guide", "Temps libre baignade", "Rencontre macaques"],
+    highlights: [
+      "Cascades de 110 mètres de haut",
+      "Baignade dans les bassins naturels",
+      "Observation des macaques de Barbarie",
+      "Randonnée jusqu'à la base des cascades",
+      "Déjeuner traditionnel berbère en option"
+    ],
+    itinerary: [
+      { time: "8h00", title: "Départ", description: "Prise en charge à votre hôtel" },
+      { time: "10h30", title: "Arrivée", description: "Arrivée aux cascades d'Ouzoud" },
+      { time: "11h00", title: "Randonnée", description: "Descente vers la base des cascades" },
+      { time: "12h30", title: "Déjeuner", description: "Repas dans un restaurant local" },
+      { time: "14h00", title: "Baignade", description: "Temps libre pour la baignade" },
+      { time: "16h00", title: "Retour", description: "Route vers Marrakech" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Modérée",
+      groupSize: "2-15 personnes",
+      language: "Français, Anglais, Arabe",
+      whatToBring: ["Maillot de bain", "Serviette", "Chaussures de marche", "Crème solaire", "Appareil photo"],
+      included: ["Transport aller-retour", "Guide", "Temps libre"],
+      notIncluded: ["Déjeuner", "Boissons", "Pourboires"]
+    },
+    faqs: [
+      {
+        question: "Peut-on se baigner ?",
+        answer: "Oui, les bassins naturels au pied des cascades permettent la baignade."
+      },
+      {
+        question: "Y a-t-il vraiment des singes ?",
+        answer: "Oui, des macaques de Barbarie vivent autour des cascades. Ne les nourrissez pas."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Claire B.",
+        rating: 5,
+        date: "Mars 2024",
+        content: "Spectaculaire ! Les cascades sont impressionnantes et la baignade rafraîchissante.",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "visite-marrakech",
+    name: "Visite Culturelle de Marrakech",
+    category: "culture",
+    price: 40,
+    originalPrice: 55,
+    duration: "7h",
+    image: "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/revslider/destinations-card-slider1/miltiadis-fragkidis-ILxHs003uMc-unsplash-scaled.jpg",
+      "https://images.unsplash.com/photo-1553913861-c372b5c93b02?w=800",
+      "https://images.unsplash.com/photo-1569383746724-6f1b882b8f46?w=800",
+      "https://images.unsplash.com/photo-1580746738099-62dbda180c32?w=800"
+    ],
+    description: "Explorez les trésors historiques de la ville ocre",
+    longDescription: "Découvrez les joyaux de Marrakech lors d'une visite guidée complète. De la majestueuse mosquée Koutoubia au somptueux Palais Bahia, des mystérieux Tombeaux Saadiens aux souks animés, plongez dans l'histoire millénaire de la ville ocre avec un guide expert francophone.",
+    rating: 4.8,
+    reviewCount: 312,
+    includes: ["Guide expert", "Entrées monuments", "Déjeuner marocain", "Transport"],
+    highlights: [
+      "Mosquée Koutoubia (extérieur)",
+      "Palais Bahia",
+      "Tombeaux Saadiens",
+      "Medersa Ben Youssef",
+      "Souks traditionnels",
+      "Place Jemaa el-Fna"
+    ],
+    itinerary: [
+      { time: "9h00", title: "Départ", description: "Prise en charge à l'hôtel" },
+      { time: "9h30", title: "Koutoubia", description: "La plus grande mosquée de Marrakech" },
+      { time: "10h30", title: "Palais Bahia", description: "Chef-d'œuvre de l'architecture marocaine" },
+      { time: "11h30", title: "Tombeaux", description: "Tombeaux Saadiens" },
+      { time: "12h30", title: "Déjeuner", description: "Restaurant traditionnel" },
+      { time: "14h00", title: "Medersa", description: "Ancienne école coranique" },
+      { time: "15h00", title: "Souks", description: "Exploration des marchés" },
+      { time: "16h00", title: "Retour", description: "Fin de visite" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Facile",
+      groupSize: "2-12 personnes",
+      language: "Français, Anglais, Espagnol, Arabe",
+      whatToBring: ["Chaussures confortables", "Chapeau", "Eau", "Appareil photo"],
+      included: ["Transport", "Guide", "Entrées", "Déjeuner"],
+      notIncluded: ["Boissons", "Achats personnels", "Pourboires"]
+    },
+    faqs: [
+      {
+        question: "La visite convient-elle aux enfants ?",
+        answer: "Oui, c'est une excellente façon de leur faire découvrir la culture marocaine."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Michel P.",
+        rating: 5,
+        date: "Janvier 2024",
+        content: "Guide passionné et très cultivé. Une visite enrichissante !",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "merzouga",
+    name: "Aventure à Merzouga - Désert du Sahara",
+    category: "adventure",
+    price: 299,
+    originalPrice: 399,
+    duration: "2 jours",
+    image: "https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg",
+      "https://images.unsplash.com/photo-1489493887464-892be6d1daae?w=800",
+      "https://images.unsplash.com/photo-1531219432768-9f540ce91ef3?w=800",
+      "https://images.unsplash.com/photo-1517623249442-af85e65ee9f7?w=800"
+    ],
+    description: "Vivez l'expérience ultime du Sahara à Merzouga",
+    longDescription: "Partez pour une aventure inoubliable de 2 jours dans le désert du Sahara à Merzouga. Traversez les gorges du Dadès et du Todra, admirez les dunes dorées de l'Erg Chebbi, vivez un coucher de soleil magique à dos de dromadaire et passez une nuit sous les étoiles dans un camp de luxe berbère.",
+    rating: 5.0,
+    reviewCount: 189,
+    includes: ["Transport 4x4", "Nuit en camp de luxe", "Repas", "Trekking chameau", "Guide"],
+    highlights: [
+      "Dunes de l'Erg Chebbi (jusqu'à 150m)",
+      "Nuit en camp de luxe sous les étoiles",
+      "Trek à dos de dromadaire au coucher du soleil",
+      "Gorges du Dadès et du Todra",
+      "Route des Mille Kasbahs",
+      "Lever de soleil sur les dunes"
+    ],
+    itinerary: [
+      { time: "Jour 1 - 7h", title: "Départ", description: "Route vers Ouarzazate" },
+      { time: "Jour 1 - 12h", title: "Gorges", description: "Gorges du Dadès, déjeuner" },
+      { time: "Jour 1 - 16h", title: "Arrivée", description: "Arrivée Merzouga, trek chameau" },
+      { time: "Jour 1 - 19h", title: "Camp", description: "Dîner et nuit en camp" },
+      { time: "Jour 2 - 6h", title: "Sunrise", description: "Lever de soleil sur les dunes" },
+      { time: "Jour 2 - 8h", title: "Petit-dej", description: "Petit-déjeuner au camp" },
+      { time: "Jour 2 - 18h", title: "Retour", description: "Retour à Marrakech" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Modérée",
+      groupSize: "2-12 personnes",
+      language: "Français, Anglais, Arabe",
+      whatToBring: ["Vêtements chauds", "Lunettes de soleil", "Crème solaire", "Appareil photo"],
+      included: ["Transport 4x4", "Nuit camp luxe", "Repas", "Trek chameau", "Guide"],
+      notIncluded: ["Boissons", "Pourboires", "Dépenses personnelles"]
+    },
+    faqs: [
+      {
+        question: "Fait-il très froid la nuit ?",
+        answer: "Les nuits peuvent être fraîches (5-10°C). Les tentes sont équipées de couvertures chaudes."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Jean-Marc L.",
+        rating: 5,
+        date: "Décembre 2023",
+        content: "Expérience incroyable ! Le lever de soleil sur les dunes est magique.",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "ouarzazate-kasbahs",
+    name: "Ouarzazate & Kasbahs",
+    category: "culture",
+    price: 50,
+    originalPrice: 70,
+    duration: "1 journée",
+    image: "https://atlasforevents.com/wp-content/uploads/2022/07/hassan-ouajbir-INcADDyMwwo-unsplash-scaled.jpg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2022/07/hassan-ouajbir-INcADDyMwwo-unsplash-scaled.jpg",
+      "/src/assets/images/destinations/ouarzazate-ait-benhaddou.webp",
+      "/src/assets/images/destinations/ouarzazate-studios.webp",
+      "/src/assets/images/destinations/ouarzazate-kasbah.webp"
+    ],
+    description: "Explorez le Hollywood du Maroc et ses kasbahs légendaires",
+    longDescription: "Découvrez Ouarzazate, surnommée le 'Hollywood du Maroc', porte d'entrée du Sahara. Visitez la Kasbah Aït Ben Haddou, classée UNESCO, explorez les Atlas Studios où ont été tournés de nombreux films hollywoodiens, et admirez les paysages spectaculaires de la route des Mille Kasbahs.",
+    rating: 4.7,
+    reviewCount: 178,
+    includes: ["Transport", "Guide", "Entrées aux sites", "Déjeuner"],
+    highlights: [
+      "Kasbah Aït Ben Haddou (UNESCO)",
+      "Atlas Studios (Gladiator, Game of Thrones)",
+      "Col du Tizi n'Tichka (2260m)",
+      "Kasbah Taourirt",
+      "Route des Mille Kasbahs"
+    ],
+    itinerary: [
+      { time: "7h00", title: "Départ", description: "Prise en charge à l'hôtel" },
+      { time: "10h00", title: "Tichka", description: "Traversée du col (2260m)" },
+      { time: "11h00", title: "Aït Ben Haddou", description: "Visite de la kasbah UNESCO" },
+      { time: "13h00", title: "Déjeuner", description: "Restaurant traditionnel" },
+      { time: "14h30", title: "Studios", description: "Visite des Atlas Studios" },
+      { time: "16h00", title: "Taourirt", description: "Kasbah de Taourirt" },
+      { time: "19h00", title: "Retour", description: "Retour à Marrakech" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Facile",
+      groupSize: "2-15 personnes",
+      language: "Français, Anglais, Arabe",
+      whatToBring: ["Chapeau", "Lunettes de soleil", "Appareil photo", "Eau"],
+      included: ["Transport climatisé", "Guide", "Entrées", "Déjeuner"],
+      notIncluded: ["Boissons", "Pourboires"]
+    },
+    faqs: [
+      {
+        question: "La route est-elle sûre ?",
+        answer: "Oui, la route est bien entretenue. Nos chauffeurs sont expérimentés."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Anne-Marie D.",
+        rating: 5,
+        date: "Février 2024",
+        content: "Fascinant ! Aït Ben Haddou est à couper le souffle.",
+        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "vallee-ourika",
+    name: "Vallée de l'Ourika - Cascades & Nature",
+    category: "nature",
+    price: 45,
+    originalPrice: 60,
+    duration: "1 journée",
+    image: "https://atlasforevents.com/wp-content/uploads/2022/07/matthew-fainman-3yonP2JaGTU-unsplash-scaled.jpg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2022/07/matthew-fainman-3yonP2JaGTU-unsplash-scaled.jpg",
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+      "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800"
+    ],
+    description: "Randonnée et cascades dans les montagnes de l'Atlas",
+    longDescription: "Échappez à la chaleur de Marrakech et découvrez la fraîcheur de la Vallée de l'Ourika, nichée dans les contreforts du Haut Atlas. Randonnez jusqu'aux sept cascades, visitez des villages berbères traditionnels, découvrez une coopérative d'huile d'argan et savourez un déjeuner berbère authentique au bord de la rivière.",
+    rating: 4.8,
+    reviewCount: 234,
+    includes: ["Transport", "Guide", "Déjeuner berbère", "Visite coopérative"],
+    highlights: [
+      "Sept cascades de Setti Fatma",
+      "Villages berbères traditionnels",
+      "Coopérative d'huile d'argan",
+      "Déjeuner au bord de la rivière",
+      "Panoramas sur l'Atlas"
+    ],
+    itinerary: [
+      { time: "9h00", title: "Départ", description: "Prise en charge à l'hôtel" },
+      { time: "10h00", title: "Coopérative", description: "Visite coopérative d'argan" },
+      { time: "11h00", title: "Vallée", description: "Arrivée dans la vallée" },
+      { time: "11h30", title: "Randonnée", description: "Montée vers les cascades" },
+      { time: "13h00", title: "Déjeuner", description: "Restaurant au bord de l'eau" },
+      { time: "15h00", title: "Village", description: "Visite d'un village berbère" },
+      { time: "17h00", title: "Retour", description: "Retour à Marrakech" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Modérée (randonnée 1h30)",
+      groupSize: "2-15 personnes",
+      language: "Français, Anglais, Arabe",
+      whatToBring: ["Chaussures de marche", "Maillot de bain", "Crème solaire", "Eau"],
+      included: ["Transport", "Guide", "Déjeuner", "Visite coopérative"],
+      notIncluded: ["Boissons", "Pourboires", "Achats personnels"]
+    },
+    faqs: [
+      {
+        question: "La randonnée est-elle difficile ?",
+        answer: "C'est une randonnée modérée de 1h30. Des chaussures confortables sont recommandées."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Sylvie R.",
+        rating: 5,
+        date: "Mai 2024",
+        content: "Journée parfaite ! Le déjeuner au bord de la rivière était délicieux.",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "essaouira",
+    name: "Essaouira - Médina & Plages",
+    category: "nature",
+    price: 45,
+    originalPrice: 60,
+    duration: "1 journée",
+    image: "https://atlasforevents.com/wp-content/uploads/2022/07/rigel-No_Y3bn4lNQ-unsplash-scaled.jpg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2022/07/rigel-No_Y3bn4lNQ-unsplash-scaled.jpg",
+      "https://images.unsplash.com/photo-1555881400-69294e40a5ef?w=800",
+      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800"
+    ],
+    description: "Découvrez la perle de l'Atlantique et sa médina UNESCO",
+    longDescription: "Partez à la découverte d'Essaouira, ancienne Mogador, ville côtière aux remparts blancs et bleus. Explorez la médina classée UNESCO, flânez dans le port de pêche animé, dégustez du poisson frais grillé et profitez de la brise atlantique sur les longues plages de sable.",
+    rating: 4.9,
+    reviewCount: 289,
+    includes: ["Transport", "Guide", "Temps libre", "Visite médina"],
+    highlights: [
+      "Médina classée UNESCO",
+      "Port de pêche pittoresque",
+      "Remparts et bastions portugais",
+      "Galeries d'art",
+      "Plages et sports nautiques",
+      "Poisson frais grillé"
+    ],
+    itinerary: [
+      { time: "8h00", title: "Départ", description: "Prise en charge à l'hôtel" },
+      { time: "10h30", title: "Arrivée", description: "Arrivée à Essaouira" },
+      { time: "11h00", title: "Médina", description: "Visite guidée de la médina" },
+      { time: "12h30", title: "Port", description: "Port de pêche" },
+      { time: "13h00", title: "Déjeuner", description: "Poisson frais (libre)" },
+      { time: "14h30", title: "Libre", description: "Temps libre (plage, souks)" },
+      { time: "17h00", title: "Retour", description: "Départ vers Marrakech" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Facile",
+      groupSize: "2-15 personnes",
+      language: "Français, Anglais, Arabe",
+      whatToBring: ["Veste coupe-vent", "Maillot de bain", "Crème solaire", "Appareil photo"],
+      included: ["Transport climatisé", "Guide", "Visite guidée"],
+      notIncluded: ["Déjeuner", "Boissons", "Activités nautiques", "Pourboires"]
+    },
+    faqs: [
+      {
+        question: "Il fait froid à Essaouira ?",
+        answer: "La brise atlantique rafraîchit l'air. Prévoyez une veste légère."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Christine M.",
+        rating: 5,
+        date: "Avril 2024",
+        content: "Coup de cœur ! La médina est magnifique et le poisson délicieux.",
+        avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "asilah",
+    name: "Asilah - Ville Côtière",
+    category: "culture",
+    price: 55,
+    originalPrice: 75,
+    duration: "1 journée",
+    image: "https://atlasforevents.com/wp-content/uploads/2022/08/aziz-acharki-Bl-azXExvOs-unsplash-scaled.jpg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2022/08/aziz-acharki-Bl-azXExvOs-unsplash-scaled.jpg",
+      "https://images.unsplash.com/photo-1555881400-69294e40a5ef?w=800",
+      "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62?w=800",
+      "https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=800"
+    ],
+    description: "Découvrez la ville aux murs peints et fresques colorées",
+    longDescription: "Asilah, perle de la côte atlantique marocaine, vous séduira par ses murs blanchis ornés de fresques murales colorées, vestiges de son festival culturel annuel. Explorez la médina aux ruelles fleuries, les remparts portugais et profitez des plages paisibles de cette ville d'artistes.",
+    rating: 4.6,
+    reviewCount: 145,
+    includes: ["Transport", "Guide", "Visite médina", "Temps libre"],
+    highlights: [
+      "Médina aux murs blanchis",
+      "Fresques murales colorées",
+      "Remparts portugais du XVe siècle",
+      "Plages tranquilles",
+      "Galeries d'artistes"
+    ],
+    itinerary: [
+      { time: "7h00", title: "Départ", description: "Prise en charge à l'hôtel" },
+      { time: "11h00", title: "Arrivée", description: "Arrivée à Asilah" },
+      { time: "11h30", title: "Médina", description: "Visite de la médina" },
+      { time: "13h00", title: "Déjeuner", description: "Restaurant local (libre)" },
+      { time: "14h30", title: "Libre", description: "Plage et exploration" },
+      { time: "16h00", title: "Retour", description: "Route vers Marrakech" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Facile",
+      groupSize: "2-12 personnes",
+      language: "Français, Anglais, Espagnol",
+      whatToBring: ["Appareil photo", "Maillot de bain", "Crème solaire"],
+      included: ["Transport", "Guide", "Visite guidée"],
+      notIncluded: ["Déjeuner", "Boissons", "Pourboires"]
+    },
+    faqs: [
+      {
+        question: "Quand a lieu le festival d'art ?",
+        answer: "Le festival culturel d'Asilah a lieu généralement en été (juillet-août)."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Isabelle F.",
+        rating: 5,
+        date: "Juin 2024",
+        content: "Ville charmante et photogénique. Les fresques sont superbes !",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "chefchaouen",
+    name: "Chefchaouen - La Perle Bleue",
+    category: "culture",
+    price: 55,
+    originalPrice: 75,
+    duration: "1 journée",
+    image: "https://atlasforevents.com/wp-content/uploads/2022/08/milad-alizadeh-JibMa0FbyHw-unsplash-scaled.jpg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2022/08/milad-alizadeh-JibMa0FbyHw-unsplash-scaled.jpg",
+      "/src/assets/images/destinations/chefchaouen-1.webp",
+      "/src/assets/images/destinations/chefchaouen-2.webp",
+      "/src/assets/images/destinations/chefchaouen-3.webp"
+    ],
+    description: "Explorez la ville bleue la plus photogénique du Maroc",
+    longDescription: "Chefchaouen, nichée dans les montagnes du Rif, est célèbre pour ses ruelles et maisons peintes en bleu. Cette ville magique vous transportera dans un autre monde avec ses artisans, ses panoramas montagneux et son atmosphère paisible. Un paradis pour les photographes et les amoureux de l'authentique.",
+    rating: 4.9,
+    reviewCount: 378,
+    includes: ["Transport", "Guide local", "Visite médina", "Temps libre"],
+    highlights: [
+      "Médina entièrement bleue",
+      "Place Outa el Hammam",
+      "Kasbah et musée",
+      "Artisanat local (tissages)",
+      "Panorama sur le Rif",
+      "Atmosphère paisible"
+    ],
+    itinerary: [
+      { time: "6h00", title: "Départ", description: "Départ matinal de Marrakech" },
+      { time: "11h00", title: "Arrivée", description: "Arrivée à Chefchaouen" },
+      { time: "11h30", title: "Médina", description: "Visite guidée de la ville bleue" },
+      { time: "13h00", title: "Déjeuner", description: "Restaurant avec vue" },
+      { time: "14h30", title: "Libre", description: "Exploration et photos" },
+      { time: "16h00", title: "Retour", description: "Route vers Marrakech" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Facile",
+      groupSize: "2-12 personnes",
+      language: "Français, Anglais, Arabe",
+      whatToBring: ["Appareil photo", "Chaussures confortables", "Veste légère"],
+      included: ["Transport", "Guide", "Visite guidée"],
+      notIncluded: ["Déjeuner", "Boissons", "Achats", "Pourboires"]
+    },
+    faqs: [
+      {
+        question: "Pourquoi la ville est-elle bleue ?",
+        answer: "La tradition viendrait des Juifs qui s'y sont installés au XVe siècle. Le bleu symboliserait le ciel et la spiritualité."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Pierre D.",
+        rating: 5,
+        date: "Mars 2024",
+        content: "Magique ! Chaque rue est plus belle que la précédente. Un must !",
+        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "imlil-trekking",
+    name: "Trekking à Imlil - Montagnes de l'Atlas",
+    category: "adventure",
+    price: 45,
+    originalPrice: 60,
+    duration: "1 journée",
+    image: "https://atlasforevents.com/wp-content/uploads/2022/08/alpha-plus-wmwnqKDZHfo-unsplash-1-scaled.jpg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2022/08/alpha-plus-wmwnqKDZHfo-unsplash-1-scaled.jpg",
+      "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800",
+      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800",
+      "https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800"
+    ],
+    description: "Randonnée dans le Haut Atlas et villages berbères authentiques",
+    longDescription: "Partez à la découverte du Haut Atlas depuis Imlil, point de départ vers le Mont Toubkal. Randonnez à travers des paysages montagneux spectaculaires, visitez des villages berbères traditionnels accrochés aux flancs des montagnes et partagez un déjeuner authentique chez l'habitant.",
+    rating: 4.8,
+    reviewCount: 267,
+    includes: ["Transport 4x4", "Guide de montagne", "Déjeuner berbère", "Thé à la menthe"],
+    highlights: [
+      "Vue sur le Mont Toubkal (4167m)",
+      "Villages berbères d'Imlil",
+      "Randonnée en montagne",
+      "Déjeuner chez l'habitant",
+      "Culture berbère authentique"
+    ],
+    itinerary: [
+      { time: "8h00", title: "Départ", description: "Prise en charge à l'hôtel" },
+      { time: "9h30", title: "Imlil", description: "Arrivée à Imlil" },
+      { time: "10h00", title: "Randonnée", description: "Trek vers les villages" },
+      { time: "12h30", title: "Déjeuner", description: "Chez l'habitant" },
+      { time: "14h00", title: "Village", description: "Visite d'un village berbère" },
+      { time: "16h00", title: "Retour", description: "Descente et retour" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Modérée",
+      groupSize: "2-10 personnes",
+      language: "Français, Anglais, Berbère",
+      whatToBring: ["Chaussures de randonnée", "Vêtements chauds", "Crème solaire", "Eau"],
+      included: ["Transport 4x4", "Guide", "Déjeuner", "Thé"],
+      notIncluded: ["Boissons", "Pourboires"]
+    },
+    faqs: [
+      {
+        question: "Faut-il être sportif ?",
+        answer: "Le trek est modéré (2-3h de marche). Une condition physique normale suffit."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Julien T.",
+        rating: 5,
+        date: "Octobre 2024",
+        content: "Paysages grandioses ! Le déjeuner chez l'habitant était très chaleureux.",
+        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
+  },
+  {
+    id: "cooperative-argan",
+    name: "Coopérative d'Argan - Expérience Authentique",
+    category: "food",
+    price: 60,
+    originalPrice: 80,
+    duration: "2-3h",
+    image: "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
+    gallery: [
+      "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
+      "https://images.unsplash.com/photo-1466637574441-749b8f19452f?w=800",
+      "https://images.unsplash.com/photo-1507048331197-7d4ac70811cf?w=800",
+      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800"
+    ],
+    description: "Découvrez les secrets de l'huile d'argan avec les femmes berbères",
+    longDescription: "Visitez une coopérative d'huile d'argan gérée par des femmes berbères. Découvrez le processus ancestral de fabrication de l'huile d'argan, de la récolte des noix au pressage traditionnel. Dégustez l'amlou (pâte d'amandes à l'argan) et emportez des produits authentiques directement des productrices.",
+    rating: 4.7,
+    reviewCount: 156,
+    includes: ["Transport", "Visite guidée", "Démonstration", "Dégustation"],
+    highlights: [
+      "Fabrication traditionnelle de l'huile d'argan",
+      "Rencontre avec les femmes berbères",
+      "Dégustation d'amlou",
+      "Produits cosmétiques naturels",
+      "Commerce équitable"
+    ],
+    itinerary: [
+      { time: "Départ", title: "Transfert", description: "Prise en charge à l'hôtel" },
+      { time: "45 min", title: "Arrivée", description: "Coopérative de femmes" },
+      { time: "30 min", title: "Démonstration", description: "Pressage traditionnel" },
+      { time: "30 min", title: "Dégustation", description: "Huile d'argan et amlou" },
+      { time: "30 min", title: "Boutique", description: "Achat de produits" },
+      { time: "Retour", title: "Transfert", description: "Retour à l'hôtel" }
+    ],
+    practicalInfo: {
+      meetingPoint: "Prise en charge à l'hôtel",
+      difficulty: "Très facile",
+      groupSize: "2-12 personnes",
+      language: "Français, Anglais, Berbère",
+      whatToBring: ["Appareil photo", "Espèces pour achats"],
+      included: ["Transport", "Guide", "Visite", "Dégustation"],
+      notIncluded: ["Achats personnels", "Pourboires"]
+    },
+    faqs: [
+      {
+        question: "L'huile d'argan est-elle authentique ?",
+        answer: "Oui, vous verrez la fabrication devant vous et achèterez directement aux productrices."
+      }
+    ],
+    reviews: [
+      {
+        id: 1,
+        author: "Nathalie B.",
+        rating: 5,
+        date: "Novembre 2024",
+        content: "Expérience enrichissante ! Les femmes sont adorables et l'amlou délicieux.",
+        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+      }
+    ]
   }
 ];
 

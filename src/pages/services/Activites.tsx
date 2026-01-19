@@ -14,9 +14,10 @@ import Pagination from "@/components/Pagination";
 
 const ITEMS_PER_PAGE = 6;
 
-// Real data from CSV export
+// Real data from CSV export - each activity has a slug for URL routing
 const activities = [{
   id: 1,
+  slug: "quad-palmeraie",
   name: "Aventure en Quad",
   nameEn: "Quad Adventure",
   category: "adventure",
@@ -28,6 +29,7 @@ const activities = [{
   includesEn: ["Yamaha 250cc Quad", "Full equipment", "Professional guide", "Transport"]
 }, {
   id: 2,
+  slug: "montgolfiere",
   name: "Vol en Montgolfière au-dessus de Marrakech",
   nameEn: "Hot Air Balloon Flight over Marrakech",
   category: "adventure",
@@ -39,6 +41,7 @@ const activities = [{
   includesEn: ["1h flight", "Berber breakfast", "Souvenir certificate", "4x4 Transport"]
 }, {
   id: 3,
+  slug: "chameau-palmeraie",
   name: "Balade à Dos de Chameau - Palmeraie",
   nameEn: "Camel Ride - Palm Grove",
   category: "nature",
@@ -50,6 +53,7 @@ const activities = [{
   includesEn: ["Relaxing ride", "Moroccan tea", "Insurance", "Transport"]
 }, {
   id: 4,
+  slug: "chameau-agafay",
   name: "Trekking à Dos de Chameau - Désert d'Agafay",
   nameEn: "Camel Trekking - Agafay Desert",
   category: "adventure",
@@ -61,6 +65,7 @@ const activities = [{
   includesEn: ["Camel ride", "Cultural immersion", "Traditional meal", "Transport"]
 }, {
   id: 5,
+  slug: "buggy-palmeraie",
   name: "Aventure en Buggy dans la Palmeraie",
   nameEn: "Buggy Adventure in the Palm Grove",
   category: "adventure",
@@ -72,6 +77,7 @@ const activities = [{
   includesEn: ["Off-road buggy", "Tea break in Berber village", "Guide", "Transport"]
 }, {
   id: 6,
+  slug: "cours-cuisine",
   name: "Cours de Cuisine Marocaine - Désert d'Agafay",
   nameEn: "Moroccan Cooking Class - Agafay Desert",
   category: "food",
@@ -83,6 +89,7 @@ const activities = [{
   includesEn: ["Class with local chef", "Full meal", "Traditional recipes", "Transport"]
 }, {
   id: 7,
+  slug: "diner-spectacle-chez-ali",
   name: "Dîner Spectacle Chez Ali",
   nameEn: "Dinner Show at Chez Ali",
   category: "culture",
@@ -94,6 +101,7 @@ const activities = [{
   includesEn: ["Moroccan dinner", "Fantasia show", "Berber folklore", "Transport"]
 }, {
   id: 8,
+  slug: "diner-agafay-coucher-soleil",
   name: "Coucher de Soleil et Dîner - Désert d'Agafay",
   nameEn: "Sunset and Dinner - Agafay Desert",
   category: "nature",
@@ -105,6 +113,7 @@ const activities = [{
   includesEn: ["Camel ride", "Dinner under the stars", "Sunset", "Transport"]
 }, {
   id: 9,
+  slug: "cascades-ouzoud",
   name: "Cascades d'Ouzoud - Excursion Journée",
   nameEn: "Ouzoud Waterfalls - Day Trip",
   category: "nature",
@@ -116,6 +125,7 @@ const activities = [{
   includesEn: ["110m waterfalls", "Swimming possible", "Macaque encounter", "Transport"]
 }, {
   id: 10,
+  slug: "visite-marrakech",
   name: "Visite Culturelle de Marrakech",
   nameEn: "Cultural Tour of Marrakech",
   category: "culture",
@@ -127,6 +137,7 @@ const activities = [{
   includesEn: ["Koutoubia", "Bahia Palace", "Saadian Tombs", "Souks"]
 }, {
   id: 11,
+  slug: "merzouga",
   name: "Aventure à Merzouga - Désert du Sahara",
   nameEn: "Merzouga Adventure - Sahara Desert",
   category: "adventure",
@@ -138,6 +149,7 @@ const activities = [{
   includesEn: ["Camel trekking", "Luxury camp", "Erg Chebbi", "Transport"]
 }, {
   id: 12,
+  slug: "ouarzazate-kasbahs",
   name: "Ouarzazate & Kasbahs",
   nameEn: "Ouarzazate & Kasbahs",
   category: "culture",
@@ -149,6 +161,7 @@ const activities = [{
   includesEn: ["Historic Kasbahs", "Atlas Studios", "Local guide", "Transport"]
 }, {
   id: 13,
+  slug: "vallee-ourika",
   name: "Vallée de l'Ourika - Cascades & Nature",
   nameEn: "Ourika Valley - Waterfalls & Nature",
   category: "nature",
@@ -160,6 +173,7 @@ const activities = [{
   includesEn: ["Waterfalls", "Hiking", "Berber lunch", "Transport"]
 }, {
   id: 14,
+  slug: "essaouira",
   name: "Essaouira - Médina & Plages",
   nameEn: "Essaouira - Medina & Beaches",
   category: "nature",
@@ -171,6 +185,7 @@ const activities = [{
   includesEn: ["UNESCO Medina", "Historic port", "Free time", "Transport"]
 }, {
   id: 15,
+  slug: "asilah",
   name: "Asilah - Ville Côtière",
   nameEn: "Asilah - Coastal Town",
   category: "culture",
@@ -182,6 +197,7 @@ const activities = [{
   includesEn: ["Whitewashed walls", "Colorful murals", "Beaches", "Transport"]
 }, {
   id: 16,
+  slug: "chefchaouen",
   name: "Chefchaouen - La Perle Bleue",
   nameEn: "Chefchaouen - The Blue Pearl",
   category: "culture",
@@ -193,6 +209,7 @@ const activities = [{
   includesEn: ["Blue city", "Photo tours", "Local guide", "Transport"]
 }, {
   id: 17,
+  slug: "imlil-trekking",
   name: "Trekking à Imlil - Montagnes de l'Atlas",
   nameEn: "Imlil Trekking - Atlas Mountains",
   category: "adventure",
@@ -204,6 +221,7 @@ const activities = [{
   includesEn: ["Hiking", "Berber villages", "Lunch", "Transport"]
 }, {
   id: 18,
+  slug: "cooperative-argan",
   name: "Coopérative d'Argan - Expérience Authentique",
   nameEn: "Argan Cooperative - Authentic Experience",
   category: "food",
@@ -399,27 +417,7 @@ const Activites = () => {
                   </div>
                 </div>
                 <Button size="sm" className="rounded-full" asChild>
-                  <Link to={`/activites/${
-                    activity.id === 1 ? 'quad-palmeraie' : 
-                    activity.id === 2 ? 'montgolfiere' : 
-                    activity.id === 3 ? 'chameau-palmeraie' : 
-                    activity.id === 4 ? 'chameau-agafay' :
-                    activity.id === 5 ? 'quad-agafay' :
-                    activity.id === 6 ? 'cours-cuisine' : 
-                    activity.id === 7 ? 'diner-spectacle' : 
-                    activity.id === 8 ? 'coucher-soleil-agafay' :
-                    activity.id === 9 ? 'cascades-ouzoud' : 
-                    activity.id === 10 ? 'visite-marrakech' :
-                    activity.id === 11 ? 'merzouga' :
-                    activity.id === 12 ? 'ouarzazate' :
-                    activity.id === 13 ? 'ourika' :
-                    activity.id === 14 ? 'essaouira' :
-                    activity.id === 15 ? 'asilah' :
-                    activity.id === 16 ? 'chefchaouen' :
-                    activity.id === 17 ? 'imlil' :
-                    activity.id === 18 ? 'cooperative-argan' :
-                    'quad-palmeraie'
-                  }`}>
+                  <Link to={`/activites/${activity.slug}`}>
                     {t('activitiesPage.viewDetails')}
                   </Link>
                 </Button>
