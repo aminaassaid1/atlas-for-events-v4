@@ -9,7 +9,12 @@ import {
   FileText,
   LogOut,
   X,
-  Briefcase,
+  Calendar,
+  Mountain,
+  Compass,
+  Home,
+  Sparkles,
+  Car,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
@@ -19,7 +24,18 @@ const navItems = [
   { path: '/admin', icon: LayoutDashboard, label: 'Dashboard', end: true },
   { path: '/admin/orders', icon: ShoppingCart, label: 'Commandes' },
   { path: '/admin/products', icon: Package, label: 'Produits' },
-  { path: '/admin/services', icon: Briefcase, label: 'Services' },
+];
+
+const serviceItems = [
+  { path: '/admin/services/events', icon: Calendar, label: 'Événements' },
+  { path: '/admin/services/vacations', icon: Mountain, label: 'Vacances' },
+  { path: '/admin/services/activities', icon: Compass, label: 'Activités' },
+  { path: '/admin/services/accommodation', icon: Home, label: 'Hébergement' },
+  { path: '/admin/services/spa', icon: Sparkles, label: 'Spa' },
+  { path: '/admin/services/transport', icon: Car, label: 'Transport' },
+];
+
+const otherItems = [
   { path: '/admin/analytics', icon: BarChart3, label: 'Analytiques' },
   { path: '/admin/content', icon: FileText, label: 'Contenu' },
 ];
@@ -71,12 +87,62 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 p-4 space-y-1">
+          <nav className="flex-1 p-4 space-y-1 overflow-y-auto">
             {navItems.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 end={item.end}
+                className={({ isActive }) =>
+                  cn(
+                    'flex items-center gap-3 px-4 py-3 rounded-lg transition-colors',
+                    isActive
+                      ? 'bg-primary text-white'
+                      : 'text-white/70 hover:bg-white/10 hover:text-white'
+                  )
+                }
+                onClick={onClose}
+              >
+                <item.icon className="w-5 h-5" />
+                <span>{item.label}</span>
+              </NavLink>
+            ))}
+
+            {/* Services Section */}
+            <div className="pt-4 pb-2">
+              <span className="px-4 text-xs font-semibold uppercase tracking-wider text-white/40">
+                Services
+              </span>
+            </div>
+            {serviceItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
+                className={({ isActive }) =>
+                  cn(
+                    'flex items-center gap-3 px-4 py-2.5 rounded-lg transition-colors text-sm',
+                    isActive
+                      ? 'bg-primary text-white'
+                      : 'text-white/70 hover:bg-white/10 hover:text-white'
+                  )
+                }
+                onClick={onClose}
+              >
+                <item.icon className="w-4 h-4" />
+                <span>{item.label}</span>
+              </NavLink>
+            ))}
+
+            {/* Other Items */}
+            <div className="pt-4 pb-2">
+              <span className="px-4 text-xs font-semibold uppercase tracking-wider text-white/40">
+                Autres
+              </span>
+            </div>
+            {otherItems.map((item) => (
+              <NavLink
+                key={item.path}
+                to={item.path}
                 className={({ isActive }) =>
                   cn(
                     'flex items-center gap-3 px-4 py-3 rounded-lg transition-colors',
