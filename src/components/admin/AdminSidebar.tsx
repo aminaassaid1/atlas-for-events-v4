@@ -68,7 +68,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
       {/* Sidebar */}
       <aside
         className={cn(
-          'fixed left-0 top-0 z-50 h-full w-64 bg-[#0a1628] text-white transform transition-transform duration-300 lg:translate-x-0',
+          'fixed left-0 top-0 z-50 h-full h-[100dvh] w-64 bg-[#0a1628] text-white transform transition-transform duration-300 lg:translate-x-0',
           isOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
@@ -160,7 +160,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
           </nav>
 
           {/* Sign out */}
-          <div className="p-4 border-t border-white/10">
+          <div className="p-4 border-t border-white/10 pb-safe">
             <Button
               variant="ghost"
               className="w-full justify-start text-white/70 hover:bg-white/10 hover:text-white"

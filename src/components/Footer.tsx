@@ -23,8 +23,8 @@ const Footer = () => {
         }}
       />
       <div className="absolute inset-0 bg-[#0a1628]/85" />
-      <div className="container mx-auto px-4 py-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container mx-auto px-4 py-12 sm:py-16 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Brand */}
           <div>
             <img
@@ -143,12 +143,12 @@ const Footer = () => {
 
       {/* Copyright & Policy Links */}
       <div className="border-t border-white/10 relative z-10">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-white/50 text-sm">
+        <div className="container mx-auto px-4 py-4 sm:py-6 pb-safe">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
+            <p className="text-white/50 text-xs sm:text-sm text-center sm:text-left">
               © {new Date().getFullYear()} Atlas For Events. {t('footer.rights')}.
             </p>
-            <div className="flex items-center gap-6 text-sm">
+            <div className="flex items-center gap-4 sm:gap-6 text-xs sm:text-sm">
               <Link to={getLocalizedPath("/remboursement")} className="text-white/50 hover:text-secondary transition-colors">
                 {t('footer.refundPolicy')}
               </Link>

@@ -10,8 +10,8 @@ export default function AdminHeader({ onMenuClick }: AdminHeaderProps) {
   const { user } = useAuthContext();
 
   return (
-    <header className="sticky top-0 z-30 bg-card border-b border-border">
-      <div className="flex items-center justify-between px-4 py-3 lg:px-6">
+    <header className="sticky top-0 z-30 bg-card border-b border-border safe-top">
+      <div className="flex items-center justify-between px-3 py-2 sm:px-4 sm:py-3 lg:px-6">
         <Button
           variant="ghost"
           size="icon"

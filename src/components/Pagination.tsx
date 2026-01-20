@@ -12,7 +12,8 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
 
   const getVisiblePages = () => {
     const pages: (number | string)[] = [];
-    const maxVisible = 5;
+    // Fewer visible on mobile
+    const maxVisible = typeof window !== 'undefined' && window.innerWidth < 640 ? 3 : 5;
     
     if (totalPages <= maxVisible) {
       return Array.from({ length: totalPages }, (_, i) => i + 1);
@@ -45,21 +46,21 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
   };
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-12">
+    <div className="flex items-center justify-center gap-1 sm:gap-2 mt-8 sm:mt-12">
       <Button
         variant="outline"
         size="icon"
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="h-10 w-10"
+        className="h-8 w-8 sm:h-10 sm:w-10"
       >
         <ChevronLeft className="h-4 w-4" />
       </Button>
 
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-0.5 sm:gap-1">
         {getVisiblePages().map((page, index) =>
           typeof page === "string" ? (
-            <span key={`ellipsis-${index}`} className="px-2 text-muted-foreground">
+            <span key={`ellipsis-${index}`} className="px-1 sm:px-2 text-muted-foreground text-sm">
               {page}
             </span>
           ) : (
@@ -68,7 +69,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
               variant={currentPage === page ? "default" : "outline"}
               size="icon"
               onClick={() => onPageChange(page)}
-              className="h-10 w-10"
+              className="h-8 w-8 sm:h-10 sm:w-10 text-sm"
             >
               {page}
             </Button>
@@ -81,7 +82,7 @@ export const Pagination = ({ currentPage, totalPages, onPageChange }: Pagination
         size="icon"
         onClick={() => onPageChange(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="h-10 w-10"
+        className="h-8 w-8 sm:h-10 sm:w-10"
       >
         <ChevronRight className="h-4 w-4" />
       </Button>

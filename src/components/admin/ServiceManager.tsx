@@ -276,23 +276,23 @@ export default function ServiceManager({
   return (
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row justify-between gap-4">
-        <div className="flex items-start gap-4">
-          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-            <Icon className="w-6 h-6 text-primary" />
+        <div className="flex items-start gap-3 sm:gap-4">
+          <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+            <Icon className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
           </div>
-          <div>
-            <h1 className="text-2xl font-bold text-foreground">{title}</h1>
-            <p className="text-muted-foreground">{description}</p>
+          <div className="min-w-0">
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground">{title}</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">{description}</p>
           </div>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
-            <Button onClick={() => handleOpenDialog()}>
+            <Button onClick={() => handleOpenDialog()} className="w-full sm:w-auto">
               <Plus className="w-4 h-4 mr-2" />
               Ajouter
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogContent className="w-[95vw] max-w-2xl max-h-[85vh] sm:max-h-[90vh] overflow-y-auto mx-auto">
             <DialogHeader>
               <DialogTitle>
                 {editingService ? 'Modifier' : 'Nouveau'} {title.toLowerCase().replace('gestion des ', '').slice(0, -1)}
@@ -549,7 +549,7 @@ export default function ServiceManager({
       </div>
 
       {/* Stats */}
-      <div className="flex gap-4 text-sm">
+      <div className="flex flex-wrap gap-3 sm:gap-4 text-xs sm:text-sm">
         <span className="text-muted-foreground">
           Total: <span className="font-medium text-foreground">{services.length}</span>
         </span>
@@ -624,19 +624,21 @@ export default function ServiceManager({
                   </div>
                 )}
 
-                <div className="flex items-center gap-2 mt-4">
+                <div className="flex items-center gap-1.5 sm:gap-2 mt-4">
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1"
+                    className="flex-1 text-xs sm:text-sm px-2 sm:px-3"
                     onClick={() => handleOpenDialog(service)}
                   >
-                    <Edit className="w-3 h-3 mr-1" />
-                    Modifier
+                    <Edit className="w-3 h-3 mr-1 flex-shrink-0" />
+                    <span className="hidden xs:inline">Modifier</span>
+                    <span className="xs:hidden">Edit</span>
                   </Button>
                   <Button
                     variant="outline"
                     size="sm"
+                    className="px-2 sm:px-3 text-xs sm:text-sm"
                     onClick={() => toggleActive(service)}
                   >
                     {service.active ? 'Off' : 'On'}
@@ -644,7 +646,7 @@ export default function ServiceManager({
                   <Button
                     variant="ghost"
                     size="sm"
-                    className="text-destructive hover:text-destructive"
+                    className="text-destructive hover:text-destructive px-2"
                     onClick={() => handleDelete(service.id)}
                   >
                     <Trash2 className="w-4 h-4" />
