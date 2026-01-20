@@ -40,7 +40,7 @@ export default function AdminLayout() {
       <div className="lg:ml-64">
         <AdminHeader onMenuClick={() => setSidebarOpen(true)} />
         
-        <main className="p-4 lg:p-6">
+        <main className="p-3 sm:p-4 lg:p-6 pb-safe">
           <Outlet />
         </main>
       </div>

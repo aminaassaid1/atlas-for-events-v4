@@ -51,10 +51,10 @@ export const ProductFilters = ({
       {/* Filters Content */}
       <div className={`space-y-6 ${isExpanded ? "block" : "hidden md:block"}`}>
         {/* Category Filters */}
-        <div className="flex flex-wrap justify-center gap-3">
-          {categories.map(cat => <button key={cat.id} onClick={() => onCategoryChange(cat.id)} className={`flex items-center gap-2 px-5 py-2.5 rounded-full font-medium transition-all ${activeCategory === cat.id ? "bg-primary text-primary-foreground shadow-lg" : "bg-white text-muted-foreground hover:bg-muted border border-border"}`}>
-              {cat.icon && <cat.icon className="w-4 h-4" />}
-              {cat.name}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          {categories.map(cat => <button key={cat.id} onClick={() => onCategoryChange(cat.id)} className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-medium transition-all ${activeCategory === cat.id ? "bg-primary text-primary-foreground shadow-lg" : "bg-white text-muted-foreground hover:bg-muted border border-border"}`}>
+              {cat.icon && <cat.icon className="w-3.5 h-3.5 sm:w-4 sm:h-4" />}
+              <span className="whitespace-nowrap">{cat.name}</span>
             </button>)}
         </div>
 

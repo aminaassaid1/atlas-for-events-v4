@@ -131,73 +131,74 @@ const ActivityCard = ({
           aspectRatio="landscape"
           className="group-hover:scale-110 transition-transform duration-500"
         />
-        <div className="absolute top-4 left-4 flex gap-2">
-          <span className="bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-foreground flex items-center gap-1.5">
-            <Clock className="w-4 h-4 text-primary" />
+        <div className="absolute top-2 left-2 sm:top-4 sm:left-4 flex gap-1.5 sm:gap-2">
+          <span className="bg-white/95 backdrop-blur-sm px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-sm font-medium text-foreground flex items-center gap-1">
+            <Clock className="w-3 h-3 sm:w-4 sm:h-4 text-primary" />
             {item.duration}
           </span>
           {showCategory && item.category && (
-            <span className="bg-secondary/90 text-secondary-foreground px-3 py-1.5 rounded-full text-xs font-bold">
+            <span className="bg-secondary/90 text-secondary-foreground px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-bold">
               {item.category}
             </span>
           )}
         </div>
-        <div className="absolute top-4 right-4">
-          <span className="bg-primary text-primary-foreground px-3 py-1.5 rounded-full text-sm font-bold flex items-center gap-1">
-            <Star className="w-3.5 h-3.5 fill-current" />
+        <div className="absolute top-2 right-2 sm:top-4 sm:right-4">
+          <span className="bg-primary text-primary-foreground px-2 py-1 sm:px-3 sm:py-1.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-0.5 sm:gap-1">
+            <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-current" />
             {item.rating}
           </span>
         </div>
         {showPromo && item.originalPrice && (
-          <div className="absolute bottom-4 left-4">
-            <span className="bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+          <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4">
+            <span className="bg-destructive text-destructive-foreground px-2 py-0.5 sm:px-3 sm:py-1 rounded-full text-[10px] sm:text-xs font-bold">
               {promoLabel}
             </span>
           </div>
         )}
       </div>
 
-      <div className="p-6">
+      <div className="p-4 sm:p-6">
         {showMapPin ? (
-          <div className="flex items-start justify-between mb-3">
-            <h3 className="text-xl font-bold text-foreground flex items-center gap-2">
-              <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
-              {displayName}
+          <div className="flex items-start justify-between mb-2 sm:mb-3">
+            <h3 className="text-lg sm:text-xl font-bold text-foreground flex items-center gap-2">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+              <span className="line-clamp-2">{displayName}</span>
             </h3>
           </div>
         ) : (
-          <h3 className="text-lg font-bold text-foreground mb-3 line-clamp-2">
+          <h3 className="text-base sm:text-lg font-bold text-foreground mb-2 sm:mb-3 line-clamp-2">
             {displayName}
           </h3>
         )}
 
         {showDescription && item.description && (
-          <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{item.description}</p>
+          <p className="text-muted-foreground text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">{item.description}</p>
         )}
 
         {showIncludes && displayIncludes && displayIncludes.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mb-4">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5 mb-3 sm:mb-4">
             {displayIncludes.slice(0, 3).map(inc => (
-              <span key={inc} className="text-xs bg-muted px-2 py-1 rounded-md text-muted-foreground">
+              <span key={inc} className="text-[10px] sm:text-xs bg-muted px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-md text-muted-foreground">
                 {inc}
               </span>
             ))}
           </div>
         )}
 
-        <div className="flex items-end justify-between">
-          <div>
-            <span className="text-xs text-muted-foreground">{defaultFromLabel}</span>
-            <div className="flex items-baseline gap-2">
-              <span className="text-2xl font-bold text-primary">{item.price}€</span>
+        <div className="flex items-end justify-between gap-2">
+          <div className="min-w-0">
+            <span className="text-[10px] sm:text-xs text-muted-foreground">{defaultFromLabel}</span>
+            <div className="flex items-baseline gap-1 sm:gap-2">
+              <span className="text-xl sm:text-2xl font-bold text-primary">{item.price}€</span>
               {item.originalPrice && (
-                <span className="text-sm text-muted-foreground line-through">{item.originalPrice}€</span>
+                <span className="text-xs sm:text-sm text-muted-foreground line-through">{item.originalPrice}€</span>
               )}
             </div>
           </div>
-          <Button size="sm" className="rounded-full" asChild>
+          <Button size="sm" className="rounded-full text-xs sm:text-sm px-3 sm:px-4 flex-shrink-0" asChild>
             <Link to={linkPath}>
-              {defaultViewDetailsLabel}
+              <span className="hidden xs:inline">{defaultViewDetailsLabel}</span>
+              <span className="xs:hidden">Détails</span>
             </Link>
           </Button>
         </div>
