@@ -1,6 +1,7 @@
 /**
  * Spa page - Spa and wellness services
  * Displays treatments, hammam, and booking options
+ * Fetches data dynamically from database
  */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -8,16 +9,9 @@ import { ChevronRight, Sparkles, Heart, Leaf, Clock, Check, Star } from "lucide-
 import PageLayout from "@/components/layout/PageLayout";
 import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
-
-// Local spa images
-import hammamImg from "@/assets/images/spa/hammam.webp";
-import hydrafacialImg from "@/assets/images/spa/hydrafacial.webp";
-import massageImg from "@/assets/images/spa/massage.webp";
-import liftingImg from "@/assets/images/spa/lifting.webp";
-
-const galleryImages = [hammamImg, massageImg, hydrafacialImg, liftingImg];
+import { useServices } from "@/hooks/useServices";
 
 const Spa = () => {
   const { t, i18n } = useTranslation();
@@ -32,6 +26,31 @@ const Spa = () => {
     allergies: "",
     transport: "",
   });
+
+  // Fetch spa services from database
+  const { services: spaServices, isLoading, error } = useServices({ serviceType: 'spa' });
+
+  // Create gallery from service images
+  const galleryImages = useMemo(() => {
+    if (spaServices.length > 0) {
+      return spaServices
+        .filter(s => s.image_url)
+        .map(s => s.image_url as string)
+        .slice(0, 4);
+    }
+    return [];
+  }, [spaServices]);
+
+  // Transform services to treatments format
+  const treatments = useMemo(() => {
+    return spaServices.map(service => ({
+      name: service.title,
+      description: service.description || '',
+      duration: service.duration || '',
+      image: service.image_url || '',
+      slug: service.slug,
+    }));
+  }, [spaServices]);
 
   const benefits = [
     {
@@ -51,33 +70,6 @@ const Spa = () => {
     },
   ];
 
-  const treatments = [
-    {
-      name: t('spaPage.treatment1'),
-      description: t('spaPage.treatment1Desc'),
-      duration: "1h30",
-      image: hammamImg,
-    },
-    {
-      name: t('spaPage.treatment2'),
-      description: t('spaPage.treatment2Desc'),
-      duration: "45min",
-      image: hydrafacialImg,
-    },
-    {
-      name: t('spaPage.treatment3'),
-      description: t('spaPage.treatment3Desc'),
-      duration: "1h",
-      image: massageImg,
-    },
-    {
-      name: t('spaPage.treatment4'),
-      description: t('spaPage.treatment4Desc'),
-      duration: "1h",
-      image: liftingImg,
-    },
-  ];
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const whatsappMessage = `Bonjour, je souhaite réserver un soin spa.\n\nNom: ${formData.name}\nEmail: ${formData.email}\nTéléphone: ${formData.phone}\nDate: ${formData.date}\nHeure: ${formData.time}\nSoin: ${formData.treatment}\nAllergies: ${formData.allergies || "Aucune"}\nTransport: ${formData.transport}`;
@@ -85,6 +77,9 @@ const Spa = () => {
   };
 
   const isEnglish = i18n.language === 'en';
+
+  // Fallback hero image
+  const heroImage = galleryImages[currentImage] || "https://atlasforevents.com/wp-content/uploads/2024/06/spa-hero.jpg";
 
   return (
     <PageLayout>
@@ -106,7 +101,7 @@ const Spa = () => {
         <div className="absolute inset-0">
           <motion.img
             key={currentImage}
-            src={galleryImages[currentImage]}
+            src={heroImage}
             alt={t('spaPage.heroTitle')}
             className="w-full h-full object-cover"
             initial={{ opacity: 0, scale: 1.1 }}
@@ -117,20 +112,22 @@ const Spa = () => {
         </div>
 
         {/* Floating gallery thumbnails */}
-        <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3 z-20">
-          {galleryImages.map((img, index) => (
-            <motion.button
-              key={index}
-              onClick={() => setCurrentImage(index)}
-              whileHover={{ scale: 1.1 }}
-              className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
-                currentImage === index ? "border-secondary scale-110" : "border-white/50"
-              }`}
-            >
-              <img src={img} alt="" className="w-full h-full object-cover" />
-            </motion.button>
-          ))}
-        </div>
+        {galleryImages.length > 1 && (
+          <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-3 z-20">
+            {galleryImages.map((img, index) => (
+              <motion.button
+                key={index}
+                onClick={() => setCurrentImage(index)}
+                whileHover={{ scale: 1.1 }}
+                className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                  currentImage === index ? "border-secondary scale-110" : "border-white/50"
+                }`}
+              >
+                <img src={img} alt="" className="w-full h-full object-cover" />
+              </motion.button>
+            ))}
+          </div>
+        )}
 
         <div className="relative z-10 container mx-auto px-4">
           <motion.nav
@@ -221,37 +218,60 @@ const Spa = () => {
             </h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {treatments.map((treatment, index) => (
-              <motion.div
-                key={treatment.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="group relative rounded-2xl overflow-hidden cursor-pointer"
-              >
-                <div className="aspect-[3/4] overflow-hidden">
-                  <img
-                    src={treatment.image}
-                    alt={treatment.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <div className="flex items-center gap-2 text-secondary mb-2">
-                    <Clock className="w-4 h-4" />
-                    <span className="text-sm font-medium">{treatment.duration}</span>
+          {/* Loading State */}
+          {isLoading && (
+            <div className="flex items-center justify-center min-h-[300px]">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+            </div>
+          )}
+
+          {/* Error State */}
+          {error && (
+            <div className="text-center py-12">
+              <p className="text-destructive">{t('common.errorLoading')}</p>
+            </div>
+          )}
+
+          {!isLoading && !error && treatments.length > 0 && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {treatments.map((treatment, index) => (
+                <motion.div
+                  key={treatment.slug}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group relative rounded-2xl overflow-hidden cursor-pointer"
+                >
+                  <div className="aspect-[3/4] overflow-hidden">
+                    <img
+                      src={treatment.image || '/placeholder.svg'}
+                      alt={treatment.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
-                  <h3 className="text-xl font-bold mb-2">{treatment.name}</h3>
-                  <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                    {treatment.description}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <div className="flex items-center gap-2 text-secondary mb-2">
+                      <Clock className="w-4 h-4" />
+                      <span className="text-sm font-medium">{treatment.duration}</span>
+                    </div>
+                    <h3 className="text-xl font-bold mb-2">{treatment.name}</h3>
+                    <p className="text-white/80 text-sm opacity-0 group-hover:opacity-100 transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                      {treatment.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+
+          {/* Empty State */}
+          {!isLoading && !error && treatments.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">{t('spaPage.noTreatments')}</p>
+            </div>
+          )}
         </div>
       </section>
 
@@ -367,11 +387,9 @@ const Spa = () => {
                   required
                 >
                   <option value="">{t('spaPage.selectTreatment')}</option>
-                  <option value="hammam">{t('spaPage.treatmentHammam')}</option>
-                  <option value="hydrafacial">{t('spaPage.treatmentHydrafacial')}</option>
-                  <option value="massage">{t('spaPage.treatmentMassage')}</option>
-                  <option value="lifting">{t('spaPage.treatmentLifting')}</option>
-                  <option value="ritual">{t('spaPage.treatmentRitual')}</option>
+                  {treatments.map(treatment => (
+                    <option key={treatment.slug} value={treatment.slug}>{treatment.name}</option>
+                  ))}
                 </select>
                 <textarea
                   placeholder={t('spaPage.allergiesPreferences')}
@@ -410,35 +428,13 @@ const Spa = () => {
                   </div>
                 </div>
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 py-6 text-lg">
-                  {t('spaPage.sendRequest')}
+                  {t('spaPage.submitBooking')}
                 </Button>
               </form>
             </motion.div>
           </div>
         </div>
       </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t('spaPage.ctaTitle')}
-            </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              {t('spaPage.ctaDescription')}
-            </p>
-            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-primary font-bold">
-              <Link to="/contact">{t('common.requestQuote')}</Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
     </PageLayout>
   );
 };
