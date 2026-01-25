@@ -1,6 +1,7 @@
 /**
  * Hebergement page - Accommodation and lodging services
  * Displays villas, riads, apartments, and luxury camps
+ * Fetches data dynamically from database
  */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -8,114 +9,38 @@ import { ChevronRight, Home, Users, Shield, Utensils, Car, Sparkles, Star, MapPi
 import PageLayout from "@/components/layout/PageLayout";
 import { SEO } from "@/components/common";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import { fr, enUS } from "date-fns/locale";
 import { cn } from "@/lib/utils";
 import { useTranslation } from "react-i18next";
-
-// Import accommodation images
-import appartVictorHugo from "@/assets/images/hebergement/appart-victor-hugo.jpg";
-import villaOrientalys from "@/assets/images/hebergement/villa-orientalys.webp";
-import beAgafayHideaway from "@/assets/images/hebergement/be-agafay-hideaway.webp";
-import agafayLuxuryCamp from "@/assets/images/hebergement/agafay-luxury-camp.webp";
-import bedouinAgafay from "@/assets/images/hebergement/bedouin-agafay.jpg";
-import riadDarIkalimo from "@/assets/images/hebergement/riad-dar-ikalimo.webp";
-
-const properties = [
-  {
-    id: 1,
-    name: "Appartement Victor Hugo",
-    type: "Appartement",
-    location: "5 min de Carré Eden",
-    price: 80,
-    image: appartVictorHugo,
-    features: ["Grande terrasse", "Piscine privée", "Vue panoramique"],
-    beds: 3,
-    baths: 2,
-    rating: 4.9,
-  },
-  {
-    id: 2,
-    name: "Villa Orientalys",
-    type: "Villa",
-    location: "Marrakech",
-    price: 120,
-    image: villaOrientalys,
-    features: ["Piscine privée", "Chef privé", "Jardin luxuriant"],
-    beds: 5,
-    baths: 4,
-    rating: 5.0,
-  },
-  {
-    id: 3,
-    name: "BE Agafay - The Hideaway",
-    type: "Camp de luxe",
-    location: "Désert d'Agafay",
-    price: 150,
-    image: beAgafayHideaway,
-    features: ["Vues panoramiques", "Gastronomie", "Expériences exclusives"],
-    beds: 2,
-    baths: 1,
-    rating: 5.0,
-  },
-  {
-    id: 4,
-    name: "Agafay Luxury Camp",
-    type: "Camp de luxe",
-    location: "Désert d'Agafay",
-    price: 200,
-    image: agafayLuxuryCamp,
-    features: ["Tente de luxe", "Vues imprenables", "Expériences exclusives"],
-    beds: 2,
-    baths: 1,
-    rating: 5.0,
-  },
-  {
-    id: 5,
-    name: "Le Bédouin Agafay",
-    type: "Camp de luxe",
-    location: "Désert d'Agafay",
-    price: 50,
-    image: bedouinAgafay,
-    features: ["Luxe authentique", "Transport privé", "Dîner inclus"],
-    beds: 2,
-    baths: 1,
-    rating: 4.8,
-  },
-  {
-    id: 6,
-    name: "Riad Dar Ikalimo",
-    type: "Riad",
-    location: "Médina de Marrakech",
-    price: 110,
-    image: riadDarIkalimo,
-    features: ["Vues panoramiques", "Activités nature", "Petit-déjeuner inclus"],
-    beds: 4,
-    baths: 3,
-    rating: 4.9,
-  },
-];
+import { useServices, Service } from "@/hooks/useServices";
 
 interface ReservationFormProps {
   selectedProperty?: string;
   onClearProperty?: () => void;
+  properties: Service[];
 }
 
 // Helper function to map property type to form value
-const getPropertyTypeValue = (propertyType: string): string => {
+const getPropertyTypeValue = (category: string | null): string => {
   const typeMap: Record<string, string> = {
     "Appartement": "appartement",
+    "appartement": "appartement",
     "Villa": "villa",
+    "villa": "villa",
     "Riad": "riad",
-    "Camp de luxe": "camp"
+    "riad": "riad",
+    "Camp de luxe": "camp",
+    "camp": "camp",
+    "luxury-camp": "camp"
   };
-  return typeMap[propertyType] || "";
+  return category ? typeMap[category] || "" : "";
 };
 
-const ReservationFormSection = ({ selectedProperty, onClearProperty }: ReservationFormProps) => {
+const ReservationFormSection = ({ selectedProperty, onClearProperty, properties }: ReservationFormProps) => {
   const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
@@ -134,16 +59,16 @@ const ReservationFormSection = ({ selectedProperty, onClearProperty }: Reservati
   // Update property name and type when selectedProperty changes
   useEffect(() => {
     if (selectedProperty) {
-      const property = properties.find(p => p.name === selectedProperty);
+      const property = properties.find(p => p.title === selectedProperty);
       setFormData(prev => ({
         ...prev,
         propertyName: selectedProperty,
-        propertyType: property ? getPropertyTypeValue(property.type) : prev.propertyType
+        propertyType: property ? getPropertyTypeValue(property.category) : prev.propertyType
       }));
     } else {
       setFormData(prev => ({ ...prev, propertyName: "", propertyType: "" }));
     }
-  }, [selectedProperty]);
+  }, [selectedProperty, properties]);
 
   const handleClearProperty = () => {
     setFormData(prev => ({ ...prev, propertyName: "", propertyType: "" }));
@@ -381,6 +306,15 @@ const Hebergement = () => {
   const [activeFilter, setActiveFilter] = useState("Tous");
   const [selectedProperty, setSelectedProperty] = useState("");
 
+  // Fetch accommodations from database
+  const { services: properties, isLoading, error } = useServices({ serviceType: 'accommodation' });
+
+  // Transform database categories for filters
+  const availableCategories = useMemo(() => {
+    const cats = new Set(properties.map(p => p.category).filter(Boolean));
+    return Array.from(cats);
+  }, [properties]);
+
   const filters = [
     { key: "Tous", label: t('accommodationPage.filterAll') },
     { key: "Appartement", label: t('accommodationPage.filterApartment') },
@@ -394,47 +328,52 @@ const Hebergement = () => {
     { icon: Car, name: t('accommodationPage.amenityParking'), description: t('accommodationPage.amenityParkingDesc') },
     { icon: Shield, name: t('accommodationPage.amenitySecurity'), description: t('accommodationPage.amenitySecurityDesc') },
     { icon: Sparkles, name: t('accommodationPage.amenityCleaning'), description: t('accommodationPage.amenityCleaningDesc') },
-    { icon: Users, name: t('accommodationPage.amenityStaff'), description: t('accommodationPage.amenityStaffDesc') },
-    { icon: Wifi, name: t('accommodationPage.amenityAssistance'), description: t('accommodationPage.amenityAssistanceDesc') },
   ];
 
-  const filteredProperties = activeFilter === "Tous" 
-    ? properties 
-    : properties.filter(p => p.type === activeFilter);
+  const handleSelectProperty = (propertyName: string) => {
+    setSelectedProperty(propertyName);
+    setTimeout(() => {
+      document.getElementById('reservation-form')?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  };
+
+  const filteredProperties = useMemo(() => {
+    if (activeFilter === "Tous") return properties;
+    return properties.filter(p => p.category === activeFilter);
+  }, [properties, activeFilter]);
 
   return (
     <PageLayout>
       <SEO 
-        title={isEnglish ? "Luxury Accommodation in Marrakech" : "Hébergement de Luxe à Marrakech"}
+        title={isEnglish ? "Luxury Accommodation in Marrakech - Villas, Riads & Camps" : "Hébergement de Luxe à Marrakech - Villas, Riads & Camps"}
         description={isEnglish 
-          ? "Discover our selection of luxury accommodations in Marrakech: private villas, traditional riads, apartments, and desert camps. Book your dream stay."
-          : "Découvrez notre sélection d'hébergements de luxe à Marrakech : villas privées, riads traditionnels, appartements et camps dans le désert. Réservez votre séjour de rêve."
+          ? "Discover our selection of luxury accommodations in Marrakech: private villas, traditional riads, modern apartments and exclusive desert camps."
+          : "Découvrez notre sélection d'hébergements de luxe à Marrakech : villas privées, riads traditionnels, appartements modernes et camps de luxe dans le désert."
         }
         keywords={isEnglish 
-          ? "accommodation Marrakech, luxury villa Morocco, riad Marrakech, desert camp Agafay, private apartment Morocco"
-          : "hébergement Marrakech, villa luxe Maroc, riad Marrakech, camp désert Agafay, appartement privé Maroc"
+          ? "accommodation Marrakech, villa Morocco, riad Marrakech, desert camp Agafay, luxury rental Morocco"
+          : "hébergement Marrakech, villa Maroc, riad Marrakech, camp désert Agafay, location luxe Maroc"
         }
         url="https://atlasforevents.com/services/hebergement"
         locale={isEnglish ? "en_US" : "fr_FR"}
       />
 
       {/* Hero Section */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center overflow-hidden">
+      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src={bedouinAgafay}
+            src="https://atlasforevents.com/wp-content/uploads/2024/06/Lobby-panorama.webp"
             alt={t('accommodationPage.heroTitle')}
             className="w-full h-full object-cover"
-            loading="eager"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-4 pt-24">
+        <div className="relative z-10 container mx-auto px-4 text-center text-white mt-[67px]">
           <motion.nav
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex items-center gap-2 text-sm mb-6 text-white/80"
+            className="flex items-center justify-center gap-2 text-sm mb-6"
           >
             <Link to="/" className="hover:text-secondary transition-colors">{t('accommodationPage.breadcrumbHome')}</Link>
             <ChevronRight className="w-4 h-4" />
@@ -443,198 +382,197 @@ const Hebergement = () => {
             <span className="text-secondary">{t('accommodationPage.breadcrumbAccommodation')}</span>
           </motion.nav>
 
-          <motion.div
+          <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl"
+            transition={{ delay: 0.2 }}
+            className="text-4xl md:text-6xl font-bold mb-4"
           >
-            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-              {t('accommodationPage.heroTitle')}
-            </h1>
-            <p className="text-xl text-white/90 mb-2">
-              {t('accommodationPage.heroSubtitle')}
-            </p>
-            <p className="text-lg text-white/80">
-              {t('accommodationPage.heroDescription')}
-            </p>
-          </motion.div>
+            {t('accommodationPage.heroTitle')}
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+            className="text-xl md:text-2xl max-w-3xl mx-auto text-white/90"
+          >
+            {t('accommodationPage.heroSubtitle')}
+          </motion.p>
         </div>
       </section>
 
-      {/* Reservation Form Section */}
-      <ReservationFormSection 
-        selectedProperty={selectedProperty} 
-        onClearProperty={() => setSelectedProperty("")} 
-      />
-
-      {/* Amenities Section */}
-      <section className="py-16 bg-lightturquoise">
+      {/* Filters */}
+      <section className="py-8 bg-white border-b">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold text-primary">
-              {t('accommodationPage.amenitiesTitle')}
-            </h2>
-          </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {amenities.map((amenity, index) => (
-              <motion.div
-                key={amenity.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-xl p-4 text-center shadow-sm hover:shadow-md transition-shadow"
+          <div className="flex flex-wrap justify-center gap-4">
+            {filters.map((filter) => (
+              <button
+                key={filter.key}
+                onClick={() => setActiveFilter(filter.key)}
+                className={cn(
+                  "px-6 py-3 rounded-full font-medium transition-all",
+                  activeFilter === filter.key
+                    ? "bg-primary text-white"
+                    : "bg-muted text-muted-foreground hover:bg-primary/10"
+                )}
               >
-                <div className="w-12 h-12 mx-auto mb-3 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <amenity.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-foreground text-sm mb-1">{amenity.name}</h3>
-                <p className="text-muted-foreground text-xs">{amenity.description}</p>
-              </motion.div>
+                {filter.label}
+              </button>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Properties Catalog */}
+      {/* Properties Grid */}
+      <section className="py-20 bg-lightturquoise">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-3">
+              {t('accommodationPage.sectionBadge')}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">
+              {t('accommodationPage.sectionTitle')}
+            </h2>
+          </motion.div>
+
+          {/* Loading State */}
+          {isLoading && (
+            <div className="flex items-center justify-center min-h-[300px]">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+            </div>
+          )}
+
+          {/* Error State */}
+          {error && (
+            <div className="text-center py-12">
+              <p className="text-destructive">{t('common.errorLoading')}</p>
+            </div>
+          )}
+
+          {!isLoading && !error && (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredProperties.map((property, index) => (
+                <motion.div
+                  key={property.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  <div className="relative h-64 overflow-hidden">
+                    <img
+                      src={property.image_url || '/placeholder.svg'}
+                      alt={property.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 bg-secondary text-primary text-sm font-medium rounded-full">
+                        {property.category}
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4 flex items-center gap-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-full">
+                      <Star className="w-4 h-4 text-secondary fill-secondary" />
+                      <span className="text-sm font-medium">{property.rating}</span>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-primary mb-2">{property.title}</h3>
+                    <div className="flex items-center gap-2 text-muted-foreground text-sm mb-4">
+                      <MapPin className="w-4 h-4" />
+                      <span>{property.location}</span>
+                    </div>
+
+                    <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
+                      {property.features && property.features.length > 0 && (
+                        <div className="flex flex-wrap gap-2">
+                          {property.features.slice(0, 3).map((feature, idx) => (
+                            <span key={idx} className="bg-muted px-2 py-1 rounded-full text-xs">
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="flex items-center justify-between pt-4 border-t border-border">
+                      <div>
+                        <span className="text-2xl font-bold text-primary">{property.price}€</span>
+                        <span className="text-muted-foreground text-sm">/{t('accommodationPage.perNight')}</span>
+                      </div>
+                      <Button
+                        onClick={() => handleSelectProperty(property.title)}
+                        className="bg-primary hover:bg-primary/90"
+                      >
+                        {t('accommodationPage.book')}
+                      </Button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+
+          {/* Empty State */}
+          {!isLoading && !error && filteredProperties.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-muted-foreground">{t('accommodationPage.noResults')}</p>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* Amenities Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-16"
           >
             <span className="inline-block text-secondary font-semibold text-sm uppercase tracking-wider mb-3">
-              {t('accommodationPage.catalogTitle')}
+              {t('accommodationPage.amenitiesBadge')}
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-              {t('accommodationPage.catalogDescription')}
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">
+              {t('accommodationPage.amenitiesTitle')}
             </h2>
           </motion.div>
 
-          {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {filters.map((filter) => (
-              <button
-                key={filter.key}
-                onClick={() => setActiveFilter(filter.key)}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all ${
-                  activeFilter === filter.key
-                    ? "bg-primary text-white shadow-lg"
-                    : "bg-muted text-foreground hover:bg-primary/10"
-                }`}
-              >
-                {filter.label}
-              </button>
-            ))}
-          </div>
-
-          {/* Properties Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProperties.map((property, index) => (
+          <div className="grid md:grid-cols-4 gap-8">
+            {amenities.map((amenity, index) => (
               <motion.div
-                key={property.id}
+                key={amenity.name}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 border border-border"
+                className="text-center"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={property.image}
-                    alt={property.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-secondary text-primary text-sm font-medium px-3 py-1.5 rounded-full">
-                      {property.type}
-                    </span>
-                  </div>
-                  <div className="absolute top-4 right-4">
-                    <span className="bg-white/90 text-foreground text-sm font-medium px-3 py-1.5 rounded-full flex items-center gap-1">
-                      <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                      {property.rating}
-                    </span>
-                  </div>
+                <div className="w-20 h-20 mx-auto mb-4 bg-secondary/20 rounded-2xl flex items-center justify-center">
+                  <amenity.icon className="w-10 h-10 text-primary" />
                 </div>
-
-                <div className="p-6">
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm mb-2">
-                    <MapPin className="w-4 h-4" />
-                    {property.location}
-                  </div>
-                  <h3 className="text-xl font-bold text-foreground mb-3">{property.name}</h3>
-                  
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {property.features.slice(0, 2).map((feature) => (
-                      <span key={feature} className="text-xs bg-muted px-2 py-1 rounded-md text-muted-foreground">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                    <span className="flex items-center gap-1">
-                      <Bed className="w-4 h-4" />
-                      {property.beds} {t('accommodationPage.beds')}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Bath className="w-4 h-4" />
-                      {property.baths} {t('accommodationPage.baths')}
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-2xl font-bold text-primary">{property.price}€</span>
-                      <span className="text-muted-foreground text-sm">{t('accommodationPage.perNight')}</span>
-                    </div>
-                    <Button
-                      onClick={() => {
-                        setSelectedProperty(property.name);
-                        document.getElementById('reservation-form')?.scrollIntoView({ behavior: 'smooth' });
-                      }}
-                      className="rounded-full"
-                    >
-                      {t('accommodationPage.book')}
-                    </Button>
-                  </div>
-                </div>
+                <h3 className="text-lg font-bold text-primary mb-2">{amenity.name}</h3>
+                <p className="text-muted-foreground text-sm">{amenity.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              {t('accommodationPage.ctaTitle')}
-            </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              {t('accommodationPage.ctaDescription')}
-            </p>
-            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-primary font-bold">
-              <Link to="/contact">{t('common.requestQuote')}</Link>
-            </Button>
-          </motion.div>
-        </div>
-      </section>
-
+      {/* Reservation Form */}
+      <ReservationFormSection 
+        selectedProperty={selectedProperty} 
+        onClearProperty={() => setSelectedProperty("")}
+        properties={properties}
+      />
     </PageLayout>
   );
 };

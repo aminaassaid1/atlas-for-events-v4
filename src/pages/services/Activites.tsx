@@ -1,6 +1,7 @@
 /**
  * Activites page - Activities and experiences in Marrakech
  * Displays adventure, culture, and nature activities with filtering
+ * Fetches data dynamically from database
  */
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
@@ -13,250 +14,22 @@ import { useTranslation } from "react-i18next";
 import ProductFilters from "@/components/ProductFilters";
 import Pagination from "@/components/Pagination";
 import { ActivityCard } from "@/components/cards";
-
-// Import activity images
-import quadSunset from "@/assets/images/activities/quad-sunset.webp";
-import montgolfiereSunrise from "@/assets/images/activities/montgolfiere-sunrise.webp";
-import chameauPalmeraieGroup from "@/assets/images/activities/chameau-palmeraie-group.webp";
-import agafayCamelRide from "@/assets/images/activities/agafay-camel-ride.webp";
-import buggyPalmeraie from "@/assets/images/activities/buggy-palmeraie.webp";
-import coursCuisine from "@/assets/images/activities/cours-cuisine.jpg";
-import chezAliEntrance from "@/assets/images/activities/chez-ali-entrance.webp";
-import dinerAgafaySunset from "@/assets/images/activities/diner-agafay-sunset.webp";
-import ouzoudFalls from "@/assets/images/activities/ouzoud-falls.webp";
-import marrakechJemaaFna from "@/assets/images/activities/marrakech-jemaa-fna.webp";
-import merzougaCamp from "@/assets/images/activities/merzouga-camp.webp";
-import ouarzazateKasbahs from "@/assets/images/activities/ouarzazate-kasbahs.jpg";
-import essaouiraCoast from "@/assets/images/activities/essaouira-coast.webp";
-import asilahMural from "@/assets/images/activities/asilah-mural.webp";
-import imlilVillage from "@/assets/images/activities/imlil-village.webp";
+import { useServices, serviceToActivity } from "@/hooks/useServices";
 
 const ITEMS_PER_PAGE = 6;
-
-// Real data from CSV export - each activity has a slug for URL routing
-const activities = [{
-  id: 1,
-  slug: "quad-palmeraie",
-  name: "Aventure en Quad",
-  nameEn: "Quad Adventure",
-  category: "adventure",
-  price: 35,
-  duration: "2-3h",
-  image: quadSunset,
-  rating: 4.9,
-  includes: ["Quad Yamaha 250cc", "Équipement complet", "Guide professionnel", "Transport"],
-  includesEn: ["Yamaha 250cc Quad", "Full equipment", "Professional guide", "Transport"]
-}, {
-  id: 2,
-  slug: "montgolfiere",
-  name: "Vol en Montgolfière au-dessus de Marrakech",
-  nameEn: "Hot Air Balloon Flight over Marrakech",
-  category: "adventure",
-  price: 200,
-  duration: "5h",
-  image: montgolfiereSunrise,
-  rating: 5.0,
-  includes: ["Vol 1h", "Petit-déjeuner berbère", "Certificat souvenir", "Transport 4x4"],
-  includesEn: ["1h flight", "Berber breakfast", "Souvenir certificate", "4x4 Transport"]
-}, {
-  id: 3,
-  slug: "chameau-palmeraie",
-  name: "Balade à Dos de Chameau - Palmeraie",
-  nameEn: "Camel Ride - Palm Grove",
-  category: "nature",
-  price: 40,
-  duration: "1-2h",
-  image: chameauPalmeraieGroup,
-  rating: 4.8,
-  includes: ["Balade relaxante", "Thé marocain", "Assurance", "Transport"],
-  includesEn: ["Relaxing ride", "Moroccan tea", "Insurance", "Transport"]
-}, {
-  id: 4,
-  slug: "chameau-agafay",
-  name: "Trekking à Dos de Chameau - Désert d'Agafay",
-  nameEn: "Camel Trekking - Agafay Desert",
-  category: "adventure",
-  price: 50,
-  duration: "3-4h",
-  image: agafayCamelRide,
-  rating: 4.9,
-  includes: ["Balade à dos de chameau", "Immersion culturelle", "Repas traditionnel", "Transport"],
-  includesEn: ["Camel ride", "Cultural immersion", "Traditional meal", "Transport"]
-}, {
-  id: 5,
-  slug: "buggy-palmeraie",
-  name: "Aventure en Buggy dans la Palmeraie",
-  nameEn: "Buggy Adventure in the Palm Grove",
-  category: "adventure",
-  price: 70,
-  duration: "2h",
-  image: buggyPalmeraie,
-  rating: 4.9,
-  includes: ["Buggy tout-terrain", "Pause thé village berbère", "Guide", "Transport"],
-  includesEn: ["Off-road buggy", "Tea break in Berber village", "Guide", "Transport"]
-}, {
-  id: 6,
-  slug: "cours-cuisine",
-  name: "Cours de Cuisine Marocaine - Désert d'Agafay",
-  nameEn: "Moroccan Cooking Class - Agafay Desert",
-  category: "food",
-  price: 60,
-  duration: "4h",
-  image: coursCuisine,
-  rating: 5.0,
-  includes: ["Cours avec chef local", "Repas complet", "Recettes traditionnelles", "Transport"],
-  includesEn: ["Class with local chef", "Full meal", "Traditional recipes", "Transport"]
-}, {
-  id: 7,
-  slug: "diner-spectacle-chez-ali",
-  name: "Dîner Spectacle Chez Ali",
-  nameEn: "Dinner Show at Chez Ali",
-  category: "culture",
-  price: 45,
-  duration: "4h",
-  image: chezAliEntrance,
-  rating: 4.6,
-  includes: ["Dîner marocain", "Spectacle Fantasia", "Folklore berbère", "Transport"],
-  includesEn: ["Moroccan dinner", "Fantasia show", "Berber folklore", "Transport"]
-}, {
-  id: 8,
-  slug: "diner-agafay-coucher-soleil",
-  name: "Coucher de Soleil et Dîner - Désert d'Agafay",
-  nameEn: "Sunset and Dinner - Agafay Desert",
-  category: "nature",
-  price: 45,
-  duration: "5h",
-  image: dinerAgafaySunset,
-  rating: 4.8,
-  includes: ["Promenade dromadaire", "Dîner sous les étoiles", "Coucher de soleil", "Transport"],
-  includesEn: ["Camel ride", "Dinner under the stars", "Sunset", "Transport"]
-}, {
-  id: 9,
-  slug: "cascades-ouzoud",
-  name: "Cascades d'Ouzoud - Excursion Journée",
-  nameEn: "Ouzoud Waterfalls - Day Trip",
-  category: "nature",
-  price: 40,
-  duration: "10h",
-  image: ouzoudFalls,
-  rating: 4.9,
-  includes: ["Cascades 110m", "Baignade possible", "Rencontre macaques", "Transport"],
-  includesEn: ["110m waterfalls", "Swimming possible", "Macaque encounter", "Transport"]
-}, {
-  id: 10,
-  slug: "visite-marrakech",
-  name: "Visite Culturelle de Marrakech",
-  nameEn: "Cultural Tour of Marrakech",
-  category: "culture",
-  price: 40,
-  duration: "7h",
-  image: marrakechJemaaFna,
-  rating: 4.8,
-  includes: ["Koutoubia", "Palais Bahia", "Tombeaux Saadiens", "Souks"],
-  includesEn: ["Koutoubia", "Bahia Palace", "Saadian Tombs", "Souks"]
-}, {
-  id: 11,
-  slug: "merzouga",
-  name: "Aventure à Merzouga - Désert du Sahara",
-  nameEn: "Merzouga Adventure - Sahara Desert",
-  category: "adventure",
-  price: 299,
-  duration: "2 jours",
-  image: merzougaCamp,
-  rating: 5.0,
-  includes: ["Trekking chameau", "Camp de luxe", "Erg Chebbi", "Transport"],
-  includesEn: ["Camel trekking", "Luxury camp", "Erg Chebbi", "Transport"]
-}, {
-  id: 12,
-  slug: "ouarzazate-kasbahs",
-  name: "Ouarzazate & Kasbahs",
-  nameEn: "Ouarzazate & Kasbahs",
-  category: "culture",
-  price: 50,
-  duration: "1 journée",
-  image: ouarzazateKasbahs,
-  rating: 4.7,
-  includes: ["Kasbahs historiques", "Studio Atlas", "Guide local", "Transport"],
-  includesEn: ["Historic Kasbahs", "Atlas Studios", "Local guide", "Transport"]
-}, {
-  id: 13,
-  slug: "vallee-ourika",
-  name: "Vallée de l'Ourika - Cascades & Nature",
-  nameEn: "Ourika Valley - Waterfalls & Nature",
-  category: "nature",
-  price: 45,
-  duration: "1 journée",
-  image: "https://atlasforevents.com/wp-content/uploads/2022/07/matthew-fainman-3yonP2JaGTU-unsplash-scaled.jpg",
-  rating: 4.8,
-  includes: ["Cascades", "Randonnée", "Déjeuner berbère", "Transport"],
-  includesEn: ["Waterfalls", "Hiking", "Berber lunch", "Transport"]
-}, {
-  id: 14,
-  slug: "essaouira",
-  name: "Essaouira - Médina & Plages",
-  nameEn: "Essaouira - Medina & Beaches",
-  category: "nature",
-  price: 45,
-  duration: "1 journée",
-  image: essaouiraCoast,
-  rating: 4.9,
-  includes: ["Médina UNESCO", "Port historique", "Temps libre", "Transport"],
-  includesEn: ["UNESCO Medina", "Historic port", "Free time", "Transport"]
-}, {
-  id: 15,
-  slug: "asilah",
-  name: "Asilah - Ville Côtière",
-  nameEn: "Asilah - Coastal Town",
-  category: "culture",
-  price: 55,
-  duration: "1 journée",
-  image: asilahMural,
-  rating: 4.6,
-  includes: ["Murs blanchis", "Fresques colorées", "Plages", "Transport"],
-  includesEn: ["Whitewashed walls", "Colorful murals", "Beaches", "Transport"]
-}, {
-  id: 16,
-  slug: "chefchaouen",
-  name: "Chefchaouen - La Perle Bleue",
-  nameEn: "Chefchaouen - The Blue Pearl",
-  category: "culture",
-  price: 55,
-  duration: "1 journée",
-  image: "https://atlasforevents.com/wp-content/uploads/2022/08/milad-alizadeh-JibMa0FbyHw-unsplash-scaled.jpg",
-  rating: 4.9,
-  includes: ["Ville bleue", "Tours photo", "Guide local", "Transport"],
-  includesEn: ["Blue city", "Photo tours", "Local guide", "Transport"]
-}, {
-  id: 17,
-  slug: "imlil-trekking",
-  name: "Trekking à Imlil - Montagnes de l'Atlas",
-  nameEn: "Imlil Trekking - Atlas Mountains",
-  category: "adventure",
-  price: 45,
-  duration: "1 journée",
-  image: imlilVillage,
-  rating: 4.8,
-  includes: ["Randonnée", "Villages berbères", "Déjeuner", "Transport"],
-  includesEn: ["Hiking", "Berber villages", "Lunch", "Transport"]
-}, {
-  id: 18,
-  slug: "cooperative-argan",
-  name: "Coopérative d'Argan - Expérience Authentique",
-  nameEn: "Argan Cooperative - Authentic Experience",
-  category: "food",
-  price: 60,
-  duration: "2-3h",
-  image: "https://atlasforevents.com/wp-content/uploads/2024/07/WhatsApp-Image-2024-07-09-at-20.56.55-2.jpeg",
-  rating: 4.7,
-  includes: ["Visite coopérative", "Démonstration", "Dégustation", "Transport"],
-  includesEn: ["Cooperative visit", "Demonstration", "Tasting", "Transport"]
-}];
-
 const MAX_PRICE = 300;
 
 const Activites = () => {
   const { t, i18n } = useTranslation();
   const isEnglish = i18n.language === 'en';
+  
+  // Fetch activities from database
+  const { services: dbActivities, isLoading, error } = useServices({ serviceType: 'activity' });
+  
+  // Transform database services to activity format
+  const activities = useMemo(() => {
+    return dbActivities.map(service => serviceToActivity(service));
+  }, [dbActivities]);
   
   const categories = [{
     id: "all",
@@ -281,7 +54,7 @@ const Activites = () => {
   }];
 
   const stats = [{
-    value: "18+",
+    value: `${activities.length}+`,
     label: t('activitiesPage.statsActivities')
   }, {
     value: "1000+",
@@ -303,10 +76,10 @@ const Activites = () => {
     return activities.filter(activity => {
       const matchesCategory = activeCategory === "all" || activity.category === activeCategory;
       const matchesPrice = activity.price >= priceRange[0] && activity.price <= priceRange[1];
-      const matchesPromo = !showPromoOnly;
+      const matchesPromo = !showPromoOnly || (activity.originalPrice && activity.originalPrice > activity.price);
       return matchesCategory && matchesPrice && matchesPromo;
     });
-  }, [activeCategory, priceRange, showPromoOnly]);
+  }, [activities, activeCategory, priceRange, showPromoOnly]);
 
   const totalPages = Math.ceil(filteredActivities.length / ITEMS_PER_PAGE);
   const paginatedActivities = useMemo(() => {
@@ -408,32 +181,57 @@ const Activites = () => {
           <ProductFilters categories={categories} activeCategory={activeCategory} onCategoryChange={handleCategoryChange} priceRange={priceRange} maxPrice={MAX_PRICE} onPriceChange={handlePriceChange} showPromoOnly={showPromoOnly} onPromoChange={handlePromoChange} />
         </div>
 
+        {/* Loading State */}
+        {isLoading && (
+          <div className="flex items-center justify-center min-h-[300px]">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
+          </div>
+        )}
+
+        {/* Error State */}
+        {error && (
+          <div className="text-center py-12">
+            <p className="text-destructive">{t('common.errorLoading')}</p>
+          </div>
+        )}
+
         {/* Results Count */}
-        <div className="text-center mb-8">
-          <p className="text-muted-foreground">
-            {filteredActivities.length} {filteredActivities.length > 1 ? t('activitiesPage.activitiesFoundPlural') : t('activitiesPage.activitiesFound')}
-            {totalPages > 1 && ` • ${t('activitiesPage.page')} ${currentPage} ${t('activitiesPage.of')} ${totalPages}`}
-          </p>
-        </div>
+        {!isLoading && !error && (
+          <>
+            <div className="text-center mb-8">
+              <p className="text-muted-foreground">
+                {filteredActivities.length} {filteredActivities.length > 1 ? t('activitiesPage.activitiesFoundPlural') : t('activitiesPage.activitiesFound')}
+                {totalPages > 1 && ` • ${t('activitiesPage.page')} ${currentPage} ${t('activitiesPage.of')} ${totalPages}`}
+              </p>
+            </div>
 
-        {/* Activities Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-          {paginatedActivities.map((activity, index) => (
-            <ActivityCard
-              key={activity.id}
-              item={activity}
-              index={index}
-              variant="full"
-              linkType="activites"
-              showPromo={false}
-              fromLabel={t('activitiesPage.from')}
-              viewDetailsLabel={t('activitiesPage.viewDetails')}
-            />
-          ))}
-        </div>
+            {/* Activities Grid */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+              {paginatedActivities.map((activity, index) => (
+                <ActivityCard
+                  key={activity.id}
+                  item={activity}
+                  index={index}
+                  variant="full"
+                  linkType="activites"
+                  showPromo={!!activity.originalPrice}
+                  fromLabel={t('activitiesPage.from')}
+                  viewDetailsLabel={t('activitiesPage.viewDetails')}
+                />
+              ))}
+            </div>
 
-        {/* Pagination */}
-        <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+            {/* Empty State */}
+            {filteredActivities.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-muted-foreground">{t('activitiesPage.noResults')}</p>
+              </div>
+            )}
+
+            {/* Pagination */}
+            <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+          </>
+        )}
       </div>
     </section>
 
@@ -444,18 +242,22 @@ const Activites = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             {t('activitiesPage.ctaTitle')}
           </h2>
-          <p className="text-lg text-muted-foreground mb-8">
+          <p className="text-muted-foreground mb-8">
             {t('activitiesPage.ctaDescription')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact" className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-full font-semibold hover:bg-primary/90 transition-colors">
-              <MessageCircle className="w-5 h-5" />
-              {t('activitiesPage.contactUs')}
-            </Link>
-            <a href="tel:+33698272483" className="inline-flex items-center justify-center gap-2 bg-secondary text-secondary-foreground px-8 py-4 rounded-full font-semibold hover:bg-secondary/90 transition-colors">
-              <Phone className="w-5 h-5" />
-              {t('activitiesPage.callUs')}
-            </a>
+            <Button asChild size="lg" className="bg-primary hover:bg-primary/90">
+              <a href="tel:+33698272483">
+                <Phone className="w-5 h-5 mr-2" />
+                {t('activitiesPage.callUs')}
+              </a>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-secondary text-secondary hover:bg-secondary hover:text-primary">
+              <a href="https://wa.me/33698272483" target="_blank" rel="noopener noreferrer">
+                <MessageCircle className="w-5 h-5 mr-2" />
+                {t('activitiesPage.whatsapp')}
+              </a>
+            </Button>
           </div>
         </motion.div>
       </div>
