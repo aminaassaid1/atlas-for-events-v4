@@ -428,7 +428,7 @@ const Spa = () => {
                   </div>
                 </div>
                 <Button type="submit" className="w-full bg-primary hover:bg-primary/90 py-6 text-lg">
-                  {t('spaPage.submitBooking')}
+                  {t('spaPage.sendRequest')}
                 </Button>
               </form>
             </motion.div>
