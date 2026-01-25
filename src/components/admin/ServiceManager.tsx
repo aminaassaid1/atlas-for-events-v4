@@ -15,6 +15,7 @@ import { Plus, Search, Edit, Trash2, Star } from 'lucide-react';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { LucideIcon } from 'lucide-react';
+import { resolveImagePath } from '@/lib/imageResolver';
 
 interface Service {
   id: string;
@@ -575,7 +576,7 @@ export default function ServiceManager({
               <div className="aspect-video relative">
                 {service.image_url ? (
                   <img
-                    src={service.image_url}
+                    src={resolveImagePath(service.image_url)}
                     alt={service.title}
                     className="w-full h-full object-cover"
                   />
