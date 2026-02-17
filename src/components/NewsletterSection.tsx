@@ -1,17 +1,42 @@
 import { motion } from "framer-motion";
-import { Send } from "lucide-react";
+import { Send, CheckCircle } from "lucide-react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { supabase } from "@/integrations/supabase/client";
+import { useToast } from "@/hooks/use-toast";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [subscribed, setSubscribed] = useState(false);
   const { t } = useTranslation();
+  const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle newsletter subscription
-    console.log("Subscribing:", email);
-    setEmail("");
+    if (!email || loading) return;
+    setLoading(true);
+    try {
+      const { error } = await supabase
+        .from("newsletter_subscribers" as any)
+        .insert({ email } as any);
+      
+      if (error) {
+        if (error.code === '23505') {
+          toast({ title: t('newsletter.alreadySubscribed', 'Vous êtes déjà inscrit(e) !') });
+        } else {
+          throw error;
+        }
+      } else {
+        toast({ title: t('newsletter.success', 'Inscription réussie !'), description: t('newsletter.successDesc', 'Merci pour votre inscription.') });
+        setSubscribed(true);
+      }
+      setEmail("");
+    } catch (error) {
+      toast({ title: t('newsletter.error', 'Erreur'), description: t('newsletter.errorDesc', 'Une erreur est survenue.'), variant: "destructive" });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -57,10 +82,11 @@ const NewsletterSection = () => {
                 />
                 <button
                   type="submit"
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-secondary hover:bg-secondary/90 text-primary p-3 rounded-full transition-colors shadow-lg"
+                  disabled={loading || subscribed}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-secondary hover:bg-secondary/90 text-primary p-3 rounded-full transition-colors shadow-lg disabled:opacity-50"
                   aria-label={t('newsletter.subscribe')}
                 >
-                  <Send className="h-5 w-5" />
+                  {subscribed ? <CheckCircle className="h-5 w-5" /> : <Send className="h-5 w-5" />}
                 </button>
               </div>
             </motion.form>

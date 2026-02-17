@@ -174,16 +174,6 @@ const TestimonialsSection = () => {
         </div>
       </div>
 
-      {/* Floating Hot Air Balloon - Right side */}
-      <motion.div className="absolute -right-8 lg:-right-14 top-[35%] w-20 lg:w-28 hidden md:block" animate={{
-      y: [0, -20, 0]
-    }} transition={{
-      duration: 6,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }}>
-        
-      </motion.div>
-    </section>;
+     </section>;
 };
 export default TestimonialsSection;
