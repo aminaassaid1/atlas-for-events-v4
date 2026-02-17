@@ -118,7 +118,7 @@ const Activites = () => {
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
         <OptimizedImage 
-          src="https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-31-at-11.58.10.jpeg" 
+          src="/src/assets/images/activities/quad-sunset.webp" 
           alt={t('activitiesPage.heroTitle')} 
           priority
           containerClassName="w-full h-full"

@@ -3,6 +3,7 @@
  * Displays products with filtering, sorting, and pagination capabilities
  */
 import { motion, AnimatePresence } from "framer-motion";
+import { resolveImagePath } from "@/lib/imageResolver";
 import { Truck, Shield, Package, ArrowRight, Gem, Heart, Dog, Flower2, Grid3X3, Sparkles, Star, Tag, Eye, LogIn, LogOut, User, ShoppingCart, Check } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
 import { SEO, OptimizedImage } from "@/components/common";
@@ -480,14 +481,14 @@ const Boutique = () => {
           }} viewport={{
             once: true
           }} className="grid grid-cols-2 gap-4">
-              <motion.img src="https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_334185902_197191692912242_6089816500759657632_n.jpg" alt={t('boutique.craftsmanship')} className="rounded-3xl aspect-[3/4] object-cover shadow-xl" whileHover={{
+              <motion.img src={resolveImagePath("/src/assets/images/offer/pic1.jpg")} alt={t('boutique.craftsmanship')} className="rounded-3xl aspect-[3/4] object-cover shadow-xl" whileHover={{
               scale: 1.02,
               rotate: -1
             }} transition={{
               type: "spring",
               stiffness: 300
             }} />
-              <motion.img src="https://atlasforevents.com/wp-content/uploads/2024/07/charmingart0505_327563158_162827876502835_3674423743897636290_n.jpg" alt="Sculpture" className="rounded-3xl aspect-[3/4] object-cover mt-8 shadow-xl" whileHover={{
+              <motion.img src={resolveImagePath("/src/assets/images/we-rec3-pic2.jpg")} alt="Sculpture" className="rounded-3xl aspect-[3/4] object-cover mt-8 shadow-xl" whileHover={{
               scale: 1.02,
               rotate: 1
             }} transition={{

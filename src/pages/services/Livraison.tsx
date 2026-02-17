@@ -3,6 +3,7 @@
  * Displays handcrafted product delivery service information
  */
 import { motion } from "framer-motion";
+import { resolveImagePath } from "@/lib/imageResolver";
 import { Link } from "react-router-dom";
 import { ChevronRight, Package, Shield, Globe, Truck, FileCheck, Clock, Check, Phone, Upload, X } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
@@ -47,13 +48,13 @@ const Livraison = () => {
     {
       title: t('livraisonPage.artworksTitle'),
       description: t('livraisonPage.artworksDesc'),
-      image: "https://atlasforevents.com/wp-content/uploads/elementor/thumbs/charmingart0505_350865698_1384757428757447_8328670991529485398_n-r6f1ddxrmg7ynf2k2ynlqjn6okgqbku81zdiflw1ds.jpg",
+      image: resolveImagePath("/src/assets/images/offer/pic1.jpg"),
       link: getLocalizedPath("/boutique")
     },
     {
       title: t('livraisonPage.craftsTitle'),
       description: t('livraisonPage.craftsDesc'),
-      image: "https://atlasforevents.com/wp-content/uploads/elementor/thumbs/7xm368440-r6f1dnc5isktviowk2pvfh9smf6egjvjf9wd8di3nk.jpg",
+      image: resolveImagePath("/src/assets/images/we-rec3-pic.jpg"),
       link: getLocalizedPath("/boutique")
     }
   ];

@@ -4,6 +4,7 @@
  * Fetches data dynamically from database
  */
 import { motion } from "framer-motion";
+import { resolveImagePath } from "@/lib/imageResolver";
 import { Link } from "react-router-dom";
 import { ChevronRight, Sparkles, Heart, Leaf, Clock, Check, Star } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
@@ -79,7 +80,7 @@ const Spa = () => {
   const isEnglish = i18n.language === 'en';
 
   // Fallback hero image
-  const heroImage = galleryImages[currentImage] || "https://atlasforevents.com/wp-content/uploads/2024/06/spa-hero.jpg";
+  const heroImage = galleryImages[currentImage] || resolveImagePath("/src/assets/images/spa/massage.webp");
 
   return (
     <PageLayout>

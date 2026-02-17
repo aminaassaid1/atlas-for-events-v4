@@ -12,6 +12,7 @@ import buggyPalmeraie from "@/assets/images/activities/buggy-palmeraie.webp";
 import bedouinAgafay from "@/assets/images/hebergement/bedouin-agafay.jpg";
 import spaMassage from "@/assets/images/services/spa-massage.jpg";
 import transportHero from "@/assets/images/transport-hero.webp";
+import mariageBeach from "@/assets/images/events/mariage-beach.webp";
 
 const Services = () => {
   const { t, i18n } = useTranslation();
@@ -51,7 +52,7 @@ const Services = () => {
         t('servicesPage.eventFeature5'),
         t('servicesPage.eventFeature6'),
       ],
-      image: "https://atlasforevents.com/wp-content/uploads/2024/06/bride-groom-having-their-wedding-beach-scaled-1.jpg",
+      image: mariageBeach,
       color: "bg-atlas-gold"
     },
     {

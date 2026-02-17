@@ -8,6 +8,11 @@ import cloudBg from "@/assets/images/background/Cloud-bg.png";
 import hotBalloonLeftImg from "@/assets/images/hotballon-Left.png";
 import hotBalloonRightImg from "@/assets/images/hotballon-right.png";
 import chefchaouenActivity from "@/assets/images/activities/chefchaouen-activity.jpg";
+import mariageBeach from "@/assets/images/events/mariage-beach.webp";
+import buggyPalmeraie from "@/assets/images/activities/buggy-palmeraie.webp";
+import villaOrientalys from "@/assets/images/hebergement/villa-orientalys.webp";
+import hammam from "@/assets/images/spa/hammam.webp";
+import chauffeur from "@/assets/images/transport/chauffeur.webp";
 
 const DestinationsSection = () => {
   const { t } = useTranslation();
@@ -28,7 +33,7 @@ const DestinationsSection = () => {
       icon: Calendar,
       title: t('services.events'),
       description: t('services.eventsDesc'),
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/al-elmes-ULHxWq8reao-unsplash-scaled.jpg",
+      image: mariageBeach,
       link: "/services/evenements",
     },
     {
@@ -36,7 +41,7 @@ const DestinationsSection = () => {
       icon: Bike,
       title: t('services.activities'),
       description: t('services.activitiesDesc'),
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/Buggy-Tour-at-the-plam-grove-of-Marrakech.jpg",
+      image: buggyPalmeraie,
       link: "/services/activites",
     },
     {
@@ -44,7 +49,7 @@ const DestinationsSection = () => {
       icon: Home,
       title: t('services.accommodation'),
       description: t('services.accommodationDesc'),
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/419760597_677102024567035_474413547800764016_n.jpg",
+      image: villaOrientalys,
       link: "/services/hebergement",
     },
     {
@@ -52,7 +57,7 @@ const DestinationsSection = () => {
       icon: Sparkles,
       title: t('services.spa'),
       description: t('services.spaDesc'),
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/2150917946-1-scaled.jpg",
+      image: hammam,
       link: "/services/spa",
     },
     {
@@ -60,7 +65,7 @@ const DestinationsSection = () => {
       icon: Car,
       title: t('services.transport'),
       description: t('services.transportDesc'),
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/dino-reichmuth-A5rCN8626Ck-unsplash-scaled.jpg",
+      image: chauffeur,
       link: "/services/transport",
     },
   ];

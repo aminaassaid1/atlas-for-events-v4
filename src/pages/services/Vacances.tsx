@@ -3,6 +3,7 @@
  * Displays destination tours and booking options
  */
 import { motion } from "framer-motion";
+import { resolveImagePath } from "@/lib/imageResolver";
 import { Link } from "react-router-dom";
 import { ChevronRight, Car, Plane, UserCheck, ArrowRight, Phone, MessageCircle, ChevronLeft } from "lucide-react";
 import { useState, useMemo } from "react";
@@ -45,7 +46,7 @@ const destinations = [
     name: "Aventure dans l'Agafay",
     duration: "3-4 heures",
     price: 50,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/randoagafay.jpg",
+    image: resolveImagePath("/src/assets/images/activities/agafay-camel-ride.webp"),
     description: "Trekking à dos de chameau et délices culturels dans le désert d'Agafay",
     category: "Désert",
     rating: 4.8,
@@ -92,7 +93,7 @@ const destinations = [
     duration: "4 heures",
     price: 45,
     originalPrice: 60,
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/WhatsApp-Image-2024-08-08-at-23.28.29-1.jpeg",
+    image: resolveImagePath("/src/assets/images/activities/cours-cuisine.jpg"),
     description: "Cours de cuisine authentique dans le désert d'Agafay",
     category: "Gastronomie",
     rating: 4.9,
@@ -219,7 +220,7 @@ const Vacances = () => {
       {/* Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src="https://atlasforevents.com/wp-content/uploads/2022/08/milad-alizadeh-JibMa0FbyHw-unsplash-scaled.jpg" alt={t('vacationsPage.heroTitle')} className="w-full h-full object-cover" />
+          <img src={resolveImagePath("/src/assets/images/steps-desert-camels.webp")} alt={t('vacationsPage.heroTitle')} className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
         </div>
         
@@ -391,7 +392,7 @@ const Vacances = () => {
 
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden mb-8">
-                <img src="https://atlasforevents.com/wp-content/uploads/2022/07/ignacio-ceballos-eP94dHUaY1U-unsplash-scaled.jpg" alt={t('vacationsPage.heroTitle')} className="w-full aspect-[4/3] object-cover" />
+                <img src={resolveImagePath("/src/assets/images/steps-chefchaouen.webp")} alt={t('vacationsPage.heroTitle')} className="w-full aspect-[4/3] object-cover" />
               </div>
 
               {/* Contact Info */}
