@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { getEventTypeById, eventTypes as allEventTypes } from "@/data/events";
+import { contactInfo } from "@/config/contact";
 
 const iconMap: Record<string, React.ElementType> = {
   Heart,
@@ -60,7 +61,7 @@ const EventDetail = () => {
   
   const handleContact = () => {
     const message = `${t('eventDetail.contactMessage')} "${eventType.title}".`;
-    window.open(`https://wa.me/33698272483?text=${encodeURIComponent(message)}`, "_blank");
+    window.open(`https://wa.me/${contactInfo.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent(message)}`, "_blank");
   };
   
   const handleHelpful = (reviewId: number) => {
@@ -372,9 +373,9 @@ const EventDetail = () => {
                     {t('eventDetail.requestQuote')}
                   </Button>
                   <Button variant="outline" size="lg" className="w-full rounded-xl gap-2" asChild>
-                    <a href="tel:+33698272483">
+                    <a href={`tel:${contactInfo.phone[0]}`}>
                       <Phone className="w-5 h-5" />
-                      +33 698-272483
+                      {contactInfo.phone[0]}
                     </a>
                   </Button>
                 </div>
