@@ -7,6 +7,8 @@ import { useTranslation } from "react-i18next";
 // Import images as ES6 modules
 import buggyPalmeraie from "@/assets/images/activities/buggy-palmeraie.webp";
 import montgolfiereSunrise from "@/assets/images/activities/montgolfiere-sunrise.webp";
+import agafayDunes from "@/assets/images/activities/agafay-dunes.webp";
+import coursCuisine from "@/assets/images/activities/cours-cuisine.jpg";
 
 const ToursSection = () => {
   const { t } = useTranslation();
@@ -30,7 +32,7 @@ const ToursSection = () => {
       rating: 5.0,
     },
     {
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/agafay-rocky-dunes-636x426.webp",
+      image: agafayDunes,
       location: t('tours.tour3Location'),
       duration: t('tours.tour3Duration'),
       title: t('tours.tour3Title'),
@@ -38,7 +40,7 @@ const ToursSection = () => {
       rating: 5.0,
     },
     {
-      image: "https://atlasforevents.com/wp-content/uploads/2024/08/Cours-de-cuisine-marocaine-authentique-dans-le-desert-dAgafay.jpg",
+      image: coursCuisine,
       location: t('tours.tour4Location'),
       duration: t('tours.tour4Duration'),
       title: t('tours.tour4Title'),

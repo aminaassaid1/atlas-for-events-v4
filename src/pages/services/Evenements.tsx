@@ -3,6 +3,7 @@
  * Showcases wedding, celebration, and party services
  */
 import { motion, AnimatePresence } from "framer-motion";
+import { resolveImagePath } from "@/lib/imageResolver";
 import { ChevronRight, ChevronLeft, Play, X, Heart, Cake, PartyPopper, Users, Music, Sparkles, Phone, Mail, MessageCircle, ArrowRight, Star } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
@@ -35,37 +36,37 @@ const Evenements = () => {
     id: "mariages",
     title: t('eventsPage.eventWeddings'),
     description: t('eventsPage.eventWeddingsDesc'),
-    image: "https://atlasforevents.com/wp-content/uploads/2024/06/bride-groom-having-their-wedding-beach-scaled-1.jpg",
+    image: resolveImagePath("/src/assets/images/events/mariage-beach.webp"),
     icon: Heart
   }, {
     id: "fiancailles",
     title: t('eventsPage.eventEngagements'),
     description: t('eventsPage.eventEngagementsDesc'),
-    image: "https://atlasforevents.com/wp-content/uploads/2024/06/view-table-arrangement-by-wedding-planner-scaled-1.jpg",
+    image: resolveImagePath("/src/assets/images/events/fiancailles.webp"),
     icon: Sparkles
   }, {
     id: "anniversaires",
     title: t('eventsPage.eventBirthdays'),
     description: t('eventsPage.eventBirthdaysDesc'),
-    image: "https://atlasforevents.com/wp-content/uploads/2024/06/party-portraits-young-adults-having-fun-scaled-1.jpg",
+    image: resolveImagePath("/src/assets/images/events/anniversaires.webp"),
     icon: Cake
   }, {
     id: "evjf-evjg",
     title: t('eventsPage.eventBachelor'),
     description: t('eventsPage.eventBachelorDesc'),
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/7xm508608.jpg",
+    image: resolveImagePath("/src/assets/images/events/evjf-evjg.webp"),
     icon: PartyPopper
   }, {
     id: "soirees-privees",
     title: t('eventsPage.eventPrivate'),
     description: t('eventsPage.eventPrivateDesc'),
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/7xm564269.jpg",
+    image: resolveImagePath("/src/assets/images/events/soiree-privee.webp"),
     icon: Users
   }, {
     id: "gipsy-sueno",
     title: t('eventsPage.eventGipsy'),
     description: t('eventsPage.eventGipsyDesc'),
-    image: "https://atlasforevents.com/wp-content/uploads/2024/08/71137665_2230934303699493_6792019247049474048_n.jpg",
+    image: resolveImagePath("/src/assets/images/events/animation.webp"),
     icon: Music
   }];
 
@@ -154,7 +155,7 @@ const Evenements = () => {
     {/* Hero Section */}
     <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
       <div className="absolute inset-0">
-        <img src="https://atlasforevents.com/wp-content/uploads/2024/06/bride-groom-having-their-wedding-beach-scaled-1.jpg" alt={t('eventsPage.heroTitle')} className="w-full h-full object-cover" />
+        <img src={resolveImagePath("/src/assets/images/events/mariage-beach.webp")} alt={t('eventsPage.heroTitle')} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
       </div>
       

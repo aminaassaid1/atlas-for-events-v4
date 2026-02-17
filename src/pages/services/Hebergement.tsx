@@ -4,6 +4,7 @@
  * Fetches data dynamically from database
  */
 import { motion } from "framer-motion";
+import { resolveImagePath } from "@/lib/imageResolver";
 import { Link } from "react-router-dom";
 import { ChevronRight, Home, Users, Shield, Utensils, Car, Sparkles, Star, MapPin, Bed, Bath, Wifi, Phone, Calendar, Check } from "lucide-react";
 import PageLayout from "@/components/layout/PageLayout";
@@ -362,7 +363,7 @@ const Hebergement = () => {
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://atlasforevents.com/wp-content/uploads/2024/06/Lobby-panorama.webp"
+            src={resolveImagePath("/src/assets/images/hebergement/villa-orientalys.webp")}
             alt={t('accommodationPage.heroTitle')}
             className="w-full h-full object-cover"
           />
