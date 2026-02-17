@@ -436,7 +436,7 @@ const Boutique = () => {
             once: true
           }}>
               <span className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full font-medium mb-4">
-                <Sparkles className="w-4 h-4" />
+                <Gem className="w-4 h-4" />
                 {t('boutique.craftsmanship')}
               </span>
               <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
