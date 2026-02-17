@@ -63,7 +63,7 @@ const Orders = () => {
     try {
       // Fetch orders
       const { data: ordersData, error: ordersError } = await supabase
-        .from("orders" as any)
+        .from("orders")
         .select("*")
         .eq("user_id", userId)
         .order("created_at", { ascending: false });
@@ -74,7 +74,7 @@ const Orders = () => {
       const ordersWithItems = await Promise.all(
         ((ordersData as unknown as Order[]) || []).map(async (order) => {
           const { data: items } = await supabase
-            .from("order_items" as any)
+            .from("order_items")
             .select("*")
             .eq("order_id", order.id);
           return { ...order, order_items: (items as unknown as OrderItem[]) || [] };
